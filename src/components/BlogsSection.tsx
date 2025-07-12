@@ -4,15 +4,15 @@ import Image from "next/image";
 
 const blogs = [
   {
-    title: "How to Choose the Right Logistics Partner",
-    excerpt: "Key factors to consider when selecting a logistics provider for your business.",
-    date: "2025-06-15",
+    title: "2nd Outreach Program",
+    excerpt: "We are overjoyed to share the success of our 2nd Outreach Program, where we distributed school supplies to 106 selected students in need. This meaningful event was made even more special together with Solumi Delights - Tibungco, whose generous support helped bring more smiles and hope to our dear learners.A huge thank you to all the volunteers who made this possible. Your kindness creates ripples that go far beyond what we see today.",
+    date: "2025-06-25",
     image: "/blog1.jpg",
   },
   {
-    title: "The Future of Route Optimization",
-    excerpt: "Emerging technologies that are transforming delivery efficiency.",
-    date: "2025-05-30",
+    title: "Proud to Support RGS's Success Story",
+    excerpt: "Thank you RGS for having SMOvers Logistics Services. We are very grateful for being part of your success.",
+    date: "2024-07-24",
     image: "/blog2.jpg",
   },
 ];
