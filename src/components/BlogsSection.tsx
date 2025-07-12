@@ -15,6 +15,7 @@ const blogs = [
     date: "2024-07-24",
     image: "/blog2.jpg",
   },
+
 ];
 
 export default function BlogsSection() {

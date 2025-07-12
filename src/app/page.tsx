@@ -4,9 +4,11 @@ import HeroSection from "../components/HeroSection";
 import ServicesSection from "../components/ServicesSection";
 import RoutesSection from "../components/RoutesSection";
 import CompanyProfileSection from "../components/CompanyProfileSection";
+
 import BlogsSection from "../components/BlogsSection";
 import TeamSection from "../components/TeamSection";
 import TestimonialsSection from "../components/TestimonialsSection";
+import ContactSection from "../components/ContactSection";
 
 export default function Home() {
   return (
@@ -18,8 +20,11 @@ export default function Home() {
       <div id="blogs"><BlogsSection /></div>
       <div id="team"><TeamSection /></div>
       <div id="testimonials"><TestimonialsSection /></div>
-      <footer className="py-8 text-center text-gray-500 text-sm bg-white border-t mt-12">
-        &copy; {new Date().getFullYear()} SMOvers Logistics Services. All rights reserved.
+      <footer className="bg-white border-t mt-12">
+        <ContactSection />
+        <div className="py-8 text-center text-gray-500 text-sm">
+          &copy; {new Date().getFullYear()} SMOvers Logistics Services. All rights reserved.
+        </div>
       </footer>
     </div>
   );

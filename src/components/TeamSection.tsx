@@ -5,7 +5,7 @@ const team = [
   {
     name: "Lydie Rocero Olmoguez",
     role: "CEO & Founder",
-    image: "/team1.jpg",
+    image: "/ceo.jpg",
   },
   {
     name: "Juan Dela Cruz",
