@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function AccomplishmentsSection() {
   return (
     <section className="py-16 px-4 bg-blue-50">
