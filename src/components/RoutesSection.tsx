@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+// @ts-ignore – lucide-react has no types in this setup
+import { ChevronDown } from "lucide-react";
 
 interface Lane { origin: string; destination: string; freq: string; transit: string; sizes: string[]; }
 interface RouteGroup { name: string; description: string; lanes: Lane[]; }
@@ -37,7 +39,7 @@ const routeGroups: RouteGroup[] = [
 ];
 
 export default function RoutesSection() {
-  const [open, setOpen] = useState<string | null>(null);
+  const [open, setOpen] = useState<string | null>(routeGroups[0].name);
 
   return (
     <section className="py-16 px-4" id="routes">
@@ -51,7 +53,7 @@ export default function RoutesSection() {
                 <button
                   type="button"
                   aria-expanded={isOpen}
-                  onClick={() => setOpen(group.name)}
+                  onClick={() => setOpen(isOpen ? null : group.name)}
                   className="text-left p-5"
                 >
                   <div className="flex items-start justify-between gap-3">
@@ -59,7 +61,7 @@ export default function RoutesSection() {
                       <h3 className="text-lg font-semibold text-blue-800 leading-snug">{group.name}</h3>
                       <p className="text-gray-600 text-sm mt-1">{group.description}</p>
                     </div>
-                    <span className={`mt-1 inline-flex items-center justify-center w-7 h-7 rounded-full border text-xs font-semibold transition ${isOpen ? "bg-blue-600 text-white border-blue-600 rotate-180" : "bg-blue-50 text-blue-700 border-blue-200"}`}>˅</span>
+                    <ChevronDown className={`mt-1 w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-blue-600' : 'text-blue-700'}`} />
                   </div>
                   <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 text-blue-700">Lanes: {group.lanes.length}</p>
                 </button>
