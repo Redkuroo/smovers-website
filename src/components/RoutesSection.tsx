@@ -95,13 +95,16 @@ export default function RoutesSection() {
                     <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 text-blue-700">Lanes: {group.lanes.length}</p>
                   </button>
                   <div className={`transition-[max-height] duration-500 ease-in-out ${isOpen ? (group.lanes.length > 10 ? 'max-h-[700px] overflow-y-auto' : 'max-h-[420px]') : 'max-h-0'} overflow-hidden`}>
-                    <div className="px-5 pb-5 space-y-2 text-sm">
+                    <div className="px-5 pb-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-sm">
                       {group.lanes.map((lane, idx) => (
-                        <div key={idx} className="border border-gray-100 rounded-md p-3 bg-gray-50/50 hover:bg-gray-50 transition">
-                          <p className="font-medium text-blue-900 flex items-center gap-1">
-                            <span>{lane.origin}</span>
-                            <ArrowRight className="w-4 h-4 text-blue-500" aria-hidden="true" />
-                            <span>{lane.destination}</span>
+                        <div
+                          key={idx}
+                          className="border border-gray-100 rounded-md p-3 bg-gray-50/60 hover:bg-white hover:shadow-sm transition"
+                        >
+                          <p className="font-medium text-blue-900 flex items-center gap-1 text-xs md:text-sm">
+                            <span className="truncate" title={lane.origin}>{lane.origin}</span>
+                            <ArrowRight className="w-4 h-4 text-blue-500 shrink-0" aria-hidden="true" />
+                            <span className="truncate" title={lane.destination}>{lane.destination}</span>
                           </p>
                         </div>
                       ))}
