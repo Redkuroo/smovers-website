@@ -90,9 +90,9 @@ export default function RoutesSection() {
                         <h3 className="text-lg font-semibold text-blue-800 leading-snug">{group.name}</h3>
                         <p className="text-gray-600 text-sm mt-1">{group.description}</p>
                       </div>
-                      <ChevronDown className={`mt-1 w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-blue-600' : 'text-blue-700'}`} />
+                      <ChevronDown className={`mt-1 w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-blue-600' : 'text-blue-700'} cursor-pointer` } />
                     </div>
-                    <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#fab36b]/15 text-[#9a5200]">Lanes: {group.lanes.length}</p>
+                    <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#fab36b]/15 text-[#9a5200] cursor-pointer">Lanes: {group.lanes.length}</p>
                   </button>
                   <div className={`transition-[max-height] duration-500 ease-in-out ${isOpen ? (group.lanes.length > 10 ? 'max-h-[700px] overflow-y-auto' : 'max-h-[420px]') : 'max-h-0'} overflow-hidden`}>
                     <div className="px-5 pb-5 flex flex-wrap gap-2 text-[11px] md:text-xs">
@@ -104,7 +104,7 @@ export default function RoutesSection() {
                         return (
                           <div
                             key={idx}
-                            className="inline-flex items-center flex-none rounded-full border border-[#fab36b]/40 bg-[#fab36b]/10 hover:bg-[#fab36b]/20 hover:border-[#fab36b]/60 px-3 py-1.5 gap-1.5 text-[#3a2a1a] shadow-sm transition"
+                            className="inline-flex items-center flex-none rounded-full border border-[#fab36b]/40 bg-[#fab36b]/10 hover:bg-[#fab36b]/20 hover:border-[#fab36b]/60 px-3 py-1.5 gap-1.5 text-[#3a2a1a] shadow-sm transition cursor-pointer"
                           >
                             <span className="font-medium">{lane.origin}</span>
                             <ArrowRight className="w-3.5 h-3.5 text-[#fab36b]" aria-hidden="true" />
@@ -123,9 +123,9 @@ export default function RoutesSection() {
               );
             })}
           </div>
-          <div className="hidden lg:flex flex-1">
-            {/* Placeholder for Philippine map component */}
-            <div className="w-full h-[560px] rounded-2xl border border-dashed border-blue-200 bg-gradient-to-br from-blue-50 to-white flex items-center justify-center text-blue-600 text-sm">
+          <div className="w-full lg:flex-1 mt-8 lg:mt-0">
+            {/* Placeholder for Philippine map component (now visible on mobile) */}
+            <div className="w-full h-72 sm:h-80 lg:h-[560px] rounded-2xl border border-dashed border-[#fab36b]/50 bg-gradient-to-br from-[#fab36b]/10 to-white flex items-center justify-center text-[#6b3a00] text-sm">
               Map placeholder
             </div>
           </div>
