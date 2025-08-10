@@ -2,19 +2,19 @@ import React from "react";
 
 const services = [
   {
-    title: "Freight Forwarding",
+    title: "Containerized Cargo",
     description: "Efficient and reliable freight solutions for all cargo types, both domestic and international.",
   },
   {
-    title: "Warehousing",
+    title: "Flat Rack Container",
     description: "Secure, scalable storage options with real-time inventory management.",
   },
   {
-    title: "Route Optimization",
+    title: "LCL (Less than Container Load)",
     description: "Advanced route planning to ensure timely and cost-effective deliveries.",
   },
   {
-    title: "Customs Clearance",
+    title: "Breakbulk Cargo",
     description: "Expert handling of customs documentation and compliance for smooth cross-border operations.",
   },
 ];
