@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
-// @ts-ignore – lucide-react has no types in this setup
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 
 interface Lane { origin: string; destination: string; freq: string; transit: string; sizes: string[]; }
 interface RouteGroup { name: string; description: string; lanes: Lane[]; }
@@ -69,7 +68,11 @@ export default function RoutesSection() {
                   <div className="px-5 pb-5 space-y-2 text-sm">
                     {group.lanes.map((lane, idx) => (
                       <div key={idx} className="border border-gray-100 rounded-md p-3 bg-gray-50/50 hover:bg-gray-50 transition">
-                        <p className="font-medium text-blue-900">{lane.origin} → {lane.destination}</p>
+                        <p className="font-medium text-blue-900 flex items-center gap-1">
+                          <span>{lane.origin}</span>
+                          <ArrowRight className="w-4 h-4 text-blue-500" aria-hidden="true" />
+                          <span>{lane.destination}</span>
+                        </p>
                       </div>
                     ))}
                   </div>
