@@ -37,7 +37,7 @@ const routeGroups: RouteGroup[] = [
 ];
 
 export default function RoutesSection() {
-  const [open, setOpen] = useState<string | null>(routeGroups[0].name);
+  const [open, setOpen] = useState<string | null>(null);
 
   return (
     <section className="py-16 px-4" id="routes">
@@ -51,7 +51,7 @@ export default function RoutesSection() {
                 <button
                   type="button"
                   aria-expanded={isOpen}
-                  onClick={() => setOpen(isOpen ? null : group.name)}
+                  onClick={() => setOpen(group.name)}
                   className="text-left p-5"
                 >
                   <div className="flex items-start justify-between gap-3">
