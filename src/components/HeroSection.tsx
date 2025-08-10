@@ -23,14 +23,9 @@ export default function HeroSection() {
                 href="#services"
                 className="bg-white text-blue-900 font-semibold px-5 py-2 rounded shadow hover:bg-blue-50 transition text-sm md:text-base"
               >
-                Our Services
-              </a>
-              <a
-                href="#contact"
-                className="border border-white/70 text-white px-5 py-2 rounded hover:bg-white/10 transition text-sm md:text-base"
-              >
                 Contact Us
               </a>
+            
             </div>
           </div>
         </div>
