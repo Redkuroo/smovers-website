@@ -71,44 +71,52 @@ export default function RoutesSection() {
   return (
     <section className="py-16 px-4" id="routes">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8 text-blue-900">Featured Routes</h2>
-        {/* Stacked layout replacing 3-column grid */}
-        <div className="flex flex-col gap-6">
-          {routeGroups.map(group => {
-            const isOpen = open === group.name;
-            return (
-              <div key={group.name} className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition flex flex-col">
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => setOpen(isOpen ? null : group.name)}
-                  className="text-left p-5"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h3 className="text-lg font-semibold text-blue-800 leading-snug">{group.name}</h3>
-                      <p className="text-gray-600 text-sm mt-1">{group.description}</p>
-                    </div>
-                    <ChevronDown className={`mt-1 w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-blue-600' : 'text-blue-700'}`} />
-                  </div>
-                  <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 text-blue-700">Lanes: {group.lanes.length}</p>
-                </button>
-                <div className={`transition-[max-height] duration-500 ease-in-out ${isOpen ? (group.lanes.length > 10 ? 'max-h-[700px] overflow-y-auto' : 'max-h-[420px]') : 'max-h-0'} overflow-hidden`}>
-                  <div className="px-5 pb-5 space-y-2 text-sm">
-                    {group.lanes.map((lane, idx) => (
-                      <div key={idx} className="border border-gray-100 rounded-md p-3 bg-gray-50/50 hover:bg-gray-50 transition">
-                        <p className="font-medium text-blue-900 flex items-center gap-1">
-                          <span>{lane.origin}</span>
-                          <ArrowRight className="w-4 h-4 text-blue-500" aria-hidden="true" />
-                          <span>{lane.destination}</span>
-                        </p>
+        <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Featured Routes</h2>
+        {/* Two-column layout: left accordion, right reserved map space */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+          <div className="w-full lg:w-[56%] flex flex-col gap-6">
+            {routeGroups.map(group => {
+              const isOpen = open === group.name;
+              return (
+                <div key={group.name} className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition flex flex-col">
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpen(isOpen ? null : group.name)}
+                    className="text-left p-5"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-lg font-semibold text-blue-800 leading-snug">{group.name}</h3>
+                        <p className="text-gray-600 text-sm mt-1">{group.description}</p>
                       </div>
-                    ))}
+                      <ChevronDown className={`mt-1 w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-blue-600' : 'text-blue-700'}`} />
+                    </div>
+                    <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 text-blue-700">Lanes: {group.lanes.length}</p>
+                  </button>
+                  <div className={`transition-[max-height] duration-500 ease-in-out ${isOpen ? (group.lanes.length > 10 ? 'max-h-[700px] overflow-y-auto' : 'max-h-[420px]') : 'max-h-0'} overflow-hidden`}>
+                    <div className="px-5 pb-5 space-y-2 text-sm">
+                      {group.lanes.map((lane, idx) => (
+                        <div key={idx} className="border border-gray-100 rounded-md p-3 bg-gray-50/50 hover:bg-gray-50 transition">
+                          <p className="font-medium text-blue-900 flex items-center gap-1">
+                            <span>{lane.origin}</span>
+                            <ArrowRight className="w-4 h-4 text-blue-500" aria-hidden="true" />
+                            <span>{lane.destination}</span>
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+          <div className="hidden lg:flex flex-1">
+            {/* Placeholder for Philippine map component */}
+            <div className="w-full h-[560px] rounded-2xl border border-dashed border-blue-200 bg-gradient-to-br from-blue-50 to-white flex items-center justify-center text-blue-600 text-sm">
+              Map placeholder
+            </div>
+          </div>
         </div>
       </div>
     </section>
