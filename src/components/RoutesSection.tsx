@@ -92,29 +92,25 @@ export default function RoutesSection() {
                       </div>
                       <ChevronDown className={`mt-1 w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-blue-600' : 'text-blue-700'}`} />
                     </div>
-                    <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 text-blue-700">Lanes: {group.lanes.length}</p>
+                    <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#fab36b]/15 text-[#9a5200]">Lanes: {group.lanes.length}</p>
                   </button>
                   <div className={`transition-[max-height] duration-500 ease-in-out ${isOpen ? (group.lanes.length > 10 ? 'max-h-[700px] overflow-y-auto' : 'max-h-[420px]') : 'max-h-0'} overflow-hidden`}>
-                    <div className="px-5 pb-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-sm">
+                    <div className="px-5 pb-5 flex flex-wrap gap-2 text-[11px] md:text-xs">
                       {group.lanes.map((lane, idx) => {
                         const rawDest = lane.destination;
                         const viaMatch = rawDest.match(/^(.*)\s*\(via\s+([^\)]+)\)\s*$/i);
                         const mainDest = viaMatch ? viaMatch[1].trim() : rawDest;
                         const viaPort = viaMatch ? viaMatch[2].trim() : null;
-                        const longEntry = mainDest.length > 14 || (viaPort && viaPort.length > 6);
-                        const spanClass = viaPort || longEntry ? 'lg:col-span-2' : '';
                         return (
                           <div
                             key={idx}
-                            className={`border border-gray-100 rounded-md p-3 bg-gray-50/60 hover:bg-white hover:shadow-sm transition flex flex-col ${spanClass}`}
+                            className="inline-flex items-center flex-none rounded-full border border-[#fab36b]/40 bg-[#fab36b]/10 hover:bg-[#fab36b]/20 hover:border-[#fab36b]/60 px-3 py-1.5 gap-1.5 text-[#3a2a1a] shadow-sm transition"
                           >
-                            <p className="font-medium text-blue-900 flex items-center gap-1 text-xs md:text-sm leading-tight">
-                              <span>{lane.origin}</span>
-                              <ArrowRight className="w-4 h-4 text-blue-500 shrink-0" aria-hidden="true" />
-                              <span>{mainDest}</span>
-                            </p>
+                            <span className="font-medium">{lane.origin}</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-[#fab36b]" aria-hidden="true" />
+                            <span className="font-semibold text-[#6b3a00]">{mainDest}</span>
                             {viaPort && (
-                              <span className="mt-1 inline-block text-[10px] font-medium text-blue-600 bg-blue-50/80 px-1.5 py-0.5 rounded">
+                              <span className="ml-1 leading-none px-1.5 py-0.5 rounded-full bg-[#fab36b] text-white text-[9px] font-medium tracking-wide">
                                 via {viaPort}
                               </span>
                             )}
