@@ -1,7 +1,4 @@
-
-
 import HeroSection from "../components/HeroSection";
-import HeroImage from "../components/HeroImage";
 import ServicesSection from "../components/ServicesSection";
 import RoutesSection from "../components/RoutesSection";
 import CompanyProfileSection from "../components/CompanyProfileSection";
@@ -15,7 +12,6 @@ export default function Home() {
   return (
     <div className="bg-gray-100 min-h-screen">
       <div id="home"><HeroSection /></div>
-      <HeroImage />
       <div id="services"><ServicesSection /></div>
       <div id="routes"><RoutesSection /></div>
       <div id="company"><CompanyProfileSection /></div>
