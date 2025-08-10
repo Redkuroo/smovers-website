@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
 
-interface Lane { origin: string; destination: string; freq: string; transit: string; sizes: string[]; }
+interface Lane { origin: string; destination: string; }
 interface RouteGroup { name: string; description: string; lanes: Lane[]; }
 
 const routeGroups: RouteGroup[] = [
@@ -10,29 +10,29 @@ const routeGroups: RouteGroup[] = [
     name: "Metro Manila to Luzon",
     description: "Daily trips connecting Metro Manila to key cities in Luzon.",
     lanes: [
-      { origin: "Manila", destination: "Batangas", freq: "Daily", transit: "6h", sizes: ["10ft","20ft","40ft","lcl"] },
-      { origin: "Manila", destination: "Subic", freq: "Daily", transit: "5h", sizes: ["10ft","20ft","40ft","flat"] },
-      { origin: "Manila", destination: "Dagupan", freq: "3x wk", transit: "1d", sizes: ["10ft","20ft","lcl"] },
-      { origin: "Manila", destination: "Laoag", freq: "2x wk", transit: "2d", sizes: ["20ft","40ft","flat"] },
+      { origin: "Manila", destination: "Batangas" },
+      { origin: "Manila", destination: "Subic" },
+      { origin: "Manila", destination: "Dagupan" },
+      { origin: "Manila", destination: "Laoag" },
     ],
   },
   {
     name: "Visayas & Mindanao",
     description: "Regular routes to major ports and cities in Visayas and Mindanao.",
     lanes: [
-      { origin: "Cebu", destination: "Iloilo", freq: "5x wk", transit: "1d", sizes: ["10ft","20ft","40ft","lcl"] },
-      { origin: "Cebu", destination: "Cagayan de Oro", freq: "4x wk", transit: "2d", sizes: ["20ft","40ft","lcl","flat"] },
-      { origin: "Davao", destination: "General Santos", freq: "Daily", transit: "8h", sizes: ["10ft","20ft","40ft"] },
-      { origin: "Cebu", destination: "Zamboanga", freq: "2x wk", transit: "3d", sizes: ["20ft","40ft","flat"] },
+      { origin: "Cebu", destination: "Iloilo" },
+      { origin: "Cebu", destination: "Cagayan de Oro" },
+      { origin: "Davao", destination: "General Santos" },
+      { origin: "Cebu", destination: "Zamboanga" },
     ],
   },
   {
     name: "Specialized Express",
     description: "On-demand express delivery for urgent shipments across the Philippines.",
     lanes: [
-      { origin: "Manila", destination: "Cebu", freq: "On-demand", transit: "30h", sizes: ["10ft","20ft","lcl"] },
-      { origin: "Manila", destination: "Davao", freq: "On-demand", transit: "48h", sizes: ["20ft","40ft"] },
-      { origin: "Manila", destination: "Iloilo", freq: "On-demand", transit: "32h", sizes: ["10ft","20ft","lcl"] },
+      { origin: "Manila", destination: "Cebu" },
+      { origin: "Manila", destination: "Davao" },
+      { origin: "Manila", destination: "Iloilo" },
     ],
   },
 ];
