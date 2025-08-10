@@ -110,7 +110,7 @@ export default function RoutesSection() {
                             <ArrowRight className="w-3.5 h-3.5 text-blue-500" aria-hidden="true" />
                             <span className="font-semibold text-blue-800">{mainDest}</span>
                             {viaPort && (
-                              <span className="ml-1 leading-none px-1.5 py-0.5 rounded-full bg-[#fab36b] text-white text-[9px] font-medium tracking-wide">
+                              <span className="ml-1 leading-none px-1.5 py-0.5 rounded-full bg-blue-600 text-white text-[9px] font-medium tracking-wide shadow">
                                 via {viaPort}
                               </span>
                             )}

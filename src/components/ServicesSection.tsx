@@ -95,10 +95,10 @@ export default function ServicesSection() {
 													<div key={m.label} className="relative" style={{ transitionDelay: `${i * 40}ms` }}>
 														<button
 															type="button"
-															className={`text-[11px] font-medium rounded-full px-3 py-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[#fab36b] transition shadow-sm ${
+															className={`text-[11px] font-medium rounded-full px-3 py-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 transition shadow-sm ${
 																isOpen
-																	? 'bg-[#fab36b] text-[#4a2a00] border-[#fab36b] shadow-inner'
-																	: 'bg-black/55 text-white border-white/15 hover:bg-black/70 hover:border-[#fab36b]/40 cursor-pointer'
+																	? 'bg-blue-600 text-white border-blue-600 shadow-inner'
+																	: 'bg-black/55 text-white border-white/15 hover:bg-black/70 hover:border-blue-400 cursor-pointer'
 															}`}
 															aria-expanded={isOpen}
 															aria-describedby={isOpen ? tooltipId : undefined}
