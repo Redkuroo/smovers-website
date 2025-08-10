@@ -98,7 +98,7 @@ export default function ServicesSection() {
 															className={`text-[11px] font-medium rounded-full px-3 py-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 transition shadow-sm ${
 																isOpen
 																	? "bg-blue-600 text-white border-blue-600"
-																	: "bg-black/55 text-white border-white/15 hover:bg-black/70"
+																	: "bg-black/55 text-white border-white/15 hover:bg-black/70 cursor-pointer"
 															}`}
 															aria-expanded={isOpen}
 															aria-describedby={isOpen ? tooltipId : undefined}
@@ -143,9 +143,7 @@ export default function ServicesSection() {
 						</div>
 					))}
 				</div>
-				<p className="text-center text-xs text-gray-400 mt-8">
-					* Images are placeholders. Replace with actual service photos.
-				</p>
+				
 			</div>
 		</section>
 	);
