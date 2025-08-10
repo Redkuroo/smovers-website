@@ -92,7 +92,7 @@ export default function RoutesSection() {
                       </div>
                       <ChevronDown className={`mt-1 w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-blue-600' : 'text-blue-700'} cursor-pointer` } />
                     </div>
-                    <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#fab36b]/15 text-[#9a5200] cursor-pointer">Lanes: {group.lanes.length}</p>
+                    <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 text-blue-700 cursor-pointer">Lanes: {group.lanes.length}</p>
                   </button>
                   <div className={`transition-[max-height] duration-500 ease-in-out ${isOpen ? (group.lanes.length > 10 ? 'max-h-[700px] overflow-y-auto' : 'max-h-[420px]') : 'max-h-0'} overflow-hidden`}>
                     <div className="px-5 pb-5 flex flex-wrap gap-2 text-[11px] md:text-xs">
@@ -104,11 +104,11 @@ export default function RoutesSection() {
                         return (
                           <div
                             key={idx}
-                            className="inline-flex items-center flex-none rounded-full border border-[#fab36b]/40 bg-[#fab36b]/10 hover:bg-[#fab36b]/20 hover:border-[#fab36b]/60 px-3 py-1.5 gap-1.5 text-[#3a2a1a] shadow-sm transition cursor-pointer"
+                            className="inline-flex items-center flex-none rounded-full border border-blue-100 bg-blue-50/60 hover:bg-blue-50 hover:border-blue-200 px-3 py-1.5 gap-1.5 text-blue-900 shadow-sm transition cursor-pointer"
                           >
                             <span className="font-medium">{lane.origin}</span>
-                            <ArrowRight className="w-3.5 h-3.5 text-[#fab36b]" aria-hidden="true" />
-                            <span className="font-semibold text-[#6b3a00]">{mainDest}</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-blue-500" aria-hidden="true" />
+                            <span className="font-semibold text-blue-800">{mainDest}</span>
                             {viaPort && (
                               <span className="ml-1 leading-none px-1.5 py-0.5 rounded-full bg-[#fab36b] text-white text-[9px] font-medium tracking-wide">
                                 via {viaPort}
