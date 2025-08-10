@@ -72,7 +72,8 @@ export default function RoutesSection() {
     <section className="py-16 px-4" id="routes">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8 text-blue-900">Featured Routes</h2>
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Stacked layout replacing 3-column grid */}
+        <div className="flex flex-col gap-6">
           {routeGroups.map(group => {
             const isOpen = open === group.name;
             return (
@@ -92,7 +93,7 @@ export default function RoutesSection() {
                   </div>
                   <p className="mt-4 text-[11px] inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 text-blue-700">Lanes: {group.lanes.length}</p>
                 </button>
-                <div className={`overflow-hidden transition-[max-height] duration-400 ease-in-out ${isOpen ? "max-h-80" : "max-h-0"}`}>
+                <div className={`transition-[max-height] duration-500 ease-in-out ${isOpen ? (group.lanes.length > 10 ? 'max-h-[700px] overflow-y-auto' : 'max-h-[420px]') : 'max-h-0'} overflow-hidden`}>
                   <div className="px-5 pb-5 space-y-2 text-sm">
                     {group.lanes.map((lane, idx) => (
                       <div key={idx} className="border border-gray-100 rounded-md p-3 bg-gray-50/50 hover:bg-gray-50 transition">
