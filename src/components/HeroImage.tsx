@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import Image from "next/image";
 
@@ -11,19 +12,29 @@ export default function HeroImage() {
   ];
   return (
     <div className="w-full">
-      {/* KPI strip (compact) */}
-      <div className="bg-white/90 backdrop-blur-sm border-t border-b border-blue-100">
-        <div className="max-w-6xl mx-auto px-2 py-2 grid grid-cols-3 sm:grid-cols-5 gap-2 text-center">
-          {kpis.map((kpi) => (
-            <div key={kpi.label} className="space-y-0">
-              <p className="text-base md:text-lg font-extrabold text-blue-900 leading-none">
-                {kpi.value}
-              </p>
-              <p className="text-[9px] sm:text-[10px] text-gray-600 uppercase tracking-wide leading-tight">
-                {kpi.label}
-              </p>
-            </div>
-          ))}
+      {/* KPI strip (animated horizontal scroll) */}
+      <div className="bg-white/90 backdrop-blur-sm border-t border-b border-blue-100 overflow-hidden">
+        <div className="relative">
+          <div className="flex w-max gap-10 px-6 py-2 animate-[kpiScroll_28s_linear_infinite]">
+            {[...kpis, ...kpis].map((kpi, idx) => (
+              <div
+                key={kpi.label + idx}
+                className="text-center min-w-[140px] flex items-center justify-center"
+                title={kpi.label}
+                aria-label={kpi.label}
+              >
+                {/* Number + label inline */}
+                <div className="flex items-baseline gap-1 md:gap-2">
+                  <span className="text-base md:text-lg font-extrabold text-blue-900 leading-none">
+                    {kpi.value}
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] uppercase tracking-wide text-gray-600 leading-none whitespace-nowrap">
+                    {kpi.label}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {/* Hero full-width banner */}
@@ -35,6 +46,16 @@ export default function HeroImage() {
         className="w-full h-[180px] md:h-[320px] lg:h-[480px] object-cover"
         priority
       />
+      <style jsx>{`
+        @keyframes kpiScroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </div>
   );
 }
