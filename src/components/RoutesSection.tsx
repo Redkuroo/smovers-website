@@ -96,18 +96,31 @@ export default function RoutesSection() {
                   </button>
                   <div className={`transition-[max-height] duration-500 ease-in-out ${isOpen ? (group.lanes.length > 10 ? 'max-h-[700px] overflow-y-auto' : 'max-h-[420px]') : 'max-h-0'} overflow-hidden`}>
                     <div className="px-5 pb-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-sm">
-                      {group.lanes.map((lane, idx) => (
-                        <div
-                          key={idx}
-                          className="border border-gray-100 rounded-md p-3 bg-gray-50/60 hover:bg-white hover:shadow-sm transition"
-                        >
-                          <p className="font-medium text-blue-900 flex items-center gap-1 text-xs md:text-sm">
-                            <span className="truncate" title={lane.origin}>{lane.origin}</span>
-                            <ArrowRight className="w-4 h-4 text-blue-500 shrink-0" aria-hidden="true" />
-                            <span className="truncate" title={lane.destination}>{lane.destination}</span>
-                          </p>
-                        </div>
-                      ))}
+                      {group.lanes.map((lane, idx) => {
+                        const rawDest = lane.destination;
+                        const viaMatch = rawDest.match(/^(.*)\s*\(via\s+([^\)]+)\)\s*$/i);
+                        const mainDest = viaMatch ? viaMatch[1].trim() : rawDest;
+                        const viaPort = viaMatch ? viaMatch[2].trim() : null;
+                        const longEntry = mainDest.length > 14 || (viaPort && viaPort.length > 6);
+                        const spanClass = viaPort || longEntry ? 'lg:col-span-2' : '';
+                        return (
+                          <div
+                            key={idx}
+                            className={`border border-gray-100 rounded-md p-3 bg-gray-50/60 hover:bg-white hover:shadow-sm transition flex flex-col ${spanClass}`}
+                          >
+                            <p className="font-medium text-blue-900 flex items-center gap-1 text-xs md:text-sm leading-tight">
+                              <span>{lane.origin}</span>
+                              <ArrowRight className="w-4 h-4 text-blue-500 shrink-0" aria-hidden="true" />
+                              <span>{mainDest}</span>
+                            </p>
+                            {viaPort && (
+                              <span className="mt-1 inline-block text-[10px] font-medium text-blue-600 bg-blue-50/80 px-1.5 py-0.5 rounded">
+                                via {viaPort}
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
