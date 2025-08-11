@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 
 interface Lane { origin: string; destination: string; }
 interface Selected { origin: string; destination: string; }
@@ -50,6 +50,13 @@ function arcPath(a: { x: number; y: number }, b: { x: number; y: number }, inten
 }
 
 export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected }) => {
+  const [zoomed, setZoomed] = useState(false);
+  const zoomScale = zoomed ? 1.55 : 1;
+  // Keep center (500,700) stable when scaling
+  const centerX = 500;
+  const centerY = 700;
+  const zoomTranslateX = (1 - zoomScale) * centerX;
+  const zoomTranslateY = (1 - zoomScale) * centerY;
   const prepared = useMemo(() => {
     const seen = new Set<string>();
     const result: { id: string; origin: string; destination: string; d: string }[] = [];
@@ -94,33 +101,7 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
           style={{ opacity: 0.9 }}
         />
         {/* Routes & ports overlay */}
-        <g transform={`translate(${BASE_OFFSET_X} ${BASE_OFFSET_Y}) scale(${BASE_SCALE_X} ${BASE_SCALE_Y})`}>
-          {/* Placeholder pulse when no route selected */}
-          {!selected && (
-            <g aria-hidden="true" className="pointer-events-none select-none">
-              <circle cx={ports.Manila.x} cy={ports.Manila.y} r={10} className="fill-blue-600" />
-              <circle cx={ports.Manila.x} cy={ports.Manila.y} r={12} className="fill-transparent stroke-blue-600">
-                <animate attributeName="r" values="12;85" dur="2.4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.5;0" dur="2.4s" repeatCount="indefinite" />
-              </circle>
-              <circle cx={ports.Manila.x} cy={ports.Manila.y} r={12} className="fill-transparent stroke-blue-600">
-                <animate attributeName="r" values="12;85" begin="1.2s" dur="2.4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.5;0" begin="1.2s" dur="2.4s" repeatCount="indefinite" />
-              </circle>
-              <text
-                x={ports.Manila.x}
-                y={ports.Manila.y - 110}
-                textAnchor="middle"
-                className="font-medium text-[26px] fill-slate-700 opacity-60"
-              >Select a lane</text>
-              <text
-                x={ports.Manila.x}
-                y={ports.Manila.y - 78}
-                textAnchor="middle"
-                className="text-[16px] fill-slate-600 opacity-60 tracking-wide"
-              >to display route</text>
-            </g>
-          )}
+  <g transform={`translate(${BASE_OFFSET_X + zoomTranslateX} ${BASE_OFFSET_Y + zoomTranslateY}) scale(${BASE_SCALE_X * zoomScale} ${BASE_SCALE_Y * zoomScale})`}>
           {/* Active route arc only (rendered after selection) */}
           {activeRoute && (
             <g className="pointer-events-none">
@@ -155,6 +136,14 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
           </g>
         </g>
       </svg>
+      {/* Zoom toggle button */}
+      <button
+        type="button"
+        onClick={() => setZoomed(z => !z)}
+        className="absolute top-3 right-3 z-10 rounded-md bg-white/90 backdrop-blur px-3 py-1.5 text-xs font-medium text-blue-700 shadow border border-blue-200 hover:bg-white transition focus:outline-none focus:ring-2 focus:ring-blue-500"
+        aria-pressed={zoomed}
+        aria-label={zoomed ? 'Reset zoom' : 'Zoom in'}
+      >{zoomed ? 'Reset' : 'Zoom'}</button>
     </div>
   );
 };
