@@ -22,34 +22,9 @@ const ports: Record<string, { x: number; y: number }> = {
   Tagbilaran: { x: 690, y: 1000 },    // Moved east, Tagbilaran is on Bohol Island
   Tacloban: { x: 780, y: 850 },      // Moved east, Tacloban is on eastern Leyte
   Palawan: { x: 180, y: 1030 },       // Moved further west and south - Palawan is the westernmost major island
-  Dipolog: { x: 640, y: 1110 },       // Moved west, Dipolog is on northwestern Mindanao
+  Dipolog: { x: 640, y: 1110 },      
 };
 
-// Map ports to island group for highlighting
-const islandMap: Record<string, 'luzon' | 'visayas' | 'mindanao' | 'palawan'> = {
-  Manila: 'luzon',
-  Palawan: 'palawan',
-  Cebu: 'visayas',
-  Tagbilaran: 'visayas',
-  Iloilo: 'visayas',
-  Bacolod: 'visayas',
-  Tacloban: 'visayas',
-  Davao: 'mindanao',
-  Gensan: 'mindanao',
-  Butuan: 'mindanao',
-  Cagayan: 'mindanao',
-  Zamboanga: 'mindanao',
-  Dipolog: 'mindanao'
-};
-
-// Simplified island outline paths (placeholder approximations)
-// These can be replaced later with accurate coastline vectors.
-const islandPaths: { id: 'luzon' | 'visayas' | 'mindanao' | 'palawan'; d: string }[] = [
-  { id: 'luzon', d: 'M400 250 Q470 190 530 260 Q560 310 550 380 Q520 450 460 430 Q410 410 370 360 Q360 300 400 250 Z' },
-  { id: 'visayas', d: 'M470 540 Q520 520 560 560 Q600 600 590 640 Q580 680 550 700 Q520 710 490 680 Q460 640 470 600 Q465 560 470 540 Z' },
-  { id: 'mindanao', d: 'M520 780 Q600 760 660 800 Q720 860 730 930 Q730 990 700 1040 Q660 1100 600 1080 Q560 1070 530 1030 Q500 980 500 900 Q500 830 520 780 Z' },
-  { id: 'palawan', d: 'M260 520 Q300 500 320 560 Q340 620 330 700 Q320 760 300 820 Q280 800 270 760 Q260 700 250 640 Q250 580 260 520 Z' },
-];
 
 // Final alignment constants (adjust if needed)
 const BASE_SCALE_X = 1;
@@ -57,8 +32,7 @@ const BASE_SCALE_Y = 1;
 const BASE_OFFSET_X = 0;
 const BASE_OFFSET_Y = 0;
 
-// Toggle to show simplified vector island overlays atop the raster map (can aid alignment while calibrating)
-const SHOW_VECTOR_OUTLINE = true;
+// Island outlines removed per request
 
 function arcPath(a: { x: number; y: number }, b: { x: number; y: number }, intensity = 0.18) {
   const mx = (a.x + b.x) / 2;
@@ -91,15 +65,7 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
     return result;
   }, [lanes]);
 
-  const activeIslands = useMemo(() => {
-    if (!selected) return new Set<string>();
-    const s = new Set<string>();
-    const o = islandMap[selected.origin];
-    const d = islandMap[selected.destination];
-    if (o) s.add(o);
-    if (d) s.add(d);
-    return s;
-  }, [selected]);
+  // Island highlighting logic removed
 
   return (
     <div className="w-full h-full relative">
@@ -121,23 +87,8 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
           preserveAspectRatio="xMidYMid slice"
           style={{ opacity: 0.9 }}
         />
-  {/* Vector overlays (wrapped in calibration transform) */}
-  <g transform={`translate(${BASE_OFFSET_X} ${BASE_OFFSET_Y}) scale(${BASE_SCALE_X} ${BASE_SCALE_Y})`}>
-          {SHOW_VECTOR_OUTLINE && (
-            <g>
-              {islandPaths.map(p => {
-                const active = activeIslands.has(p.id);
-                return (
-                  <path
-                    key={p.id}
-                    d={p.d}
-                    className={`transition-colors duration-300 mix-blend-multiply ${active ? 'fill-blue-50 stroke-blue-300' : 'fill-slate-100/70 stroke-slate-300/70'}`}
-                    strokeWidth={active ? 2 : 1}
-                  />
-                );
-              })}
-            </g>
-          )}
+        {/* Routes & ports overlay */}
+        <g transform={`translate(${BASE_OFFSET_X} ${BASE_OFFSET_Y}) scale(${BASE_SCALE_X} ${BASE_SCALE_Y})`}>
           {/* Route arcs */}
           <g className="pointer-events-none">
             {prepared.map(r => {
