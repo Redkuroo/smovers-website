@@ -95,6 +95,32 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
         />
         {/* Routes & ports overlay */}
         <g transform={`translate(${BASE_OFFSET_X} ${BASE_OFFSET_Y}) scale(${BASE_SCALE_X} ${BASE_SCALE_Y})`}>
+          {/* Placeholder pulse when no route selected */}
+          {!selected && (
+            <g aria-hidden="true" className="pointer-events-none select-none">
+              <circle cx={ports.Manila.x} cy={ports.Manila.y} r={10} className="fill-blue-600" />
+              <circle cx={ports.Manila.x} cy={ports.Manila.y} r={12} className="fill-transparent stroke-blue-600">
+                <animate attributeName="r" values="12;85" dur="2.4s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.5;0" dur="2.4s" repeatCount="indefinite" />
+              </circle>
+              <circle cx={ports.Manila.x} cy={ports.Manila.y} r={12} className="fill-transparent stroke-blue-600">
+                <animate attributeName="r" values="12;85" begin="1.2s" dur="2.4s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.5;0" begin="1.2s" dur="2.4s" repeatCount="indefinite" />
+              </circle>
+              <text
+                x={ports.Manila.x}
+                y={ports.Manila.y - 110}
+                textAnchor="middle"
+                className="font-medium text-[26px] fill-slate-700 opacity-60"
+              >Select a lane</text>
+              <text
+                x={ports.Manila.x}
+                y={ports.Manila.y - 78}
+                textAnchor="middle"
+                className="text-[16px] fill-slate-600 opacity-60 tracking-wide"
+              >to display route</text>
+            </g>
+          )}
           {/* Active route arc only (rendered after selection) */}
           {activeRoute && (
             <g className="pointer-events-none">
