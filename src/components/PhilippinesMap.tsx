@@ -10,19 +10,19 @@ interface PhilippinesMapProps {
 }
 
 const ports: Record<string, { x: number; y: number }> = {
-  Manila: { x: 970, y: 360 },
-  Cebu: { x: 560, y: 640 },
-  Davao: { x: 720, y: 980 },
-  Gensan: { x: 690, y: 1090 },
-  Butuan: { x: 640, y: 820 },
-  Cagayan: { x: 610, y: 870 },
-  Zamboanga: { x: 470, y: 940 },
-  Iloilo: { x: 520, y: 600 },
-  Bacolod: { x: 505, y: 585 },
-  Tagbilaran: { x: 560, y: 670 },
-  Tacloban: { x: 600, y: 550 },
-  Palawan: { x: 300, y: 640 },
-  Dipolog: { x: 520, y: 880 },
+  Manila: { x: 470, y: 360 },        // Luzon - Western coast, kept as reference point
+  Cebu: { x: 580, y: 620 },          // Moved slightly east, Cebu is more central in Visayas
+  Davao: { x: 650, y: 950 },         // Moved west, Davao is on eastern Mindanao but not that far east
+  Gensan: { x: 620, y: 1050 },       // Moved west, General Santos is on southern Mindanao's western side
+  Butuan: { x: 680, y: 800 },        // Moved east, Butuan is on northeastern Mindanao
+  Cagayan: { x: 650, y: 900 },       // Assuming Cagayan de Oro, moved east - it's on northern Mindanao's coast
+  Zamboanga: { x: 450, y: 980 },     // Moved west, Zamboanga is on western Mindanao peninsula
+  Iloilo: { x: 500, y: 620 },        // Moved slightly west and south, Iloilo is on Panay Island
+  Bacolod: { x: 520, y: 600 },       // Moved east slightly, Bacolod is on Negros Island
+  Tagbilaran: { x: 600, y: 680 },    // Moved east, Tagbilaran is on Bohol Island
+  Tacloban: { x: 620, y: 530 },      // Moved east, Tacloban is on eastern Leyte
+  Palawan: { x: 280, y: 700 },       // Moved further west and south - Palawan is the westernmost major island
+  Dipolog: { x: 500, y: 860 },       // Moved west, Dipolog is on northwestern Mindanao
 };
 
 // Map ports to island group for highlighting
