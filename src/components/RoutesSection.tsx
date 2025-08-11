@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
+import PhilippinesMap from "./PhilippinesMap";
 
 interface Lane { origin: string; destination: string; }
 interface RouteGroup { name: string; description: string; lanes: Lane[]; }
@@ -67,11 +68,22 @@ const routeGroups: RouteGroup[] = [
 
 export default function RoutesSection() {
   const [open, setOpen] = useState<string | null>(routeGroups[0].name);
+  const [selected, setSelected] = useState<{ origin: string; destination: string } | null>(null);
+  const allLanes = useMemo(
+    () =>
+      routeGroups.flatMap(g =>
+        g.lanes.map(l => ({
+          origin: l.origin,
+          destination: l.destination.replace(/\s*\(via[^)]*\)/i, '').trim()
+        }))
+      ),
+    []
+  );
 
   return (
     <section className="py-16 px-4" id="routes">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Featured Routes</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Routes</h2>
         {/* Two-column layout: left accordion, right reserved map space */}
         <div className="flex flex-col lg:flex-row lg:items-start gap-10">
           <div className="w-full lg:w-[56%] flex flex-col gap-6">
@@ -101,16 +113,23 @@ export default function RoutesSection() {
                         const viaMatch = rawDest.match(/^(.*)\s*\(via\s+([^\)]+)\)\s*$/i);
                         const mainDest = viaMatch ? viaMatch[1].trim() : rawDest;
                         const viaPort = viaMatch ? viaMatch[2].trim() : null;
+                        // Ensure boolean (avoid union with object for strict aria-* typing)
+                        const isActive = !!(selected && selected.origin === lane.origin && selected.destination === mainDest);
                         return (
                           <div
                             key={idx}
-                            className="inline-flex items-center flex-none rounded-full border border-blue-100 bg-blue-50/60 hover:bg-blue-50 hover:border-blue-200 px-3 py-1.5 gap-1.5 text-blue-900 shadow-sm transition cursor-pointer"
+                            onClick={() => setSelected({ origin: lane.origin, destination: mainDest })}
+                            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelected({ origin: lane.origin, destination: mainDest }); } }}
+                            role="button"
+                            tabIndex={0}
+                            aria-pressed={isActive}
+                            className={`inline-flex items-center flex-none rounded-full border px-3 py-1.5 gap-1.5 shadow-sm transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 ${isActive ? 'bg-blue-600 text-white border-blue-600' : 'border-blue-100 bg-blue-50/60 hover:bg-blue-50 hover:border-blue-200 text-blue-900'}`}
                           >
                             <span className="font-medium">{lane.origin}</span>
-                            <ArrowRight className="w-3.5 h-3.5 text-blue-500" aria-hidden="true" />
-                            <span className="font-semibold text-blue-800">{mainDest}</span>
+                            <ArrowRight className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-blue-500'}`} aria-hidden="true" />
+                            <span className={`font-semibold ${isActive ? 'text-white' : 'text-blue-800'}`}>{mainDest}</span>
                             {viaPort && (
-                              <span className="ml-1 leading-none px-1.5 py-0.5 rounded-full bg-blue-600 text-white text-[9px] font-medium tracking-wide shadow">
+                              <span className={`ml-1 leading-none px-1.5 py-0.5 rounded-full text-white text-[9px] font-medium tracking-wide shadow ${isActive ? 'bg-white/25' : 'bg-blue-600'}` }>
                                 via {viaPort}
                               </span>
                             )}
@@ -124,9 +143,8 @@ export default function RoutesSection() {
             })}
           </div>
           <div className="w-full lg:flex-1 mt-8 lg:mt-0">
-            {/* Placeholder for Philippine map component (now visible on mobile) */}
-            <div className="w-full h-72 sm:h-80 lg:h-[560px] rounded-2xl border border-dashed border-[#fab36b]/50 bg-gradient-to-br from-[#fab36b]/10 to-white flex items-center justify-center text-[#6b3a00] text-sm">
-              Map placeholder
+            <div className="w-full h-96 sm:h-[480px] lg:h-[560px] rounded-2xl border border-dashed border-blue-200 bg-white/50 backdrop-blur-sm p-4">
+              <PhilippinesMap lanes={allLanes} selected={selected} />
             </div>
           </div>
         </div>
