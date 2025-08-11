@@ -65,6 +65,12 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
     return result;
   }, [lanes]);
 
+  // Derive only the active route path (if any) so we can hide others
+  const activeRoute = useMemo(() => {
+    if (!selected) return null;
+    return prepared.find(r => r.origin === selected.origin && r.destination === selected.destination) || null;
+  }, [prepared, selected]);
+
   // Island highlighting logic removed
 
   return (
@@ -89,26 +95,23 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
         />
         {/* Routes & ports overlay */}
         <g transform={`translate(${BASE_OFFSET_X} ${BASE_OFFSET_Y}) scale(${BASE_SCALE_X} ${BASE_SCALE_Y})`}>
-          {/* Route arcs */}
-          <g className="pointer-events-none">
-            {prepared.map(r => {
-              const active = selected && selected.origin === r.origin && selected.destination === r.destination;
-              return (
-                <path
-                  key={r.id}
-                  d={r.d}
-                  className={active ? 'stroke-blue-600' : 'stroke-blue-300'}
-                  strokeWidth={active ? 6 : 3}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                  markerEnd={active ? 'url(#routeArrow)' : undefined}
-                  style={{ opacity: active ? 0.95 : 0.55, transition: 'stroke 250ms, opacity 250ms, stroke-width 250ms' }}
-                  aria-label={`Route ${r.origin} to ${r.destination}`}
-                />
-              );
-            })}
-          </g>
+          {/* Active route arc only (rendered after selection) */}
+          {activeRoute && (
+            <g className="pointer-events-none">
+              <path
+                key={activeRoute.id}
+                d={activeRoute.d}
+                className="stroke-blue-600"
+                strokeWidth={6}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+                markerEnd={'url(#routeArrow)'}
+                style={{ opacity: 0.95, transition: 'stroke 250ms, opacity 250ms, stroke-width 250ms' }}
+                aria-label={`Route ${activeRoute.origin} to ${activeRoute.destination}`}
+              />
+            </g>
+          )}
           {/* Ports */}
           <g>
             {Object.entries(ports).map(([name, pt]) => {
