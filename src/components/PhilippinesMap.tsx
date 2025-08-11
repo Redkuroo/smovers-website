@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
 interface Lane { origin: string; destination: string; }
 interface Selected { origin: string; destination: string; }
@@ -10,7 +10,7 @@ interface PhilippinesMapProps {
 }
 
 const ports: Record<string, { x: number; y: number }> = {
-  Manila: { x: 470, y: 360 },
+  Manila: { x: 970, y: 360 },
   Cebu: { x: 560, y: 640 },
   Davao: { x: 720, y: 980 },
   Gensan: { x: 690, y: 1090 },
@@ -51,7 +51,7 @@ const islandPaths: { id: 'luzon' | 'visayas' | 'mindanao' | 'palawan'; d: string
   { id: 'palawan', d: 'M260 520 Q300 500 320 560 Q340 620 330 700 Q320 760 300 820 Q280 800 270 760 Q260 700 250 640 Q250 580 260 520 Z' },
 ];
 
-// Baseline calibration constants: if you find a good alignment set these to the final values
+// Final alignment constants (adjust if needed)
 const BASE_SCALE_X = 1;
 const BASE_SCALE_Y = 1;
 const BASE_OFFSET_X = 0;
@@ -76,14 +76,6 @@ function arcPath(a: { x: number; y: number }, b: { x: number; y: number }, inten
 }
 
 export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected }) => {
-  // Dev-only calibration controls
-  const isDev = process.env.NODE_ENV !== 'production';
-  const [showCal, setShowCal] = useState(false);
-  const [scaleX, setScaleX] = useState(BASE_SCALE_X);
-  const [scaleY, setScaleY] = useState(BASE_SCALE_Y);
-  const [offsetX, setOffsetX] = useState(BASE_OFFSET_X);
-  const [offsetY, setOffsetY] = useState(BASE_OFFSET_Y);
-  const [showPortDots, setShowPortDots] = useState(false);
   const prepared = useMemo(() => {
     const seen = new Set<string>();
     const result: { id: string; origin: string; destination: string; d: string }[] = [];
@@ -130,7 +122,7 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
           style={{ opacity: 0.9 }}
         />
   {/* Vector overlays (wrapped in calibration transform) */}
-  <g transform={`translate(${showCal ? offsetX : BASE_OFFSET_X} ${showCal ? offsetY : BASE_OFFSET_Y}) scale(${showCal ? scaleX : BASE_SCALE_X} ${showCal ? scaleY : BASE_SCALE_Y})`}>
+  <g transform={`translate(${BASE_OFFSET_X} ${BASE_OFFSET_Y}) scale(${BASE_SCALE_X} ${BASE_SCALE_Y})`}>
           {SHOW_VECTOR_OUTLINE && (
             <g>
               {islandPaths.map(p => {
@@ -174,9 +166,6 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
                 <g key={name}>
                   <circle cx={pt.x} cy={pt.y} r={isSelectedPort ? 10 : 7} className={isSelectedPort ? 'fill-blue-600' : 'fill-blue-500'} />
                   {/* Optional debug anchor point overlay */}
-                  {showCal && showPortDots && (
-                    <circle cx={pt.x} cy={pt.y} r={2} className="fill-yellow-400" />
-                  )}
                   <text x={pt.x + 12} y={pt.y + 4} className="fill-slate-700 text-[22px] font-medium select-none drop-shadow-sm [paint-order:stroke] stroke-white stroke-[6px]">
                     {name}
                   </text>
@@ -186,44 +175,6 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
           </g>
         </g>
       </svg>
-      {isDev && (
-        <div className="absolute top-2 left-2 flex flex-col gap-2 text-[10px]">
-          <button
-            type="button"
-            onClick={() => setShowCal(s => !s)}
-            className="px-2 py-1 rounded bg-blue-600 text-white shadow hover:bg-blue-500 transition"
-          >{showCal ? 'Hide Calibration' : 'Calibrate'}</button>
-          {showCal && (
-            <div className="bg-white/90 backdrop-blur rounded p-3 w-64 shadow border border-blue-200 space-y-2">
-              <div className="flex justify-between items-center">
-                <span className="font-semibold text-blue-800 text-[11px]">Alignment</span>
-                <button type="button" className="text-[10px] text-blue-600 underline" onClick={() => { setScaleX(BASE_SCALE_X); setScaleY(BASE_SCALE_Y); setOffsetX(BASE_OFFSET_X); setOffsetY(BASE_OFFSET_Y); }}>Reset</button>
-              </div>
-              <label className="flex flex-col gap-0.5">
-                <span>Scale X {scaleX.toFixed(3)}</span>
-                <input type="range" min={0.95} max={1.05} step={0.001} value={scaleX} onChange={e => setScaleX(parseFloat(e.target.value))} />
-              </label>
-              <label className="flex flex-col gap-0.5">
-                <span>Scale Y {scaleY.toFixed(3)}</span>
-                <input type="range" min={0.95} max={1.05} step={0.001} value={scaleY} onChange={e => setScaleY(parseFloat(e.target.value))} />
-              </label>
-              <label className="flex flex-col gap-0.5">
-                <span>Offset X {offsetX}px</span>
-                <input type="range" min={-50} max={50} step={1} value={offsetX} onChange={e => setOffsetX(parseInt(e.target.value))} />
-              </label>
-              <label className="flex flex-col gap-0.5">
-                <span>Offset Y {offsetY}px</span>
-                <input type="range" min={-50} max={50} step={1} value={offsetY} onChange={e => setOffsetY(parseInt(e.target.value))} />
-              </label>
-              <label className="inline-flex items-center gap-1 text-[11px]">
-                <input type="checkbox" checked={showPortDots} onChange={e => setShowPortDots(e.target.checked)} />
-                <span>Show raw port dots</span>
-              </label>
-              <p className="text-[10px] leading-snug text-slate-600">Adjust until circles sit exactly on intended locations in the JPG. Copy the final numbers into BASE_* constants.</p>
-            </div>
-          )}
-        </div>
-      )}
     </div>
   );
 };
