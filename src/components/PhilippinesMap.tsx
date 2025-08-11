@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState, useRef, useCallback } from "react";
+import React, { useMemo } from "react";
 
 interface Lane { origin: string; destination: string; }
 interface Selected { origin: string; destination: string; }
@@ -26,11 +26,7 @@ const ports: Record<string, { x: number; y: number }> = {
 };
 
 
-// Final alignment constants (adjust if needed)
-const BASE_SCALE_X = 1;
-const BASE_SCALE_Y = 1;
-const BASE_OFFSET_X = 0;
-const BASE_OFFSET_Y = 0;
+// Alignment constants were removed with static map simplification
 
 // Island outlines removed per request
 
@@ -50,58 +46,6 @@ function arcPath(a: { x: number; y: number }, b: { x: number; y: number }, inten
 }
 
 export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected }) => {
-  // Pan & Zoom State
-  const [scale, setScale] = useState(1);
-  const [tx, setTx] = useState(0);
-  const [ty, setTy] = useState(0);
-  const dragRef = useRef<{x:number;y:number;tx:number;ty:number;active:boolean} | null>(null);
-  const svgRef = useRef<SVGSVGElement | null>(null);
-
-  const clampScale = (v:number) => Math.min(3, Math.max(0.8, v));
-
-  const applyZoomAtPoint = useCallback((newScale:number, screenX:number, screenY:number) => {
-    newScale = clampScale(newScale);
-    // Maintain point under cursor: screen = scale * p + t
-    // p = (screen - t)/scale; t' = (scale - newScale)*p + t
-    const pX = (screenX - tx)/scale;
-    const pY = (screenY - ty)/scale;
-    const nextTx = (scale - newScale)*pX + tx;
-    const nextTy = (scale - newScale)*pY + ty;
-    setScale(newScale);
-    setTx(nextTx);
-    setTy(nextTy);
-  }, [scale, tx, ty]);
-
-  const handleWheel = useCallback((e: React.WheelEvent<SVGSVGElement>) => {
-    e.preventDefault();
-    const rect = (e.currentTarget as SVGSVGElement).getBoundingClientRect();
-    const screenX = e.clientX - rect.left;
-    const screenY = e.clientY - rect.top;
-    const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
-    // Smooth interpolation
-    applyZoomAtPoint(scale * zoomFactor, screenX, screenY);
-  }, [applyZoomAtPoint, scale]);
-
-  const startDrag = (e: React.PointerEvent) => {
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-    dragRef.current = { x: e.clientX, y: e.clientY, tx, ty, active: true };
-  };
-  const onDrag = (e: React.PointerEvent) => {
-    if (!dragRef.current || !dragRef.current.active) return;
-    const dx = e.clientX - dragRef.current.x;
-    const dy = e.clientY - dragRef.current.y;
-    setTx(dragRef.current.tx + dx);
-    setTy(dragRef.current.ty + dy);
-  };
-  const endDrag = (e: React.PointerEvent) => {
-    if (dragRef.current) dragRef.current.active = false;
-  };
-
-  const zoomCenter = (factor:number) => {
-    if (!svgRef.current) return;
-    const rect = svgRef.current.getBoundingClientRect();
-    applyZoomAtPoint(scale * factor, rect.width/2, rect.height/2);
-  };
   const prepared = useMemo(() => {
     const seen = new Set<string>();
     const result: { id: string; origin: string; destination: string; d: string }[] = [];
@@ -145,8 +89,8 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
           preserveAspectRatio="xMidYMid slice"
           style={{ opacity: 0.9 }}
         />
-  {/* Scaled geographic layer (image & geometry) */}
-  <g transform={`translate(${tx} ${ty}) scale(${scale})`}>
+  {/* Static layer */}
+  <g>
           {/* Active route arc only (rendered after selection) */}
           {activeRoute && (
             <g className="pointer-events-none">
@@ -154,7 +98,7 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
                 key={activeRoute.id}
                 d={activeRoute.d}
     className="stroke-blue-600"
-                strokeWidth={6 / scale}
+                strokeWidth={4}
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 fill="none"
@@ -171,9 +115,9 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
               const isSelectedPort = selected && (selected.origin === name || selected.destination === name);
               return (
                 <g key={name}>
-                  <circle cx={pt.x} cy={pt.y} r={(isSelectedPort ? 10 : 7) / scale} className={isSelectedPort ? 'fill-blue-600' : 'fill-blue-500'} />
+                  <circle cx={pt.x} cy={pt.y} r={isSelectedPort ? 10 : 7} className={isSelectedPort ? 'fill-blue-600' : 'fill-blue-500'} />
                   {/* Optional debug anchor point overlay */}
-                  <text x={pt.x + 12} y={pt.y + 4} className="fill-slate-700 font-medium select-none drop-shadow-sm [paint-order:stroke] stroke-white stroke-[6px]" style={{ fontSize: `${22 / scale}px` }}>
+                  <text x={pt.x + 12} y={pt.y + 4} className="fill-slate-700 font-medium select-none drop-shadow-sm [paint-order:stroke] stroke-white stroke-[6px] text-[22px]">
                     {name}
                   </text>
                 </g>
@@ -182,27 +126,7 @@ export const PhilippinesMap: React.FC<PhilippinesMapProps> = ({ lanes, selected 
           </g>
         </g>
       </svg>
-      {/* Zoom & Pan Controls */}
-      <div className="absolute top-3 right-3 z-10 flex flex-col gap-2">
-        <button
-          type="button"
-          onClick={() => zoomCenter(1.15)}
-          className="w-10 h-10 rounded-md bg-white/90 backdrop-blur text-blue-700 text-lg font-semibold shadow border border-blue-200 hover:bg-white transition focus:outline-none focus:ring-2 focus:ring-blue-500"
-          aria-label="Zoom in"
-        >+</button>
-        <button
-          type="button"
-          onClick={() => zoomCenter(1/1.15)}
-          className="w-10 h-10 rounded-md bg-white/90 backdrop-blur text-blue-700 text-lg font-semibold shadow border border-blue-200 hover:bg-white transition focus:outline-none focus:ring-2 focus:ring-blue-500"
-          aria-label="Zoom out"
-        >−</button>
-        <button
-          type="button"
-          onClick={() => { setScale(1); setTx(0); setTy(0); }}
-            className="w-10 h-10 rounded-md bg-white/90 backdrop-blur text-blue-700 text-xs font-medium shadow border border-blue-200 hover:bg-white transition focus:outline-none focus:ring-2 focus:ring-blue-500"
-          aria-label="Reset view"
-        >Reset</button>
-      </div>
+  {/* Controls removed */}
     </div>
   );
 };
