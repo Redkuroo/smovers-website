@@ -7,6 +7,7 @@ import BlogsSection from "../components/BlogsSection";
 import TeamSection from "../components/TeamSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import ContactSection from "../components/ContactSection";
+import BankingDetails from "@/components/BankingDetails"; 
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
       <div id="services"><ServicesSection /></div>
       <div id="routes"><RoutesSection /></div>
       <div id="company"><CompanyProfileSection /></div>
-      
+      <div id="banking"><BankingDetails /></div>
       <div id="blogs"><BlogsSection /></div>
       <div id="team"><TeamSection /></div>
       <div id="testimonials"><TestimonialsSection /></div>
