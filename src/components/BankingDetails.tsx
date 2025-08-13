@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { Wifi } from "lucide-react";
 
 /**
  * BankingDetails
@@ -63,15 +64,8 @@ export default function BankingDetails() {
                       className="object-contain p-1"
                     />
                   </div>
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/30 ring-1 ring-white/50">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-3.5 w-3.5"
-                    >
-                    
-                    </svg>
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/30 ring-1 ring-white/50 text-white/90">
+                    <Wifi className="h-3.5 w-3.5" />
                   </div>
                 </div>
 
@@ -79,7 +73,6 @@ export default function BankingDetails() {
                 <h3 className="relative z-10 mt-4 text-base font-semibold tracking-wide uppercase">
                   {a.bank}
                 </h3>
-
                 {/* Account number */}
                 <p className="relative z-10 mt-2 font-mono text-lg tracking-widest">
                   {a.number}
