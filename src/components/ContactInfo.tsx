@@ -17,9 +17,8 @@ export default function ContactInfo() {
     email: "smoverslogistics@gmail.com",
   };
 
-  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-    company.address
-  )}&output=embed`;
+  const mapSrc =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.2643496271535!2d125.64249637478846!3d7.210655014797296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f941e760cdcd3d%3A0xab73afe1517a6c07!2sSMovers%20Logistics%20Services!5e0!3m2!1sfil!2sph!4v1755056144799!5m2!1sfil!2sph";
 
   return (
     <section className="w-full bg-white">
