@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 /**
  * BankingDetails
@@ -11,22 +12,22 @@ export default function BankingDetails() {
       bank: "BDO",
       holder: "John Gilbert Olmoguez",
       number: "010470106255",
-      accent: "border-blue-600",
-      dot: "bg-blue-600",
+      logo: "/bdo%20logo.png",
+      gradient: "from-blue-500 via-blue-600 to-indigo-700",
     },
     {
       bank: "BPI",
       holder: "John Gilbert Olmoguez",
       number: "9459 2709 62",
-      accent: "border-red-600",
-      dot: "bg-red-600",
+      logo: "/bpi%20logo.png",
+      gradient: "from-rose-500 via-red-500 to-orange-400",
     },
     {
       bank: "UnionBank",
       holder: "John Gilbert Olmoguez",
       number: "1093 2360 4027",
-      accent: "border-orange-500",
-      dot: "bg-orange-500",
+      logo: "/unionbank%20logo.png",
+      gradient: "from-amber-500 via-orange-500 to-amber-700",
     },
   ] as const;
 
@@ -39,39 +40,60 @@ export default function BankingDetails() {
           </h2>
         </div>
 
-        {/* Container Card */}
-        <div className="rounded-2xl border border-gray-200 bg-white shadow-sm">
-          <div className="p-6 sm:p-8">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {accounts.map((a) => (
-                <li
-                  key={a.bank}
-                  className={`relative rounded-xl border border-gray-100 bg-white p-4 shadow-xs hover:shadow-sm transition-shadow duration-200 border-l-4 ${a.accent}`}
-                >
-                  <div className="flex items-start gap-3">
-                    <span
-                      className={`mt-1 inline-block h-2.5 w-2.5 rounded-full ${a.dot}`}
-                      aria-hidden
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {accounts.map((a) => (
+            <li key={a.bank}>
+              <div
+                className={`relative overflow-hidden rounded-3xl p-5 sm:p-6 text-white shadow-lg ring-1 ring-white/10 bg-gradient-to-br ${a.gradient} transition-transform duration-200 hover:-translate-y-0.5`}
+              >
+                {/* Decorative blobs */}
+                <div className="pointer-events-none absolute inset-0">
+                  <span className="absolute -top-16 -right-10 h-40 w-40 rounded-full bg-white/10 blur-2xl opacity-70" />
+                  <span className="absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-black/10 blur-2xl opacity-40" />
+                </div>
+
+                {/* Header row */}
+                <div className="relative z-10 flex items-center justify-between">
+                  <div className="relative h-12 w-12 shrink-0 rounded-md bg-white/90 ring-1 ring-white/60 overflow-hidden">
+                    <Image
+                      src={a.logo}
+                      alt={`${a.bank} logo`}
+                      fill
+                      sizes="48px"
+                      className="object-contain p-1"
                     />
-                    <div className="min-w-0">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="text-sm font-semibold text-gray-900 truncate">
-                          {a.bank}
-                        </h3>
-                      </div>
-                      <p className="mt-0.5 text-xs text-gray-500 truncate">
-                        {a.holder}
-                      </p>
-                      <p className="mt-2 font-mono text-sm tracking-wider text-gray-800">
-                        {a.number}
-                      </p>
-                    </div>
                   </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/30 ring-1 ring-white/50">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-3.5 w-3.5"
+                    >
+                    
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Bank name */}
+                <h3 className="relative z-10 mt-4 text-base font-semibold tracking-wide uppercase">
+                  {a.bank}
+                </h3>
+
+                {/* Account number */}
+                <p className="relative z-10 mt-2 font-mono text-lg tracking-widest">
+                  {a.number}
+                </p>
+
+                {/* Holder */}
+                <div className="relative z-10 mt-4 text-xs/relaxed">
+                  <p className="text-white/80">Account Name</p>
+                  <p className="font-medium tracking-wide">{a.holder}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
 
         {/* Small note to avoid footer placement (informational, no visual change) */}
         {/* Intentionally not rendered in a footer component */}
