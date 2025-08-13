@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ContactSection() {
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4">
+    <div className="max-w-3xl mx-auto py-8 px-4 bg-gray-50">
       <h3 className="text-2xl font-bold text-blue-900 mb-4 text-center">Contact Us</h3>
       <p className="text-gray-700 text-center mb-4">Have questions or need a quote? Reach out to us and our team will get back to you promptly.</p>
       <form className="flex flex-col gap-4 max-w-md mx-auto">

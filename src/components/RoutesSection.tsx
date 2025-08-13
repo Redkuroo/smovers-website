@@ -81,7 +81,7 @@ export default function RoutesSection() {
   );
 
   return (
-    <section className="py-16 px-4" id="routes">
+    <section className="py-16 px-4 bg-gray-100" id="routes">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Routes</h2>
         {/* Two-column layout: left accordion, right reserved map space */}

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CompanyProfileSection() {
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-16 px-4 bg-blue-50">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8 text-blue-900">Company Profile</h2>
         <p className="text-gray-700 text-lg mb-4 text-center">
