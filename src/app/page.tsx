@@ -2,7 +2,7 @@ import HeroSection from "../components/HeroSection";
 import ServicesSection from "../components/ServicesSection";
 import RoutesSection from "../components/RoutesSection";
 import CompanyProfileSection from "../components/CompanyProfileSection";
-
+import ContactInfo from "@/components/ContactInfo";
 import BlogsSection from "../components/BlogsSection";
 import TeamSection from "../components/TeamSection";
 import TestimonialsSection from "../components/TestimonialsSection";
@@ -15,9 +15,11 @@ export default function Home() {
       <div id="services"><ServicesSection /></div>
       <div id="routes"><RoutesSection /></div>
       <div id="company"><CompanyProfileSection /></div>
+      
       <div id="blogs"><BlogsSection /></div>
       <div id="team"><TeamSection /></div>
       <div id="testimonials"><TestimonialsSection /></div>
+      <div id="contact"><ContactInfo /></div>
       <footer className="bg-white border-t mt-12">
         <ContactSection />
         <div className="py-8 text-center text-gray-500 text-sm">
