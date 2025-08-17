@@ -1,85 +1,153 @@
 import React from "react";
 import Image from "next/image";
-import { Eye, Rocket, Handshake } from "lucide-react";
+import { Eye, Rocket, Handshake, Ship, Building2, Users } from "lucide-react";
 
 export default function CompanyProfileSection() {
   return (
-    <section className="py-16 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8 text-blue-900">Company Profile</h2>
+    <section className="py-20 px-4 bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Company Profile</h2>
+          <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+        </div>
 
-        {/* Introduction: two-column */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
-          <div>
-           
+        {/* Hero Section with Company Overview */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="space-y-8">
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-white/50">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-blue-100 rounded-xl">
+                  <Building2 className="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800">Company History</h3>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                SMOvers Logistics Services is a sole proprietorship owned by Engr. John Gilbert Olmoguez. The company officially began operations on February 1, 2021, and is currently managed by his wife, Lydie Rocero Olmoguez.
+              </p>
+            </div>
 
-            <h3 className="text-lg font-semibold text-blue-800 leading-snug mt-4">Company History</h3>
-            <p className="text-gray-700 mt-2 leading-relaxed">
-              SMOvers Logistics Services is a sole proprietorship owned by Engr. John Gilbert Olmoguez. The company officially began operations on February 1, 2021, and is currently managed by his wife, Lydie Rocero Olmoguez.
-            </p>
-
-            <h3 className="text-lg font-semibold text-blue-800 leading-snug mt-4">Company Overview</h3>
-            <p className="text-gray-700 mt-2 leading-relaxed">
-              SMOvers Logistics Services specializes in Freight Forwarding and Trucking Services. We handle a wide range of domestic cargo shipments, including FCL (Full Container Load), LCL (Less than Container Load), FLATRACK CONTAINER, and Breakbulk cargo. Our services extend to all major domestic ports across the Philippines. We maintain operational branches and strong agent partnerships in Luzon, Visayas, and Mindanao.
-            </p>
-
-        
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-white/50">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-emerald-100 rounded-xl">
+                  <Ship className="h-6 w-6 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800">What We Do</h3>
+              </div>
+              <p className="text-slate-600 leading-relaxed mb-4">
+                SMOvers Logistics Services specializes in Freight Forwarding and Trucking Services. We handle a wide range of domestic cargo shipments across the Philippines.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-blue-50 rounded-lg p-3 text-center">
+                  <span className="text-sm font-semibold text-blue-800">FCL</span>
+                </div>
+                <div className="bg-emerald-50 rounded-lg p-3 text-center">
+                  <span className="text-sm font-semibold text-emerald-800">LCL</span>
+                </div>
+                <div className="bg-purple-50 rounded-lg p-3 text-center">
+                  <span className="text-sm font-semibold text-purple-800">FLATRACK</span>
+                </div>
+                <div className="bg-orange-50 rounded-lg p-3 text-center">
+                  <span className="text-sm font-semibold text-orange-800">Breakbulk</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="w-full rounded-2xl overflow-hidden shadow-md">
-            <Image src="/hero.jpg" alt="Logistics operations" width={1200} height={800} className="object-cover w-full h-64 sm:h-80 lg:h-full" priority />
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-20 blur-xl"></div>
+            <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl">
+              <div className="bg-gradient-to-br from-blue-600 to-purple-600 h-80 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <Ship className="h-16 w-16 mx-auto mb-4 opacity-80" />
+                  <h3 className="text-2xl font-bold mb-2">Logistics Excellence</h3>
+                  <p className="text-blue-100">Connecting Philippines from Luzon to Mindanao</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Strategy: Vision, Mission, Core Values */}
+        {/* Partner Carriers Section */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-slate-800 mb-4">Our Partner Carriers</h3>
+            <p className="text-slate-600 max-w-2xl mx-auto">We maintain strong partnerships with leading shipping companies across the Philippines</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              "Trans-Asia Shipping Lines",
+              "Meridian Shipping and Container Carrier Inc.",
+              "Lorenzo Shipping Lines",
+              "Iris Paoay Shipping"
+            ].map((partner, index) => (
+              <div key={index} className="group">
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="p-3 bg-slate-100 rounded-xl group-hover:bg-blue-100 transition-colors">
+                      <Ship className="h-8 w-8 text-slate-600 group-hover:text-blue-600 transition-colors" />
+                    </div>
+                  </div>
+                  <h4 className="text-center font-semibold text-slate-800 text-sm leading-tight">{partner}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-            <div className="mt-6">
-              <h3 className="text-lg font-semibold text-blue-800 leading-snug mt-4 mb-6">Our Partner Carriers</h3>
-              <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                <li className="bg-gray-50 rounded-lg p-3 text-sm font-medium text-slate-800 shadow-sm">Trans-Asia Shipping Lines</li>
-                <li className="bg-gray-50 rounded-lg p-3 text-sm font-medium text-slate-800 shadow-sm">Meridian Shipping and Container Carrier Inc.</li>
-                <li className="bg-gray-50 rounded-lg p-3 text-sm font-medium text-slate-800 shadow-sm">Lorenzo Shipping Lines</li>
-                <li className="bg-gray-50 rounded-lg p-3 text-sm font-medium text-slate-800 shadow-sm">Iris Paoay Shipping</li>
-              </ul>
+        {/* Strategy Section */}
+        <div>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-slate-800 mb-4">Our Strategy</h3>
+            <p className="text-slate-600 max-w-2xl mx-auto">Built on strong foundations of trust, excellence, and genuine care for our stakeholders</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="group">
+              <div className="bg-white rounded-3xl p-8 shadow-lg border border-white/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-4 bg-blue-100 rounded-2xl group-hover:bg-blue-200 transition-colors">
+                    <Eye className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-slate-800">Vision</h4>
+                </div>
+                <p className="text-slate-600 leading-relaxed">Our vision is to build lasting and trusted relationships with our clients by delivering excellent service and maintaining an efficient and reliable transport system.</p>
+              </div>
             </div>
-        <div className="mt-10">
-          <h3 className="text-lg font-semibold text-blue-800 leading-snug mb-6">Strategy</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <article className="rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="rounded-lg bg-blue-50 p-2">
-                  <Eye className="h-6 w-6 text-blue-600" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-800">Vision</h4>
-                  <p className="text-gray-600 text-sm mt-1">Our vision is to build lasting and trusted relationships with our clients by delivering excellent service and maintaining an efficient and reliable transport system.</p>
-                </div>
-              </div>
-            </article>
 
-            <article className="rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="rounded-lg bg-rose-50 p-2">
-                  <Rocket className="h-6 w-6 text-rose-600" />
+            <div className="group">
+              <div className="bg-white rounded-3xl p-8 shadow-lg border border-white/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-4 bg-rose-100 rounded-2xl group-hover:bg-rose-200 transition-colors">
+                    <Rocket className="h-8 w-8 text-rose-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-slate-800">Mission</h4>
                 </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-800">Mission</h4>
-                  <p className="text-gray-600 text-sm mt-1">Our mission is to continuously strengthen our capabilities and expertise to provide the highest quality logistics services that meet and exceed client expectations.</p>
-                </div>
+                <p className="text-slate-600 leading-relaxed">Our mission is to continuously strengthen our capabilities and expertise to provide the highest quality logistics services that meet and exceed client expectations.</p>
               </div>
-            </article>
+            </div>
 
-            <article className="rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="rounded-lg bg-amber-50 p-2">
-                  <Handshake className="h-6 w-6 text-amber-600" />
+            <div className="group">
+              <div className="bg-white rounded-3xl p-8 shadow-lg border border-white/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-4 bg-amber-100 rounded-2xl group-hover:bg-amber-200 transition-colors">
+                    <Handshake className="h-8 w-8 text-amber-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-slate-800">Core Values</h4>
                 </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-800">Core Values</h4>
-                  <p className="text-gray-600 text-sm mt-1">Palabra de Honor – We honor our word and commitments with integrity and reliability.<br/>Care and Respect – We value our clients, partners, and team members by treating everyone with genuine care and mutual respect.</p>
+                <div className="space-y-4">
+                  <div>
+                    <h5 className="font-semibold text-slate-800 mb-1">Palabra de Honor</h5>
+                    <p className="text-slate-600 text-sm">We honor our word and commitments with integrity and reliability.</p>
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-slate-800 mb-1">Care and Respect</h5>
+                    <p className="text-slate-600 text-sm">We value our clients, partners, and team members by treating everyone with genuine care and mutual respect.</p>
+                  </div>
                 </div>
               </div>
-            </article>
+            </div>
           </div>
         </div>
       </div>
