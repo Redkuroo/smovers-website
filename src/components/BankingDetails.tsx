@@ -63,9 +63,7 @@ export default function BankingDetails() {
                       className="object-contain p-1"
                     />
                   </div>
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/30 ring-1 ring-white/50 text-white/90">
-                   
-                  </div>
+          
                 </div>
 
                 {/* Bank name */}
