@@ -62,7 +62,8 @@ export default function CompanyProfileSection() {
         {/* Partner Carriers Section */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-800 mb-4">Our Partner Carriers</h3>
+
+            <h3 className="text-2xl font-bold  text-blue-800 mb-4">Our Partner Carriers</h3>
             <p className="text-slate-600 max-w-2xl mx-auto">We proudly work with the following trusted carrier partners:</p>
           </div>
           
@@ -90,7 +91,7 @@ export default function CompanyProfileSection() {
         {/* Strategy Section */}
         <div>
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-800 mb-4">Our Strategy</h3>
+          <h3 className="text-2xl font-bold  text-blue-800 mb-4">Our Strategy</h3>
             <p className="text-slate-600 max-w-2xl mx-auto">Built on strong foundations of trust, excellence, and genuine care for our stakeholders</p>
           </div>
 
