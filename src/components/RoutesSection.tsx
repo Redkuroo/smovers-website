@@ -98,7 +98,7 @@ export default function RoutesSection() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <h3 className="text-lg font-semibold text-blue-800 leading-snug">{group.name}</h3>
-                        <p className="text-gray-600 text-sm mt-1">{group.description}</p>
+                        <p className="text-gray-700 text-sm mt-1">{group.description}</p>
                       </div>
                       <ChevronDown className={`mt-1 w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-blue-600' : 'text-blue-700'} cursor-pointer` } />
                     </div>

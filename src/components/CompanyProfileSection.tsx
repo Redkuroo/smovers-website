@@ -8,8 +8,8 @@ export default function CompanyProfileSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Company Profile</h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+          <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Company Profile</h2>
+          
         </div>
 
         {/* Hero Section with Company Overview */}
@@ -20,7 +20,7 @@ export default function CompanyProfileSection() {
                 <div className="p-3 bg-blue-100 rounded-xl">
                   <Building2 className="h-6 w-6 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">Company History</h3>
+                <h3 className="text-lg font-semibold text-blue-800 leading-snug">History</h3>
               </div>
               <p className="text-slate-600 leading-relaxed">
                 SMOvers Logistics Services is a sole proprietorship owned by Engr. John Gilbert Olmoguez. The company officially began operations on February 1, 2021, and is currently managed by his wife, Lydie Rocero Olmoguez.
@@ -32,25 +32,16 @@ export default function CompanyProfileSection() {
                 <div className="p-3 bg-emerald-100 rounded-xl">
                   <Ship className="h-6 w-6 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">What We Do</h3>
+                <h3 className="text-lg font-semibold text-blue-800 leading-snug">Overview</h3>
               </div>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                SMOvers Logistics Services specializes in Freight Forwarding and Trucking Services. We handle a wide range of domestic cargo shipments across the Philippines.
+              <p className="text-slate-700 leading-relaxed mt-1">
+                SMOvers Logistics Services specializes in Freight Forwarding and Trucking Services. We handle a wide range of domestic cargo shipments, including FCL (Full Container Load), LCL (Less than Container Load), FLATRACK CONTAINER, and Breakbulk cargo.
               </p>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-blue-50 rounded-lg p-3 text-center">
-                  <span className="text-sm font-semibold text-blue-800">FCL</span>
-                </div>
-                <div className="bg-emerald-50 rounded-lg p-3 text-center">
-                  <span className="text-sm font-semibold text-emerald-800">LCL</span>
-                </div>
-                <div className="bg-purple-50 rounded-lg p-3 text-center">
-                  <span className="text-sm font-semibold text-purple-800">FLATRACK</span>
-                </div>
-                <div className="bg-orange-50 rounded-lg p-3 text-center">
-                  <span className="text-sm font-semibold text-orange-800">Breakbulk</span>
-                </div>
-              </div>
+
+              <p className="text-slate-700 leading-relaxed mt-4">
+                Our services extend to all major domestic ports across the Philippines. We maintain operational branches and strong agent partnerships in the following locations: LUZON, VISAYAS, and MINDANAO.
+              </p>
+          
             </div>
           </div>
 
@@ -72,7 +63,7 @@ export default function CompanyProfileSection() {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-slate-800 mb-4">Our Partner Carriers</h3>
-            <p className="text-slate-600 max-w-2xl mx-auto">We maintain strong partnerships with leading shipping companies across the Philippines</p>
+            <p className="text-slate-600 max-w-2xl mx-auto">We proudly work with the following trusted carrier partners:</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
