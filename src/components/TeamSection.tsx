@@ -3,18 +3,33 @@ import Image from "next/image";
 
 const team = [
   {
-    name: "Lydie Rocero Olmoguez",
-    role: "CEO & Founder",
+    name: "Engr. John Gilbert Olnmoguez",
+    role: "Proprietor",
     image: "/ceo.jpg",
   },
   {
-    name: "Juan Dela Cruz",
-    role: "Operations Manager",
+    name: "Lydie Grace Rocero",
+    role: "General Manager",
     image: "/team2.jpg",
   },
   {
-    name: "Ana Reyes",
-    role: "Logistics Coordinator",
+    name: "Jenny Reyes",
+    role: "Operation Manager",
+    image: "/team3.jpg",
+  },
+   {
+    name: "Mark Melvin Dullas",
+    role: "Cargo Releasing Team Leader",
+    image: "/team3.jpg",
+  },
+   {
+    name: "Teressa Conde",
+    role: "Finance / Admin Staff",
+    image: "/team3.jpg",
+  },
+    {
+    name: "Genevieve Andales",
+    role: "Human Resource Relation TL",
     image: "/team3.jpg",
   },
 ];
