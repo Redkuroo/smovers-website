@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import PhilippinesMap from "./PhilippinesMap";
 
@@ -67,17 +67,15 @@ const routeGroups: RouteGroup[] = [
 ];
 
 export default function RoutesSection() {
-  const [open, setOpen] = useState<string | null>(routeGroups[0].name);
+  // start closed by default
+  const [open, setOpen] = useState<string | null>(null);
   const [selected, setSelected] = useState<{ origin: string; destination: string } | null>(null);
-  const allLanes = useMemo(
-    () =>
-      routeGroups.flatMap(g =>
-        g.lanes.map(l => ({
-          origin: l.origin,
-          destination: l.destination.replace(/\s*\(via[^)]*\)/i, '').trim()
-        }))
-      ),
-    []
+  // Flatten lanes for the map and strip any "(via ...)" markers
+  const mapLanes = routeGroups.flatMap((g) =>
+    g.lanes.map((l) => ({
+      origin: l.origin,
+      destination: l.destination.replace(/\s*\(via[^)]*\)/i, "").trim(),
+    }))
   );
 
   return (
@@ -144,7 +142,7 @@ export default function RoutesSection() {
           </div>
           <div className="w-full lg:flex-1 mt-8 lg:mt-0">
             <div className="w-full h-96 sm:h-[480px] lg:h-[560px] rounded-2xl border border-dashed border-blue-200 bg-white/50 backdrop-blur-sm p-4">
-              <PhilippinesMap lanes={allLanes} selected={selected} />
+              <PhilippinesMap lanes={mapLanes} selected={selected} />
             </div>
           </div>
         </div>
