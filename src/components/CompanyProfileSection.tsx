@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Eye, Rocket, Handshake, Ship, Building2, Users } from "lucide-react";
+import { Eye, Rocket, Handshake, Ship, Building2 } from "lucide-react";
 
 export default function CompanyProfileSection() {
   return (
@@ -53,12 +53,7 @@ export default function CompanyProfileSection() {
                   <Image src="/ph map.jpg" alt="Map placeholder" fill className="object-cover" />
                 </div>
 
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="text-center text-slate-800 bg-white/10 backdrop-blur-sm rounded-md px-3 py-2">
-                    <Ship className="h-12 w-12 mx-auto mb-2 text-blue-600" />
-                    <p className="text-sm">Map placeholder</p>
-                  </div>
-                </div>
+                {/* overlay removed per request; image only */}
               </div>
 
               {/* image-only: CTAs removed per request */}
