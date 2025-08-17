@@ -61,17 +61,7 @@ export default function CompanyProfileSection() {
                 </div>
               </div>
 
-              {/* CTA area below the image */}
-              <div className="p-6 bg-white">
-                <div className="flex flex-col sm:flex-row items-center gap-3">
-                  <a href="#contact" className="inline-flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
-                    Contact us
-                  </a>
-                  <a href="#routes" className="inline-flex items-center justify-center border border-slate-200 bg-white text-slate-800 px-4 py-2 rounded-lg shadow-sm hover:shadow transition">
-                    View routes
-                  </a>
-                </div>
-              </div>
+              {/* image-only: CTAs removed per request */}
             </div>
           </div>
         </div>
