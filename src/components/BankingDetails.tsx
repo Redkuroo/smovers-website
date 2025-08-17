@@ -44,7 +44,7 @@ export default function BankingDetails() {
           {accounts.map((a) => (
             <li key={a.bank}>
               <div
-                className={`relative overflow-hidden rounded-3xl p-5 sm:p-6 text-white shadow-lg ring-1 ring-white/10 bg-gradient-to-br ${a.gradient} transition-transform duration-200 hover:-translate-y-0.5`}
+                className={`relative overflow-hidden rounded-3xl p-5 sm:p-6 text-white shadow-lg ring-1 ring-white/10 bg-gradient-to-br ${a.gradient} transition-all duration-300 hover:-translate-y-1`} 
               >
                 {/* Decorative blobs */}
                 <div className="pointer-events-none absolute inset-0">

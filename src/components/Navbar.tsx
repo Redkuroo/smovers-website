@@ -9,7 +9,6 @@ const navLinks = [
   { name: "Company", href: "#company" },
   { name: "Blogs", href: "#blogs" },
   { name: "Team", href: "#team" },
-  { name: "Testimonials", href: "#testimonials" },
 ];
 
 export default function Navbar() {

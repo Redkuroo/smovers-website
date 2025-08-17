@@ -5,7 +5,6 @@ import CompanyProfileSection from "../components/CompanyProfileSection";
 import ContactInfo from "@/components/ContactInfo";
 import BlogsSection from "../components/BlogsSection";
 import TeamSection from "../components/TeamSection";
-import TestimonialsSection from "../components/TestimonialsSection";
 import ContactSection from "../components/ContactSection";
 import BankingDetails from "@/components/BankingDetails"; 
 
@@ -19,7 +18,7 @@ export default function Home() {
       <div id="banking"><BankingDetails /></div>
       <div id="blogs"><BlogsSection /></div>
       <div id="team"><TeamSection /></div>
-      <div id="testimonials"><TestimonialsSection /></div>
+      
       <div id="contact"><ContactInfo /></div>
       <footer className="bg-white border-t mt-12">
         <ContactSection />
