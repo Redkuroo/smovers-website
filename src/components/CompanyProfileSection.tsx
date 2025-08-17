@@ -46,13 +46,85 @@ export default function CompanyProfileSection() {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-20 blur-xl"></div>
-            <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl">
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 h-80 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <Ship className="h-16 w-16 mx-auto mb-4 opacity-80" />
-                  <h3 className="text-2xl font-bold mb-2">Logistics Excellence</h3>
-                  <p className="text-blue-100">Connecting Philippines from Luzon to Mindanao</p>
+            <div className="rounded-3xl overflow-hidden shadow-2xl bg-white">
+              {/* Animated hero: SVG scene with moving vessels (no external video required) */}
+              <div className="relative h-80 bg-gradient-to-br from-blue-600 to-purple-600">
+                <svg viewBox="0 0 1200 240" preserveAspectRatio="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <defs>
+                    <linearGradient id="g1" x1="0" x2="1">
+                      <stop offset="0%" stopColor="#2563eb" stopOpacity="0.9" />
+                      <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.9" />
+                    </linearGradient>
+                    <linearGradient id="fade" x1="0" x2="0">
+                      <stop offset="0%" stopColor="#000" stopOpacity="0.18" />
+                      <stop offset="100%" stopColor="#000" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* background subtle band */}
+                  <rect width="1200" height="240" fill="url(#g1)" opacity="0.12" />
+
+                  {/* moving line layers (parallax) */}
+                  <g fill="none" stroke="#ffffff" strokeOpacity="0.08" strokeWidth="2">
+                    <path d="M-200 160 C200 40 400 40 800 160 S1400 280 1600 160" />
+                    <g>
+                      <path d="M0 140 q150 -60 300 0 t300 0 t300 0" />
+                      <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 0" to="-600 0" dur="30s" repeatCount="indefinite" />
+                    </g>
+                    <g>
+                      <path d="M0 100 q200 -40 400 0 t400 0" />
+                      <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 0" to="-800 0" dur="40s" repeatCount="indefinite" />
+                    </g>
+                  </g>
+
+                  {/* simple vessel icons as circles with small bows; multiple layers animate across */}
+                  <g fill="#fff" fillOpacity="0.9">
+                    <g transform="translate(0,120)">
+                      <g>
+                        <rect x="0" y="-6" width="36" height="12" rx="3" fill="#fff" fillOpacity="0.85" />
+                        <polygon points="36,-6 44,0 36,6" fill="#fff" fillOpacity="0.85" />
+                        <animateTransform attributeName="transform" type="translate" from="0 0" to="1200 0" dur="18s" repeatCount="indefinite" />
+                      </g>
+                    </g>
+
+                    <g transform="translate(-300,80)">
+                      <g>
+                        <rect x="0" y="-6" width="24" height="10" rx="2" fill="#fff" fillOpacity="0.75" />
+                        <polygon points="24,-6 30,0 24,6" fill="#fff" fillOpacity="0.75" />
+                        <animateTransform attributeName="transform" type="translate" from="0 0" to="1400 0" dur="24s" repeatCount="indefinite" />
+                      </g>
+                    </g>
+
+                    <g transform="translate(-600,40)">
+                      <g>
+                        <rect x="0" y="-5" width="18" height="8" rx="2" fill="#fff" fillOpacity="0.7" />
+                        <polygon points="18,-5 22,0 18,5" fill="#fff" fillOpacity="0.7" />
+                        <animateTransform attributeName="transform" type="translate" from="0 0" to="1600 0" dur="30s" repeatCount="indefinite" />
+                      </g>
+                    </g>
+                  </g>
+
+                </svg>
+
+                {/* overlay content */}
+                <div className="absolute inset-0 flex items-center justify-center text-white pointer-events-none">
+                  <div className="text-center">
+                    <Ship className="h-14 w-14 mx-auto mb-3 opacity-95" />
+                    <h3 className="text-2xl font-bold mb-1">Operations in Motion</h3>
+                    <p className="text-blue-100">Live operations across the archipelago</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA area below the animated hero */}
+              <div className="p-6 bg-white">
+                <div className="flex flex-col sm:flex-row items-center gap-3">
+                  <a href="#contact" className="inline-flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+                    Request a demo
+                  </a>
+                  <a href="#routes" className="inline-flex items-center justify-center border border-slate-200 bg-white text-slate-800 px-4 py-2 rounded-lg shadow-sm hover:shadow transition">
+                    View routes
+                  </a>
                 </div>
               </div>
             </div>
