@@ -49,11 +49,11 @@ export default function BlogsSection() {
           {/* Left Chevron */}
           <button
             onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-            className={`cursor-pointer absolute left-0 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute left-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === 1}
             aria-label="Previous post"
           >
-            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+            <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
           </button>
           
           <div className="w-full flex items-center justify-center max-w-4xl">
@@ -110,21 +110,21 @@ export default function BlogsSection() {
           {/* Right Chevron */}
           <button
             onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
-            className={`cursor-pointer absolute right-0 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute right-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === totalPages}
             aria-label="Next post"
           >
-            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+            <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
           </button>
         </div>
         
         {/* Pagination numbers only */}
-        <div className="flex justify-center mt-8 md:mt-12 space-x-3">
+        <div className="flex justify-center mt-8 md:mt-12 space-x-2">
           {Array.from({ length: totalPages }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => setPage(idx + 1)}
-              className={`w-10 h-10 md:w-12 md:h-12 cursor-pointer rounded-full font-bold border-2 border-blue-900 text-sm md:text-base transition-all duration-200 ${
+              className={`w-8 h-8 md:w-9 md:h-9 cursor-pointer rounded-full font-bold border-2 border-blue-900 text-xs md:text-base transition-all duration-200 ${
                 page === idx + 1
                   ? "bg-blue-900 text-white shadow-lg"
                   : "bg-white text-blue-900 hover:bg-blue-100 hover:shadow-md"

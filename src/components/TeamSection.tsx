@@ -12,7 +12,7 @@ const team = [
   { name: "Genevieve Andales", role: "Human Resource Relation TL", image: "/team3.jpg" },
 ];
 
-const MEMBERS_PER_PAGE = 2;
+const MEMBERS_PER_PAGE = 3;
 
 export default function TeamSection() {
   const [page, setPage] = useState(1);
