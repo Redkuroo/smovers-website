@@ -80,33 +80,8 @@ export default function ContactInfo() {
                   </dd>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4 py-4">
-                  <dt className="col-span-1 text-sm font-medium text-gray-500">
-                    Phone
-                  </dt>
-                  <dd className="col-span-2 text-sm sm:text-base text-gray-900">
-                    <a
-                      href={`tel:${company.phone.replace(/[^\d+]/g, "")}`}
-                      className="text-blue-700 hover:text-blue-900 underline underline-offset-2"
-                    >
-                      {company.phone}
-                    </a>
-                  </dd>
-                </div>
 
-                <div className="grid grid-cols-3 gap-4 py-4">
-                  <dt className="col-span-1 text-sm font-medium text-gray-500">
-                    Email
-                  </dt>
-                  <dd className="col-span-2 text-sm sm:text-base text-gray-900">
-                    <a
-                      href={`mailto:${company.email}`}
-                      className="text-blue-700 hover:text-blue-900 underline underline-offset-2 break-all"
-                    >
-                      {company.email}
-                    </a>
-                  </dd>
-                </div>
+              
               </dl>
             </div>
           </div>
