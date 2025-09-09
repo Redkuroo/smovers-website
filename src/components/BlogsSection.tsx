@@ -11,6 +11,7 @@ const blogs = [
       "We are overjoyed to share the success of our 2nd Outreach Program, where we distributed school supplies to 106 selected students in need. This meaningful event was made even more special together with Solumi Delights - Tibungco, whose generous support helped bring more smiles and hope to our dear learners. A huge thank you to all the volunteers who made this possible. Your kindness creates ripples that go far beyond what we see today.",
     date: "2025-06-25",
     image: "/blog1.jpg",
+    link: "https://www.facebook.com/your-fb-post-1",
   },
   {
     title: "Proud to Support RGS's Success Story",
@@ -18,8 +19,16 @@ const blogs = [
       "Thank you RGS for having SMOvers Logistics Services. We are very grateful for being part of your success.",
     date: "2024-07-24",
     image: "/blog2.jpg",
+    link: "https://www.facebook.com/your-fb-post-2",
   },
-  // Add more blog objects as needed
+  {
+    title: "Sealed and secured cargo",
+    excerpt:
+      "The shipment has been carefully sealed, secured, and prepared for its scheduled departure this Thursday, bound for Manila from Davao",
+    date: "2023-09-13",
+    image: "/blog3.jpg",
+    link: "https://www.facebook.com/your-fb-post-3",
+  },
 ];
 
 const POSTS_PER_PAGE = 1;
@@ -40,7 +49,7 @@ export default function BlogsSection() {
           {/* Left Chevron */}
           <button
             onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-            className={`absolute left-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute left-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === 1}
             aria-label="Previous post"
             style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
@@ -84,12 +93,14 @@ export default function BlogsSection() {
                   <p className="text-gray-700 mb-8 text-base md:text-lg">
                     {blog.excerpt}
                   </p>
-                  <button
-                    className="w-fit px-8 py-3 rounded bg-blue-600 text-white font-bold shadow hover:bg-blue-900 transition text-lg cursor-pointer"
-                    type="button"
+                  <a
+                    href={blog.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-fit px-8 py-3 rounded bg-blue-600 text-white font-bold shadow hover:bg-blue-900 transition text-lg cursor-pointer inline-block text-center"
                   >
                     View Post
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -97,7 +108,7 @@ export default function BlogsSection() {
           {/* Right Chevron */}
           <button
             onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
-            className={`absolute right-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute right-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === totalPages}
             aria-label="Next post"
             style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
