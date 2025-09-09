@@ -42,28 +42,28 @@ export default function BlogsSection() {
   );
 
   return (
-    <section className="py-8 px-2 md:py-16 md:px-4 bg-white">
+    <section className="py-6 px-2 md:py-16 md:px-4 bg-white">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-10 text-blue-900">Latest Blogs</h2>
-        <div className="relative flex items-center justify-center space-y-10">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10 text-blue-900">Latest Blogs</h2>
+        <div className="relative flex items-center justify-center px-6 md:px-0">
           {/* Left Chevron */}
           <button
             onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-            className={`cursor-pointer absolute left-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute left-0 md:left-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === 1}
             aria-label="Previous post"
             style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
           </button>
           <div className="w-full flex items-center justify-center">
             {paginatedBlogs.map((blog) => (
               <div
                 key={blog.title}
-                className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden"
+                className="flex flex-col md:flex-row bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden max-w-sm md:max-w-none mx-auto"
               >
                 {/* Left: Image with overlay */}
-                <div className="relative md:w-1/2 w-full min-h-[260px]">
+                <div className="relative md:w-1/2 w-full min-h-[200px] md:min-h-[260px]">
                   <Image
                     src={blog.image || "/blog-placeholder.jpg"}
                     alt={blog.title}
@@ -72,8 +72,8 @@ export default function BlogsSection() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority
                   />
-                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-6 py-4">
-                    <h3 className="text-lg md:text-2xl font-bold text-white drop-shadow">
+                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-3 py-2 md:px-6 md:py-4">
+                    <h3 className="text-sm md:text-2xl font-bold text-white drop-shadow leading-tight">
                       {blog.title}
                     </h3>
                     <span className="text-xs md:text-sm text-yellow-200">
@@ -86,18 +86,18 @@ export default function BlogsSection() {
                   </div>
                 </div>
                 {/* Right: Content */}
-                <div className="flex-1 flex flex-col justify-center p-6 md:p-10 bg-white">
-                  <h3 className="text-3xl font-extrabold text-blue-900 mb-4 leading-tight">
+                <div className="flex-1 flex flex-col justify-center p-4 md:p-10 bg-white">
+                  <h3 className="text-lg md:text-3xl font-extrabold text-blue-900 mb-3 md:mb-4 leading-tight">
                     {blog.title}
                   </h3>
-                  <p className="text-gray-700 mb-8 text-base md:text-lg">
+                  <p className="text-gray-700 mb-4 md:mb-8 text-sm md:text-lg line-clamp-4 md:line-clamp-none">
                     {blog.excerpt}
                   </p>
                   <a
                     href={blog.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-fit px-8 py-3 rounded bg-blue-600 text-white font-bold shadow hover:bg-blue-900 transition text-lg cursor-pointer inline-block text-center"
+                    className="w-fit px-4 py-2 md:px-8 md:py-3 rounded bg-blue-600 text-white font-bold shadow hover:bg-blue-900 transition text-sm md:text-lg cursor-pointer inline-block text-center"
                   >
                     View Post
                   </a>
@@ -108,21 +108,21 @@ export default function BlogsSection() {
           {/* Right Chevron */}
           <button
             onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
-            className={`cursor-pointer absolute right-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute right-0 md:right-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === totalPages}
             aria-label="Next post"
             style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
           </button>
         </div>
         {/* Pagination numbers only */}
-        <div className="flex justify-center mt-10 space-x-2">
+        <div className="flex justify-center mt-6 md:mt-10 space-x-2">
           {Array.from({ length: totalPages }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => setPage(idx + 1)}
-              className={`w-9 h-9 cursor-pointer rounded-full font-bold border-2 border-blue-900 ${
+              className={`w-8 h-8 md:w-9 md:h-9 cursor-pointer rounded-full font-bold border-2 border-blue-900 text-xs md:text-base ${
                 page === idx + 1
                   ? "bg-blue-900 text-white"
                   : "bg-white text-blue-900 hover:bg-blue-100"
