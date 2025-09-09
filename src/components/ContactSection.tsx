@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Mail, HelpCircle } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 export default function ContactSection() {
   return (
@@ -77,11 +77,12 @@ export default function ContactSection() {
 
             {/* Contact info */}
             <div className="mt-8 text-center text-gray-600 space-y-2">
-              <div>
+              <div className="flex items-center justify-center gap-2">
+                <Phone className="w-4 h-4 text-blue-900" />
                 Call us: <a href="tel:0917-772-3701" className="text-blue-900 font-medium hover:underline">0917-772-3701</a>
               </div>
-              <div>
-               
+              <div className="flex items-center justify-center gap-2">
+                <Mail className="w-4 h-4 text-blue-900" />
                 Email: <a href="mailto:smoverslogistics@gmail.com" className="text-blue-900 font-medium hover:underline" > smoverslogistics@gmail.com</a>
               </div>
             </div>
