@@ -42,29 +42,28 @@ export default function BlogsSection() {
   );
 
   return (
-    <section className="py-6 px-2 md:py-16 md:px-4 bg-white">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10 text-blue-900">Latest Blogs</h2>
-        <div className="relative flex items-center justify-center px-6 md:px-0">
+    <section className="py-8 px-4 md:py-16 md:px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 text-blue-900">Latest Blogs</h2>
+        <div className="relative flex items-center justify-center px-12 md:px-16">
           {/* Left Chevron */}
-        
           <button
             onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-            className={`cursor-pointer absolute left-0 md:left-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute left-0 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === 1}
             aria-label="Previous post"
-            style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
           >
-            <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
           </button>
-          <div className="w-full flex items-center justify-center">
+          
+          <div className="w-full flex items-center justify-center max-w-4xl">
             {paginatedBlogs.map((blog) => (
               <div
                 key={blog.title}
-                className="flex flex-col md:flex-row bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden max-w-sm md:max-w-none mx-auto"
+                className="flex flex-col md:flex-row bg-white rounded-2xl shadow-xl overflow-hidden w-full"
               >
                 {/* Left: Image with overlay */}
-                <div className="relative md:w-1/2 w-full min-h-[200px] md:min-h-[260px]">
+                <div className="relative md:w-1/2 w-full h-64 md:h-80">
                   <Image
                     src={blog.image || "/blog-placeholder.jpg"}
                     alt={blog.title}
@@ -73,11 +72,11 @@ export default function BlogsSection() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority
                   />
-                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-3 py-2 md:px-6 md:py-4">
-                    <h3 className="text-sm md:text-2xl font-bold text-white drop-shadow leading-tight">
+                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-4 py-4 md:px-6 md:py-6">
+                    <h3 className="text-base md:text-2xl font-bold text-white drop-shadow leading-tight mb-1">
                       {blog.title}
                     </h3>
-                    <span className="text-xs md:text-sm text-yellow-200">
+                    <span className="text-xs md:text-sm text-yellow-200 font-medium">
                       {new Date(blog.date).toLocaleDateString(undefined, {
                         year: "numeric",
                         month: "long",
@@ -86,49 +85,50 @@ export default function BlogsSection() {
                     </span>
                   </div>
                 </div>
+                
                 {/* Right: Content */}
-                <div className="flex-1 flex flex-col justify-center p-4 md:p-10 bg-white">
-                  <h3 className="text-lg md:text-3xl font-extrabold text-blue-900 mb-3 md:mb-4 leading-tight">
+                <div className="flex-1 flex flex-col justify-center p-6 md:p-8 lg:p-10 bg-white">
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-blue-900 mb-4 md:mb-6 leading-tight">
                     {blog.title}
                   </h3>
-                  <p className="text-gray-700 mb-4 md:mb-8 text-sm md:text-lg line-clamp-4 md:line-clamp-none">
+                  <p className="text-gray-700 mb-6 md:mb-8 text-sm md:text-base lg:text-lg leading-relaxed line-clamp-4 md:line-clamp-none">
                     {blog.excerpt}
                   </p>
                   <a
                     href={blog.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-fit bg-blue-900 text-white rounded-lg px-6 py-4 font-bold text-lg hover:bg-blue-800 transition duration-300 shadow-lg text-center"
+                    className="inline-block w-fit bg-blue-900 text-white rounded-lg px-6 py-3 md:px-8 md:py-4 font-bold text-sm md:text-lg hover:bg-blue-800 transition duration-300 shadow-lg"
                   >
                     View Post
                   </a>
-               
                 </div>
               </div>
             ))}
           </div>
+          
           {/* Right Chevron */}
           <button
             onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
-            className={`cursor-pointer absolute right-0 md:right-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute right-0 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === totalPages}
             aria-label="Next post"
-            style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
           >
-            <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
+        
         {/* Pagination numbers only */}
-        <div className="flex justify-center mt-6 md:mt-10 space-x-2">
+        <div className="flex justify-center mt-8 md:mt-12 space-x-3">
           {Array.from({ length: totalPages }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => setPage(idx + 1)}
-              className={`w-8 h-8 md:w-9 md:h-9 cursor-pointer rounded-full font-bold border-2 border-blue-900 text-xs md:text-base ${
+              className={`w-10 h-10 md:w-12 md:h-12 cursor-pointer rounded-full font-bold border-2 border-blue-900 text-sm md:text-base transition-all duration-200 ${
                 page === idx + 1
-                  ? "bg-blue-900 text-white"
-                  : "bg-white text-blue-900 hover:bg-blue-100"
-              } transition`}
+                  ? "bg-blue-900 text-white shadow-lg"
+                  : "bg-white text-blue-900 hover:bg-blue-100 hover:shadow-md"
+              }`}
               aria-current={page === idx + 1 ? "page" : undefined}
             >
               {idx + 1}
