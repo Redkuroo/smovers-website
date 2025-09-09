@@ -11,7 +11,7 @@ export default function ContactSection() {
           <div className="relative w-full lg:w-1/2 max-w-md lg:max-w-none">
             <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/hero.jpg"
+                src="/help.png"
                 alt="Contact us"
                 fill
                 className="object-cover"
@@ -31,16 +31,7 @@ export default function ContactSection() {
           {/* Right: Contact Form */}
           <div className="w-full lg:w-1/2">
             {/* Header with icons */}
-            <div className="flex items-center justify-end gap-6 mb-8">
-              <div className="flex items-center gap-2 text-blue-900">
-                <Mail className="w-5 h-5" />
-                <span className="text-sm font-medium">Email us</span>
-              </div>
-              <div className="flex items-center gap-2 text-blue-900">
-                <HelpCircle className="w-5 h-5" />
-                <span className="text-sm font-medium">FAQs</span>
-              </div>
-            </div>
+     
 
             {/* Main heading */}
             <div className="mb-8">
@@ -78,9 +69,9 @@ export default function ContactSection() {
               
               <button 
                 type="submit" 
-                className="w-full bg-blue-900 text-white rounded-lg px-6 py-4 font-bold text-lg hover:bg-blue-800 transition duration-300 shadow-lg"
+                className="cursor-pointer w-full bg-blue-900 text-white rounded-lg px-6 py-4 font-bold text-lg hover:bg-blue-800 transition duration-300 shadow-lg"
               >
-                Send It Our Way
+                Send Request
               </button>
             </form>
 
@@ -90,7 +81,8 @@ export default function ContactSection() {
                 Call us: <a href="tel:0917-772-3701" className="text-blue-900 font-medium hover:underline">0917-772-3701</a>
               </div>
               <div>
-                Email: <a href="mailto:smoverslogistics@gmail.com" className="text-blue-900 font-medium hover:underline">smoverslogistics@gmail.com</a>
+               
+                Email: <a href="mailto:smoverslogistics@gmail.com" className="text-blue-900 font-medium hover:underline" > smoverslogistics@gmail.com</a>
               </div>
             </div>
           </div>
