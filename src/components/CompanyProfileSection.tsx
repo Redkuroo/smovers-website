@@ -50,7 +50,7 @@ export default function CompanyProfileSection() {
               {/* Image placeholder */}
               <div className="relative h-80 bg-slate-100 flex items-center justify-center">
                 <div className="w-full h-full relative">
-                  <Image src="/ph map.jpg" alt="Map placeholder" fill className="object-cover" />
+                  <Image src="/cargo.jpg" alt="Map placeholder" fill className="object-cover" />
                 </div>
 
                 {/* overlay removed per request; image only */}
