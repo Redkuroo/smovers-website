@@ -63,7 +63,7 @@ export default function BlogsSection() {
                 className="flex flex-col md:flex-row bg-white rounded-2xl shadow-xl overflow-hidden w-full"
               >
                 {/* Left: Image with overlay */}
-                <div className="relative md:w-1/2 w-full h-64 md:h-80">
+                <div className="relative md:w-1/2 w-full h-48 md:h-64">
                   <Image
                     src={blog.image || "/blog-placeholder.jpg"}
                     alt={blog.title}
@@ -72,8 +72,8 @@ export default function BlogsSection() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority
                   />
-                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-4 py-4 md:px-6 md:py-6">
-                    <h3 className="text-base md:text-2xl font-bold text-white drop-shadow leading-tight mb-1">
+                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-4 py-3 md:px-6 md:py-4">
+                    <h3 className="text-sm md:text-lg font-bold text-white drop-shadow leading-tight mb-1">
                       {blog.title}
                     </h3>
                     <span className="text-xs md:text-sm text-yellow-200 font-medium">
@@ -87,18 +87,18 @@ export default function BlogsSection() {
                 </div>
                 
                 {/* Right: Content */}
-                <div className="flex-1 flex flex-col justify-center p-6 md:p-8 lg:p-10 bg-white">
-                  <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-blue-900 mb-4 md:mb-6 leading-tight">
+                <div className="flex-1 flex flex-col justify-center p-4 md:p-6 bg-white">
+                  <h3 className="text-lg md:text-2xl font-extrabold text-blue-900 mb-3 md:mb-4 leading-tight">
                     {blog.title}
                   </h3>
-                  <p className="text-gray-700 mb-6 md:mb-8 text-sm md:text-base lg:text-lg leading-relaxed line-clamp-4 md:line-clamp-none">
+                  <p className="text-gray-700 mb-4 md:mb-6 text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
                     {blog.excerpt}
                   </p>
                   <a
                     href={blog.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block w-fit bg-blue-900 text-white rounded-lg px-6 py-3 md:px-8 md:py-4 font-bold text-sm md:text-lg hover:bg-blue-800 transition duration-300 shadow-lg"
+                    className="inline-block w-fit bg-blue-900 text-white rounded-md px-4 py-2 md:px-6 md:py-3 font-semibold text-sm md:text-base hover:bg-blue-800 transition duration-300 shadow-md"
                   >
                     View Post
                   </a>
