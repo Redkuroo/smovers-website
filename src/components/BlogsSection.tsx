@@ -51,7 +51,7 @@ export default function BlogsSection() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                 />
-                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#a71c21]/90 to-transparent px-6 py-4">
+                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-6 py-4">
                   <h3 className="text-lg md:text-2xl font-bold text-white drop-shadow">
                     {blog.title}
                   </h3>
@@ -73,7 +73,7 @@ export default function BlogsSection() {
                   {blog.excerpt}
                 </p>
                 <button
-                  className="w-fit px-8 py-3 rounded bg-[#a71c21] text-white font-bold shadow hover:bg-[#8b181c] transition text-lg"
+                  className="w-fit px-8 py-3 rounded bg-blue-600 text-white font-bold shadow hover:bg-blue-900 transition text-lg cursor-pointer"
                   type="button"
                 >
                   View Post
@@ -82,13 +82,23 @@ export default function BlogsSection() {
             </div>
           ))}
         </div>
-        {/* Pagination */}
-        <div className="flex justify-center mt-10 space-x-2">
+        {/* Pagination with chevrons */}
+        <div className="flex justify-center mt-10 space-x-2 items-center">
+          <button
+            onClick={() => setPage((prev) => Math.max(1, prev - 1))}
+            className={`w-9 h-9 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            disabled={page === 1}
+            aria-label="Previous page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
           {Array.from({ length: totalPages }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => setPage(idx + 1)}
-              className={`w-9 h-9 rounded-full font-bold border-2 border-blue-900 ${
+              className={`w-9 h-9 cursor-pointer rounded-full font-bold border-2 border-blue-900 ${
                 page === idx + 1
                   ? "bg-blue-900 text-white"
                   : "bg-white text-blue-900 hover:bg-blue-100"
@@ -98,6 +108,16 @@ export default function BlogsSection() {
               {idx + 1}
             </button>
           ))}
+          <button
+            onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
+            className={`w-9 h-9 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            disabled={page === totalPages}
+            aria-label="Next page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
