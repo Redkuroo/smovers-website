@@ -1,5 +1,4 @@
 "use client";
-"use client";
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -13,7 +12,7 @@ const team = [
   { name: "Genevieve Andales", role: "Human Resource Relation TL", image: "/team3.jpg" },
 ];
 
-const MEMBERS_PER_PAGE = 3;
+const MEMBERS_PER_PAGE = 2;
 
 export default function TeamSection() {
   const [page, setPage] = useState(1);
@@ -24,46 +23,54 @@ export default function TeamSection() {
   );
 
   return (
-    <section className="py-16 px-4 bg-blue-50">
+    <section className="py-8 px-2 md:py-16 md:px-4 bg-blue-50">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-10 text-blue-900">Our Team</h2>
-        <div className="relative flex items-center justify-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10 text-blue-900">Our Team</h2>
+        <div className="relative flex items-center justify-center px-8 md:px-0">
           {/* Left Chevron */}
           <button
             onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-            className={`cursor-pointer absolute left-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute left-2 md:left-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === 1}
             aria-label="Previous team page"
             style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
           </button>
-          <div className="w-full flex flex-wrap justify-center gap-8">
+          <div className="w-full flex flex-wrap justify-center gap-4 md:gap-8">
             {paginatedTeam.map((member) => (
-              <div key={member.name} className="bg-white rounded-lg shadow p-6 flex flex-col items-center w-64">
-                <Image src={member.image} alt={member.name} width={96} height={96} className="rounded-full mb-4 object-cover" />
-                <h3 className="text-lg font-semibold text-blue-800">{member.name}</h3>
-                <p className="text-gray-600">{member.role}</p>
+              <div key={member.name} className="bg-white rounded-lg shadow p-4 md:p-6 flex flex-col items-center w-full max-w-xs md:w-64">
+                <Image 
+                  src={member.image} 
+                  alt={member.name} 
+                  width={80} 
+                  height={80} 
+                  className="rounded-full mb-3 md:mb-4 object-cover md:w-24 md:h-24" 
+                />
+                <h3 className="text-base md:text-lg font-semibold text-blue-800 text-center leading-tight">
+                  {member.name}
+                </h3>
+                <p className="text-sm md:text-base text-gray-600 text-center mt-1">{member.role}</p>
               </div>
             ))}
           </div>
           {/* Right Chevron */}
           <button
             onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
-            className={`cursor-pointer absolute right-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute right-2 md:right-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === totalPages}
             aria-label="Next team page"
             style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
           </button>
         </div>
-        <div className="flex justify-center mt-10 space-x-2">
+        <div className="flex justify-center mt-6 md:mt-10 space-x-2">
           {Array.from({ length: totalPages }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => setPage(idx + 1)}
-              className={`w-9 h-9 rounded-full font-bold border-2 border-blue-900 ${
+              className={`w-8 h-8 md:w-9 md:h-9 rounded-full font-bold border-2 border-blue-900 text-xs md:text-base ${
                 page === idx + 1
                   ? "bg-blue-900 text-white"
                   : "bg-white text-blue-900 hover:bg-blue-100"
