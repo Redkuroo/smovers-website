@@ -5,8 +5,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 const team = [
-  { name: "Engr. John Gilbert Olnmoguez", role: "Proprietor", image: "/ceo.jpg" },
-  { name: "Lydie Grace Rocero", role: "General Manager", image: "/team2.jpg" },
+  { name: "Engr. John Gilbert Olnmoguez", role: "Proprietor", image: "/team3.jpg" },
+  { name: "Lydie Grace Rocero", role: "General Manager", image: "/ceo.jpg" },
   { name: "Jenny Reyes", role: "Operation Manager", image: "/team3.jpg" },
   { name: "Mark Melvin Dullas", role: "Cargo Releasing Team Leader", image: "/team3.jpg" },
   { name: "Teressa Conde", role: "Finance / Admin Staff", image: "/team3.jpg" },
@@ -31,7 +31,7 @@ export default function TeamSection() {
           {/* Left Chevron */}
           <button
             onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-            className={`absolute left-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute left-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === 1}
             aria-label="Previous team page"
             style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
@@ -50,7 +50,7 @@ export default function TeamSection() {
           {/* Right Chevron */}
           <button
             onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
-            className={`absolute right-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`cursor-pointer absolute right-0 z-10 w-10 h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === totalPages}
             aria-label="Next team page"
             style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.08)' }}
