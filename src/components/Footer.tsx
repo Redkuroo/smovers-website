@@ -22,10 +22,10 @@ export default function Footer() {
           {/* Right: Quote text */}
           <div className="text-left">
             <h3 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
-              LOVE WHAT YOU DO
+              MOVE WHAT MATTERS
             </h3>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-xl">
-              We believe that with the right tools, anyone can turn their passion into an empire. So we made them.
+             With the right tools and the right partner, businesses can move faster, farther, and smarter. That’s why we built them.
             </p>
           </div>
         </div>
@@ -36,10 +36,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 items-start">
           {/* Left section - Logo and tagline */}
           <div className="lg:col-span-1">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">EASOL</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">SMOvers</h2>
             <p className="text-lg md:text-xl font-semibold leading-snug uppercase opacity-90">
-              Sell Experiences<br />
-              Not Things
+              Deliver Experiences<br />
+              Not Just Packages
             </p>
           </div>
 
@@ -108,24 +108,22 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="grid grid-cols-3 gap-8">
               <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
-                <a href="/company" className="block hover:opacity-80">About</a>
-                <a href="#themes" className="block hover:opacity-80">Themes</a>
-                <a href="#ex-commerce" className="block hover:opacity-80">Ex-Commerce</a>
-                <a href="#inspiration" className="block hover:opacity-80">Inspiration</a>
+                <a href="/company" className="block hover:opacity-80">Services</a>
+                <a href="#themes" className="block hover:opacity-80">Routes</a>
+                <a href="#ex-commerce" className="block hover:opacity-80">Company</a>
+               
               </nav>
               <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
-                <a href="#press" className="block hover:opacity-80">Press</a>
+              
                 <a href="https://instagram.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">Instagram</a>
-                <a href="https://twitter.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">Twitter</a>
                 <a href="https://facebook.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">Facebook</a>
                 <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">LinkedIn</a>
               </nav>
               <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
-                <a href="/faq" className="block hover:opacity-80">FAQ</a>
-                <a href="/help" className="block hover:opacity-80">Help Centre</a>
-                <a href="/careers" className="block hover:opacity-80">Careers</a>
-                <a href="#contact" className="block hover:opacity-80">Contact</a>
-                <a href="/acceptable-use" className="block hover:opacity-80">Acceptable Use</a>
+                 <a href="#inspiration" className="block hover:opacity-80">Blogs</a>
+                <a href="/faq" className="block hover:opacity-80">Team</a>
+                <a href="/help" className="block hover:opacity-80">Contact</a>
+       
               </nav>
             </div>
           </div>
