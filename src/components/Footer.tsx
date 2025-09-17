@@ -1,28 +1,23 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 
 export default function Footer() {
+  const [artSrc, setArtSrc] = useState<string>("/element.svg");
   return (
     <footer className="bg-blue-900 text-white">
       {/* Top hero-like row inside footer */}
       <div className="max-w-7xl mx-auto px-6 pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left: Large SVG illustration placeholder */}
+          {/* Left: Large illustration (EPS with SVG fallback) */}
           <div className="flex items-center justify-center lg:justify-start">
-            <div className="w-full max-w-2xl aspect-[3/1.2] bg-white/5 border border-white/15 rounded-xl flex items-center justify-center">
-              <svg
-                className="w-2/3 h-auto text-white/70"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.25}
-                  d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
-                />
-              </svg>
+            <div className="w-full max-w-3xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={artSrc}
+                alt="Modern logistics emblem"
+                className="w-full h-auto"
+                onError={() => setArtSrc("/illustrations/logistics-emblem.svg")}
+              />
             </div>
           </div>
 
