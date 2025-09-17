@@ -43,9 +43,65 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Center section - Spacer to align similar to screenshot (kept as subtle placeholder) */}
+          {/* Center section - Subtle decorative SVG */}
           <div className="lg:col-span-1 hidden lg:flex items-center justify-center">
-            <div className="w-64 h-24 rounded-lg border border-white/10 bg-white/5" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 256 96"
+              role="img"
+              aria-labelledby="footerDecorTitle footerDecorDesc"
+              className="w-64 h-24"
+            >
+              <title id="footerDecorTitle">Logistics decorative graphic</title>
+              <desc id="footerDecorDesc">Subtle white line-art with a globe, route lines, and container motif for visual balance.</desc>
+              <defs>
+                <style>{`
+                  .s{stroke:#ffffff;fill:none;stroke-linecap:round;stroke-linejoin:round}
+                  .b{stroke-width:2}
+                  .m{stroke-width:1.25}
+                  .t{stroke-width:0.8}
+                  .faint{opacity:.25}
+                  .muted{opacity:.6}
+                  .dot{stroke-dasharray:4 4}
+                `}</style>
+              </defs>
+
+              {/* faint grid */}
+              <g className="faint">
+                <path className="s t" d="M16 16 H240"/>
+                <path className="s t" d="M16 48 H240"/>
+                <path className="s t" d="M16 80 H240"/>
+                <path className="s t" d="M16 16 V80"/>
+                <path className="s t" d="M64 16 V80"/>
+                <path className="s t" d="M112 16 V80"/>
+                <path className="s t" d="M160 16 V80"/>
+                <path className="s t" d="M208 16 V80"/>
+              </g>
+
+              {/* globe */}
+              <g id="globe" transform="translate(40,48)">
+                <circle className="s b" cx="0" cy="0" r="20"/>
+                <ellipse className="s t muted" cx="0" cy="0" rx="20" ry="8"/>
+                <path className="s t muted" d="M-12 -16 A20 20 0 0 0 -12 16"/>
+                <path className="s t muted" d="M12 -16 A20 20 0 0 1 12 16"/>
+                <path className="s t muted" d="M-20 0 H20"/>
+              </g>
+
+              {/* route lines with arrows */}
+              <g id="route">
+                <path className="s m dot" d="M72 52 C 104 36, 140 36, 172 48 S 220 68, 240 56"/>
+                <path className="s t muted" d="M72 60 C 112 44, 150 54, 200 60"/>
+                {/* arrows */}
+                <path className="s m" d="M198 60 l10 -4 l-5 10"/>
+                <path className="s m" d="M168 48 l9 -3 l-4 9"/>
+              </g>
+
+              {/* mini container motif */}
+              <g id="mini-container" transform="translate(184,30)">
+                <rect className="s m" x="0" y="0" width="44" height="14" rx="2"/>
+                <path className="s t faint" d="M8 0 V14 M16 0 V14 M24 0 V14 M32 0 V14"/>
+              </g>
+            </svg>
           </div>
 
           {/* Right section - Navigation links in 3 columns */}
