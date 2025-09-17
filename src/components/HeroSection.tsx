@@ -17,15 +17,22 @@ export default function HeroSection() {
             <p className="text-base md:text-lg italic mb-8">
               That organizes shipment from one place to another nationwide.
             </p>
-            {/* Optional CTA buttons (placeholders) */}
+            {/* CTA buttons */}
             <div className="flex flex-wrap gap-4">
               <a
-                href="#services"
-                className="bg-white text-blue-900 font-semibold px-5 py-2 rounded shadow hover:bg-blue-50 transition text-sm md:text-base"
+                href="#contact"
+                className="bg-white text-blue-900 font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300 text-sm md:text-base"
               >
                 Contact Us
               </a>
-            
+              <a
+                href="https://calendly.com/smovers-logistics"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 text-sm md:text-base border-2 border-blue-600 hover:border-blue-700"
+              >
+                Book a Meeting
+              </a>
             </div>
           </div>
         </div>
