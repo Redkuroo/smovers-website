@@ -21,7 +21,9 @@ export default function Home() {
       
       <div id="contact"><ContactInfo /></div>
       <footer className="bg-white border-t mt-12">
-        <ContactSection />
+        <div id="contact-form">
+          <ContactSection />
+        </div>
         <div className="py-8 text-center text-gray-500 text-sm">
           &copy; {new Date().getFullYear()} SMOvers Logistics Services. All rights reserved.
         </div>
