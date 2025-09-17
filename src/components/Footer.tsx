@@ -9,11 +9,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: Large illustration (PNG) */}
           <div className="flex items-center justify-center lg:justify-start">
-            <div className="w-full max-w-3xl">
+            <div className="w-full max-w-3xl -mt-8 md:-mt-10 lg:-mt-16">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/global-transportation-system-abstract-concept-vector-illustration.png"
-                alt="Global transportation concept illustration"
+                src="/footer.png"
+                alt="Footer illustration"
                 className="w-full h-auto"
               />
             </div>
