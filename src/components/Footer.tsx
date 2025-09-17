@@ -115,16 +115,18 @@ export default function Footer() {
               </nav>
               <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
               
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">Instagram</a>
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">Facebook</a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">LinkedIn</a>
-              </nav>
-              <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
+                  <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
                  <a href="#inspiration" className="block hover:opacity-80">Blogs</a>
                 <a href="/faq" className="block hover:opacity-80">Team</a>
                 <a href="/help" className="block hover:opacity-80">Contact</a>
        
               </nav>
+              
+                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">Instagram</a>
+                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">Facebook</a>
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="block hover:opacity-80">LinkedIn</a>
+              </nav>
+          
             </div>
           </div>
         </div>
