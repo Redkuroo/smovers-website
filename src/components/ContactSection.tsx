@@ -1,8 +1,70 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export default function ContactSection() {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage(data.message || 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitMessage(data.error || 'Sorry, there was an error sending your message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      // Fallback: create mailto link
+      const subject = encodeURIComponent(`Contact Form Submission from ${formData.name}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+      const mailtoLink = `mailto:smoverslogistics@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = mailtoLink;
+      setSubmitMessage('Opening your email client to send the message...');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-6xl mx-auto">
@@ -42,10 +104,13 @@ export default function ContactSection() {
             </div>
 
             {/* Contact Form */}
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="relative">
                 <input 
                   type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   placeholder="Your Name*" 
                   className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent"
                   required 
@@ -55,12 +120,18 @@ export default function ContactSection() {
               
               <input 
                 type="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
                 placeholder="Your Email*" 
                 className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent"
                 required 
               />
               
               <textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
                 placeholder="Your Question*" 
                 className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent resize-none"
                 rows={4} 
@@ -69,10 +140,26 @@ export default function ContactSection() {
               
               <button 
                 type="submit" 
-                className="cursor-pointer w-full bg-blue-900 text-white rounded-lg px-6 py-4 font-bold text-lg hover:bg-blue-800 transition duration-300 shadow-lg"
+                disabled={isSubmitting}
+                className={`cursor-pointer w-full rounded-lg px-6 py-4 font-bold text-lg transition duration-300 shadow-lg ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-blue-900 hover:bg-blue-800'
+                } text-white`}
               >
-                Send Request
+                {isSubmitting ? 'Sending...' : 'Send Request'}
               </button>
+
+              {/* Success/Error Message */}
+              {submitMessage && (
+                <div className={`p-4 rounded-lg text-center ${
+                  submitMessage.includes('Thank you') 
+                    ? 'bg-green-50 text-green-700 border border-green-200' 
+                    : 'bg-red-50 text-red-700 border border-red-200'
+                }`}>
+                  {submitMessage}
+                </div>
+              )}
             </form>
 
             {/* Contact info */}
