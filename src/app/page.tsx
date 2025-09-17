@@ -8,6 +8,7 @@ import TeamSection from "../components/TeamSection";
 import ContactSection from "../components/ContactSection";
 import BankingDetails from "@/components/BankingDetails";
 import Footer from "@/components/Footer"; 
+import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <div id="banking"><BankingDetails /></div>
       <div id="blogs"><BlogsSection /></div>
       <div id="team"><TeamSection /></div>
+      <div id="faq"><FAQSection /></div>
       
       <div id="contact"><ContactInfo /></div>
       <div id="contact-form">
