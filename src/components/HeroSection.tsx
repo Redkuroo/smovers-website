@@ -1,7 +1,42 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Image from "next/image";
 
 export default function HeroSection() {
+  useEffect(() => {
+    // Load Cal.com embed script
+    const script = document.createElement('script');
+    script.src = 'https://app.cal.com/embed/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  const handleBookMeeting = () => {
+    // @ts-ignore - Cal.com embed API
+    if (typeof window !== 'undefined' && window.Cal) {
+      // @ts-ignore
+      window.Cal("ui", {
+        "styles": {"branding":{"brandColor":"#1e40af"}},
+        "hideEventTypeDetails": false,
+        "layout": "month_view"
+      });
+      // @ts-ignore
+      window.Cal("openModal", "smovers-logistics/30min"); // Replace with your Cal.com username/event
+    } else {
+      // Fallback: redirect to Cal.com page
+      window.open('https://cal.com/smovers-logistics/30min', '_blank');
+    }
+  };
+
   return (
     <section className="w-full">
       <div className="flex flex-col md:flex-row min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh]">
@@ -25,14 +60,12 @@ export default function HeroSection() {
               >
                 Contact Us
               </a>
-              <a
-                href="https://calendly.com/smovers-logistics"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 text-sm md:text-base border-2 border-blue-600 hover:border-blue-700"
+              <button
+                onClick={handleBookMeeting}
+                className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 text-sm md:text-base border-2 border-blue-600 hover:border-blue-700 cursor-pointer"
               >
                 Book a Meeting
-              </a>
+              </button>
             </div>
           </div>
         </div>
