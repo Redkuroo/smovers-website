@@ -21,15 +21,15 @@ export default function HeroSection() {
   }, []);
 
   const handleBookMeeting = () => {
-    // @ts-ignore - Cal.com embed API
+    // @ts-expect-error Cal.com embed API is injected at runtime
     if (typeof window !== 'undefined' && window.Cal) {
-      // @ts-ignore
+      // @ts-expect-error Cal.com UI API call
       window.Cal("ui", {
         "styles": {"branding":{"brandColor":"#1e40af"}},
         "hideEventTypeDetails": false,
         "layout": "month_view"
       });
-      // @ts-ignore
+      // @ts-expect-error Cal.com open modal API call
       window.Cal("openModal", "smovers-logistics/30min"); // Replace with your Cal.com username/event
     } else {
       // Fallback: redirect to Cal.com page

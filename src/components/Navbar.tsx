@@ -4,10 +4,12 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type MotionProps } from "framer-motion";
 
-// Create properly-typed aliases for motion components
-const MotionDiv = motion.div as any;
+// Safe alias: allow standard div props + MotionProps without using `any`
+type DivMotionProps = React.HTMLAttributes<HTMLDivElement> & MotionProps;
+// Cast through unknown to satisfy types without `any`
+const MotionDiv = motion.div as unknown as React.FC<DivMotionProps>;
 
 const navLinks = [
   { name: "Home", href: "#home" },
