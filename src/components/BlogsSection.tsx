@@ -98,7 +98,7 @@ export default function BlogsSection() {
                     href={blog.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block w-fit bg-blue-900 text-white rounded-md px-4 py-2 md:px-6 md:py-3 font-semibold text-sm md:text-base hover:bg-blue-800 transition duration-300 shadow-md"
+                    className="inline-block w-fit bg-blue-900 text-white round ed-md px-4 py-2 md:px-6 md:py-3 font-semibold text-sm md:text-base hover:bg-blue-800 transition duration-300 shadow-md"
                   >
                     View Post
                   </a>
