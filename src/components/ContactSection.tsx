@@ -32,6 +32,8 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setSubmitMessage('');
 
+    console.log('Submitting form with data:', formData);
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -45,7 +47,9 @@ export default function ContactSection() {
         }),
       });
 
+      console.log('Response status:', response.status);
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (response.ok) {
         setSubmitMessage(data.message || 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
@@ -55,12 +59,7 @@ export default function ContactSection() {
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      // Fallback: create mailto link
-      const subject = encodeURIComponent(`Contact Form Submission from ${formData.name}`);
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-      const mailtoLink = `mailto:smoverslogistics@gmail.com?subject=${subject}&body=${body}`;
-      window.location.href = mailtoLink;
-      setSubmitMessage('Opening your email client to send the message...');
+      setSubmitMessage('Sorry, there was an error sending your message. Please try again or contact us directly at smoverslogistics@gmail.com');
     } finally {
       setIsSubmitting(false);
     }
@@ -153,7 +152,7 @@ export default function ContactSection() {
               {/* Success/Error Message */}
               {submitMessage && (
                 <div className={`p-4 rounded-lg text-center ${
-                  submitMessage.includes('Thank you') 
+                  submitMessage.includes('Thank you') || submitMessage.includes('Message received successfully') 
                     ? 'bg-green-50 text-green-700 border border-green-200' 
                     : 'bg-red-50 text-red-700 border border-red-200'
                 }`}>
