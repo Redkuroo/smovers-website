@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
@@ -20,6 +20,30 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link => link.href.substring(1)); // Remove # from href
+      const scrollPosition = window.scrollY + 100; // Offset for better detection
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once to set initial state
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav className="bg-white shadow sticky top-0 z-50">
@@ -31,11 +55,30 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden md:flex gap-6">
-          {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="text-blue-900 hover:text-blue-600 font-medium transition">
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.substring(1);
+            return (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className={`font-medium transition relative ${
+                  isActive 
+                    ? "text-blue-600" 
+                    : "text-blue-900 hover:text-blue-600"
+                }`}
+              >
+                {link.name}
+                {isActive && (
+                  <MotionDiv
+                    layoutId="activeIndicator"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600"
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+              </a>
+            );
+          })}
         </div>
 
         {/* Mobile hamburger */}
@@ -86,29 +129,40 @@ export default function Navbar() {
 
                 {/* Navigation links */}
                 <nav className="flex-1 flex flex-col items-center justify-center space-y-8 px-6">
-                  {navLinks.map((link, index) => (
-                    <MotionDiv
-                      key={link.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.3 }}
-                      className="relative group"
-                    >
-                      <a
-                        href={link.href}
-                        onClick={() => setOpen(false)}
-                        className="text-white text-2xl font-medium hover:text-blue-300 transition-colors relative z-10"
-                      >
-                        {link.name}
-                      </a>
+                  {navLinks.map((link, index) => {
+                    const isActive = activeSection === link.href.substring(1);
+                    return (
                       <MotionDiv
-                        className="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100"
-                        initial={false}
-                        animate={{ scale: [0, 1.2, 1] }}
-                        transition={{ duration: 0.2 }}
-                      />
-                    </MotionDiv>
-                  ))}
+                        key={link.name}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1, duration: 0.3 }}
+                        className="relative group"
+                      >
+                        <a
+                          href={link.href}
+                          onClick={() => setOpen(false)}
+                          className={`text-2xl font-medium transition-colors relative z-10 ${
+                            isActive 
+                              ? "text-blue-400" 
+                              : "text-white hover:text-blue-300"
+                          }`}
+                        >
+                          {link.name}
+                        </a>
+                        <MotionDiv
+                          className={`absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full transition-opacity ${
+                            isActive 
+                              ? "bg-blue-400 opacity-100" 
+                              : "bg-blue-400 opacity-0 group-hover:opacity-100"
+                          }`}
+                          initial={false}
+                          animate={{ scale: isActive ? [0, 1.2, 1] : [0, 1.2, 1] }}
+                          transition={{ duration: 0.2 }}
+                        />
+                      </MotionDiv>
+                    );
+                  })}
 
                   {/* Contact section */}
                   <MotionDiv
