@@ -1,8 +1,7 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Footer() {
-  const [artSrc, setArtSrc] = useState<string>("/element.svg");
   return (
     <footer className="bg-blue-900 text-white">
       {/* Top hero-like row inside footer */}
@@ -13,10 +12,9 @@ export default function Footer() {
             <div className="w-full max-w-3xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={artSrc}
-                alt="Modern logistics emblem"
+                src="/global-transportation-system-abstract-concept-vector-illustration.png"
+                alt="Global transportation concept illustration"
                 className="w-full h-auto"
-                onError={() => setArtSrc("/illustrations/logistics-emblem.svg")}
               />
             </div>
           </div>
