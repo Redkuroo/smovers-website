@@ -7,7 +7,7 @@ export default function Footer() {
       {/* Top hero-like row inside footer */}
       <div className="max-w-7xl mx-auto px-6 pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left: Large illustration (EPS with SVG fallback) */}
+          {/* Left: Large illustration (PNG) */}
           <div className="flex items-center justify-center lg:justify-start">
             <div className="w-full max-w-3xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
