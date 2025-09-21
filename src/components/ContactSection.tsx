@@ -65,7 +65,7 @@ export default function ContactSection() {
     }
   };
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-16 bg-gray-50">
   <div className="site-container">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left: Image */}
