@@ -70,16 +70,16 @@ export default function ServicesSection() {
 							key={s.title}
 							className="group bg-white rounded-xl shadow hover:shadow-xl transition border border-gray-100 relative"
 						>
-							<div className="relative h-40 sm:h-44 rounded-t-xl">
-								<div className="absolute inset-0 rounded-t-xl overflow-hidden">
+							<div className="relative h-40 sm:h-44">
+								<div className="absolute inset-0 overflow-hidden no-global-radius">
 									<Image
 										src={s.image}
 										alt={s.alt}
 										fill
-										className="object-cover transition-transform duration-500 group-hover:scale-105"
+										className="object-cover transition-transform duration-500 group-hover:scale-105 rounded-none no-global-radius"
 										sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw"
 									/>
-									<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+									<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-none no-global-radius" />
 								</div>
 								{/* Modes pills (accessible & animated) */}
 								{s.modes && (
