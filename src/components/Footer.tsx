@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -108,16 +109,14 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="grid grid-cols-3 gap-8">
               <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
-                <a href="/#services" className="block hover:opacity-80">Services</a>
-                <a href="/#routes" className="block hover:opacity-80">Routes</a>
-                <a href="/#company" className="block hover:opacity-80">Company</a>
-               
+                <Link href="/#services" className="block hover:opacity-80">Services</Link>
+                <Link href="/#routes" className="block hover:opacity-80">Routes</Link>
+                <Link href="/#company" className="block hover:opacity-80">Company</Link>
               </nav>
-                  <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
-                 <a href="/#blogs" className="block hover:opacity-80">Blogs</a>
-                <a href="/#team" className="block hover:opacity-80">Team</a>
-                <a href="/#contact" className="block hover:opacity-80">Contact</a>
-       
+              <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
+                <Link href="/#blogs" className="block hover:opacity-80">Blogs</Link>
+                <Link href="/#team" className="block hover:opacity-80">Team</Link>
+                <Link href="/#contact" className="block hover:opacity-80">Contact</Link>
               </nav>
               <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
               
@@ -142,9 +141,9 @@ export default function Footer() {
 
             {/* Right - Policy links */}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-              <a href="/privacy" className="hover:opacity-80">Privacy Policy</a>
-              <a href="/terms" className="hover:opacity-80">Terms of Service</a>
-              <a href="/acceptable-use" className="hover:opacity-80">Acceptable Use</a>
+              <Link href="/privacy" className="hover:opacity-80">Privacy Policy</Link>
+              <Link href="/terms" className="hover:opacity-80">Terms of Service</Link>
+              <Link href="/acceptable-use" className="hover:opacity-80">Acceptable Use</Link>
             </div>
           </div>
         </div>

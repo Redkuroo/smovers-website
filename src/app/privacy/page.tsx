@@ -1,3 +1,4 @@
+import Link from "next/link";
 export const metadata = {
   title: "Privacy Policy | SMOvers",
   description:
@@ -87,7 +88,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-xl font-semibold text-blue-900 mb-3">Contact</h2>
             <p>
               📩 For privacy concerns, contact us at <span className="font-medium">{contactEmail}</span> or use our
-              <a href="/#contact" className="text-blue-700 underline ml-1">Contact</a> section.
+              <Link href="/#contact" className="text-blue-700 underline ml-1">Contact</Link> section.
             </p>
           </div>
         </div>
