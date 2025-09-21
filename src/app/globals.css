@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Global design tokens */
+  --radius: 12px; /* Change this to adjust global rounding */
 }
 
 @theme inline {
@@ -24,6 +26,44 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/*
+  Global border-radius consistency
+  - Applies a consistent radius across common interactive and card-like elements
+  - Preserves explicit no-rounding and circular avatars
+*/
+
+/* Forms & interactive elements */
+button,
+input,
+select,
+textarea,
+button[type],
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  border-radius: var(--radius);
+}
+
+/* Media */
+img,
+video {
+  border-radius: var(--radius);
+}
+
+/* Common containers/cards: elements with shadow or border utilities */
+[class*="shadow"],
+[class*="border"] {
+  border-radius: var(--radius);
+}
+
+/* Preserve explicit utilities */
+.rounded-none { border-radius: 0 !important; }
+.rounded-full, .rounded-full img { border-radius: 9999px !important; }
+
+/* Optional helpers to override globally, if needed */
+.no-global-radius { border-radius: 0 !important; }
+.with-global-radius { border-radius: var(--radius) !important; }
 
 /* Global container for consistent left/right margins */
 .site-container {
