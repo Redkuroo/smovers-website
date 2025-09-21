@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -41,15 +41,51 @@ export default function BlogsSection() {
     page * POSTS_PER_PAGE
   );
 
+  // Touch swipe pagination (mobile)
+  const touchStartX = useRef<number | null>(null);
+  const touchDeltaX = useRef<number>(0);
+  const SWIPE_THRESHOLD = 50; // pixels
+
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return;
+    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+  };
+
+  const onTouchEnd = () => {
+    if (touchStartX.current === null) return;
+    const delta = touchDeltaX.current;
+    touchStartX.current = null;
+    touchDeltaX.current = 0;
+    if (Math.abs(delta) < SWIPE_THRESHOLD) return;
+    if (delta < 0) {
+      // swipe left -> next page
+      setPage((prev) => Math.min(totalPages, prev + 1));
+    } else {
+      // swipe right -> prev page
+      setPage((prev) => Math.max(1, prev - 1));
+    }
+  };
+
   return (
     <section className="py-8 md:py-16 bg-white">
   <div className="site-container">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 text-blue-900">Latest Blogs</h2>
-  <div className="relative flex items-center justify-center">
+        <div
+          className="relative flex items-center justify-center"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          style={{ touchAction: 'pan-y' }}
+        >
           {/* Left Chevron */}
           <button
             onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-            className={`cursor-pointer absolute left-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`hidden md:flex cursor-pointer absolute left-0 z-10 w-8 h-8 md:w-10 md:h-10 items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === 1}
             aria-label="Previous post"
           >
@@ -110,7 +146,7 @@ export default function BlogsSection() {
           {/* Right Chevron */}
           <button
             onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
-            className={`cursor-pointer absolute right-0 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`hidden md:flex cursor-pointer absolute right-0 z-10 w-8 h-8 md:w-10 md:h-10 items-center justify-center rounded-full font-bold border-2 border-blue-900 bg-white text-blue-900 hover:bg-blue-100 transition top-1/2 -translate-y-1/2 shadow-lg ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={page === totalPages}
             aria-label="Next post"
           >
