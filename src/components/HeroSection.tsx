@@ -70,15 +70,15 @@ export default function HeroSection() {
           </div>
         </div>
         {/* Right: Image */}
-        <div className="md:w-1/2 relative h-64 md:h-auto">
+        <div className="md:w-1/2 relative h-64 md:h-auto no-global-radius">
           <Image
             src="/hero.jpg"
             alt="Cargo vessel and logistics background"
             fill
             priority
-            className="object-cover"
+            className="object-cover rounded-none"
           />
-          <div className="absolute inset-0 pointer-events-none bg-black/20 md:bg-black/10" />
+          <div className="absolute inset-0 pointer-events-none bg-black/20 md:bg-black/10 rounded-none no-global-radius" />
         </div>
       </div>
     </section>

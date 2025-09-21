@@ -46,9 +46,9 @@ export default function FAQSection() {
 
         {/* Single-column list aligned to brand styles */}
   <div className="mt-14 max-w-3xl mx-auto">
-          <div className="border-t border-blue-900/10">
+          <div className="border-t border-blue-900/10 no-global-radius">
             {faqs.map((item, idx) => (
-              <details key={idx} className="group border-b border-blue-900/10">
+              <details key={idx} className="group border-b border-blue-900/10 no-global-radius">
                 <summary className="list-none cursor-pointer py-5 flex items-center gap-4">
                   <span className="text-blue-800 hover:text-blue-700 text-lg font-semibold">
                     {item.question}

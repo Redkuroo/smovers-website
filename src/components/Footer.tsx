@@ -131,7 +131,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar with copyright and policy links */}
-      <div className="border-t border-white/20">
+  <div className="border-t border-white/20 no-global-radius">
   <div className="site-container py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Left - Copyright */}
