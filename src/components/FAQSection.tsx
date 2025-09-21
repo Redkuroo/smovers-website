@@ -36,10 +36,10 @@ export default function FAQSection() {
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Centered heading like the reference */}
         <header className="text-center max-w-3xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight text-blue-900">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-blue-900">
             Frequently asked questions
           </h2>
-          <p className="mt-3 text-blue-900/70 text-base md:text-lg">
+          <p className="mt-3 text-slate-600 text-base md:text-lg max-w-2xl mx-auto">
             Find answers to common questions about our logistics services and operations.
           </p>
         </header>
@@ -50,14 +50,14 @@ export default function FAQSection() {
             {faqs.map((item, idx) => (
               <details key={idx} className="group border-b border-blue-900/10">
                 <summary className="list-none cursor-pointer py-5 flex items-center gap-4">
-                  <span className="text-blue-600 hover:text-blue-700 font-medium">
+                  <span className="text-blue-800 hover:text-blue-700 text-lg font-semibold">
                     {item.question}
                   </span>
                   <div className="ml-auto text-blue-600 transition-transform group-open:rotate-180">
                     <ChevronDown size={18} />
                   </div>
                 </summary>
-                <div className="pb-6 -mt-1 text-blue-900/80 leading-relaxed pr-8">
+                <div className="pb-6 -mt-1 text-slate-600 leading-relaxed pr-8">
                   {item.answer}
                 </div>
               </details>
@@ -65,9 +65,9 @@ export default function FAQSection() {
           </div>
         </div>
 
-        <div className="mt-10 text-sm text-blue-900/70 text-center">
+        <div className="mt-10 text-sm text-slate-600 text-center">
           Still have questions? {" "}
-          <a href="#contact" className="text-blue-700 underline underline-offset-4 hover:text-blue-800">
+          <a href="#contact" className="text-blue-600 underline underline-offset-4 hover:text-blue-700">
             Contact us
           </a>{" "}
           and we’ll help you out.

@@ -108,15 +108,15 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="grid grid-cols-3 gap-8">
               <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
-                <a href="/company" className="block hover:opacity-80">Services</a>
-                <a href="#themes" className="block hover:opacity-80">Routes</a>
-                <a href="#ex-commerce" className="block hover:opacity-80">Company</a>
+                <a href="/#services" className="block hover:opacity-80">Services</a>
+                <a href="/#routes" className="block hover:opacity-80">Routes</a>
+                <a href="/#company" className="block hover:opacity-80">Company</a>
                
               </nav>
                   <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
-                 <a href="#inspiration" className="block hover:opacity-80">Blogs</a>
-                <a href="/faq" className="block hover:opacity-80">Team</a>
-                <a href="/help" className="block hover:opacity-80">Contact</a>
+                 <a href="/#blogs" className="block hover:opacity-80">Blogs</a>
+                <a href="/#team" className="block hover:opacity-80">Team</a>
+                <a href="/#contact" className="block hover:opacity-80">Contact</a>
        
               </nav>
               <nav className="space-y-3 text-sm font-semibold uppercase tracking-wide">
