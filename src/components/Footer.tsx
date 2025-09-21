@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-blue-900 text-white">
       {/* Top hero-like row inside footer */}
-      <div className="max-w-7xl mx-auto px-6 pt-16">
+  <div className="site-container pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: Large illustration (PNG) */}
           <div className="flex items-center justify-center lg:justify-start">
@@ -32,7 +32,7 @@ export default function Footer() {
       </div>
 
       {/* Links area below the hero row */}
-      <div className="max-w-7xl mx-auto px-6 pb-16 pt-12">
+  <div className="site-container pb-16 pt-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 items-start">
           {/* Left section - Logo and tagline */}
           <div className="lg:col-span-1">
@@ -133,7 +133,7 @@ export default function Footer() {
 
       {/* Bottom bar with copyright and policy links */}
       <div className="border-t border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-6">
+  <div className="site-container py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Left - Copyright */}
             <div className="text-white text-sm opacity-90">

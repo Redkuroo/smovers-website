@@ -33,9 +33,9 @@ const faqs: FAQ[] = [
 export default function FAQSection() {
   return (
     <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-6 py-20">
+  <div className="site-container py-20">
         {/* Centered heading like the reference */}
-        <header className="text-center max-w-3xl mx-auto">
+  <header className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-blue-900">
             Frequently asked questions
           </h2>
@@ -45,7 +45,7 @@ export default function FAQSection() {
         </header>
 
         {/* Single-column list aligned to brand styles */}
-        <div className="mt-14 max-w-3xl mx-auto">
+  <div className="mt-14 max-w-3xl mx-auto">
           <div className="border-t border-blue-900/10">
             {faqs.map((item, idx) => (
               <details key={idx} className="group border-b border-blue-900/10">

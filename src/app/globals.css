@@ -24,3 +24,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Global container for consistent left/right margins */
+.site-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-left: 1.5rem;   /* 24px on mobile */
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    padding-left: 1.5rem; /* keep 24px on sm */
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    padding-left: 2rem; /* ~32px on md+ */
+    padding-right: 2rem;
+  }
+}
+
+/* Utility for intentional full-bleed sections if needed */
+.site-container-full {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}

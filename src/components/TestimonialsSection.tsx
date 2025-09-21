@@ -13,8 +13,8 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-16 px-4 bg-gray-100">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-16 bg-gray-100">
+      <div className="site-container">
         <h2 className="text-3xl font-bold text-center mb-10 text-blue-900">What Our Clients Say</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((testimonial) => (

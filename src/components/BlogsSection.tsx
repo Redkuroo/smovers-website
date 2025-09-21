@@ -43,7 +43,7 @@ export default function BlogsSection() {
 
   return (
     <section className="py-8 px-4 md:py-16 md:px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
+  <div className="site-container">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 text-blue-900">Latest Blogs</h2>
         <div className="relative flex items-center justify-center px-12 md:px-16">
           {/* Left Chevron */}

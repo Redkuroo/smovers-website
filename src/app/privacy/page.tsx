@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
 
   return (
     <main className="bg-white">
-      <section className="max-w-5xl mx-auto px-6 py-16">
+  <section className="site-container py-16">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-blue-900 mb-2">
         Privacy Policy
         </h1>

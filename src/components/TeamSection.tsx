@@ -23,8 +23,8 @@ export default function TeamSection() {
   );
 
   return (
-    <section className="py-8 px-2 md:py-16 md:px-4 bg-blue-50">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-8 md:py-16 bg-blue-50">
+      <div className="site-container">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10 text-blue-900">Our Team</h2>
         <div className="relative flex items-center justify-center px-8 md:px-0">
           {/* Left Chevron */}

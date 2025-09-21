@@ -5,7 +5,7 @@ import { Eye, Rocket, Handshake, Ship, Building2 } from "lucide-react";
 export default function CompanyProfileSection() {
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="max-w-7xl mx-auto">
+  <div className="site-container">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Company Profile</h2>

@@ -66,7 +66,7 @@ export default function ContactSection() {
   };
   return (
     <section className="py-16 px-4 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
+  <div className="site-container">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left: Image */}
           <div className="relative w-full lg:w-1/2 max-w-md lg:max-w-none">

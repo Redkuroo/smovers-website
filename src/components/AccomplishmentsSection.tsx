@@ -2,7 +2,7 @@ import React from "react";
 export default function AccomplishmentsSection() {
   return (
     <section className="py-16 px-4 bg-blue-50">
-      <div className="max-w-5xl mx-auto">
+  <div className="site-container">
         <h2 className="text-3xl font-bold text-center mb-10 text-blue-900">Accomplishments & Updates</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white rounded-lg shadow p-6">

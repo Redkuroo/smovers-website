@@ -49,7 +49,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div className="site-container flex items-center justify-between py-3">
         <Link href="#home" className="flex items-center gap-2">
           <Image src="/logo.png" alt="SMOvers Logo" width={40} height={40} className="rounded-full" />
           <span className="font-bold text-xl text-blue-900">SMOvers</span>
