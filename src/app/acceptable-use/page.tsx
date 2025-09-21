@@ -16,71 +16,40 @@ export default function AcceptableUsePage() {
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-blue-900 mb-4">
           Acceptable Use Policy
         </h1>
-        <p className="text-sm text-gray-500 mb-10">Last updated: {lastUpdated}</p>
+        <p className="text-sm text-gray-500 mb-10">Last Updated: {lastUpdated}</p>
 
-        <div className="space-y-10 text-gray-800 leading-relaxed">
+        <div className="space-y-8 text-gray-800 leading-relaxed">
           <div>
-            <h2 className="text-xl font-semibold text-blue-900 mb-3">Purpose</h2>
             <p>
-              This Acceptable Use Policy ("AUP") describes prohibited and
-              restricted activities when using the SMOvers Logistics Services
-              ("SMOvers", "we", "our") website and services. By using our
-              website, you agree to comply with this AUP.
+              To keep our website safe and professional, users agree to:
             </p>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold text-blue-900 mb-3">Prohibited Activities</h2>
+            <h2 className="text-xl font-semibold text-green-700 mb-3">✅ Allowed</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Uploading or transmitting malware, viruses, or harmful code.</li>
-              <li>Attempting to gain unauthorized access to systems or data.</li>
-              <li>Interfering with or disrupting the integrity or performance of the website.</li>
-              <li>Engaging in fraud, phishing, or deceptive practices.</li>
-              <li>Violating intellectual property or privacy rights.</li>
-              <li>Posting or transmitting unlawful, defamatory, or abusive content.</li>
-              <li>Scraping or harvesting data without explicit permission.</li>
+              <li>
+                Use the site for legitimate purposes (learning about our company,
+                booking a meeting, contacting us).
+              </li>
+              <li>Share accurate and respectful information through our forms.</li>
             </ul>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold text-blue-900 mb-3">Security and Reporting</h2>
-            <p>
-              Do not test or bypass security measures. If you discover a
-              vulnerability, please report it responsibly using our <a href="/#contact" className="text-blue-700 underline">Contact</a> section instead of exploiting it.
-            </p>
+            <h2 className="text-xl font-semibold text-red-700 mb-3">❌ Not Allowed</h2>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Submitting false, misleading, or fraudulent information.</li>
+              <li>Attempting to hack, disrupt, or overload the website.</li>
+              <li>Using our site for spam, scams, or unlawful activity.</li>
+              <li>Uploading offensive, illegal, or harmful content.</li>
+            </ul>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold text-blue-900 mb-3">Fair Use and Rate Limits</h2>
             <p>
-              Automated access should be limited and respectful. Excessive
-              requests or actions that degrade performance are not allowed without
-              prior written permission.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-semibold text-blue-900 mb-3">Compliance with Laws</h2>
-            <p>
-              You must comply with all applicable laws and regulations when using
-              the website, including export controls and data protection laws.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-semibold text-blue-900 mb-3">Consequences of Violations</h2>
-            <p>
-              Violations of this AUP may result in warnings, suspension, or
-              termination of access, and may also result in legal action where
-              appropriate.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-semibold text-blue-900 mb-3">Changes to This AUP</h2>
-            <p>
-              We may update this AUP from time to time. The “Last updated” date
-              at the top reflects the most recent changes.
+              We reserve the right to block access, delete messages, or take legal
+              action against violations.
             </p>
           </div>
         </div>

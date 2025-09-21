@@ -5,6 +5,7 @@ export const metadata = {
 };
 
 export default function PrivacyPolicyPage() {
+  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "smoverslogistics@gmail.com";
   const lastUpdated = new Date().toLocaleDateString(undefined, {
     year: "numeric",
     month: "long",
@@ -85,8 +86,7 @@ export default function PrivacyPolicyPage() {
           <div>
             <h2 className="text-xl font-semibold text-blue-900 mb-3">Contact</h2>
             <p>
-              📩 For privacy concerns, contact us at <span className="font-medium">
-smoverslogistics@gmail.com</span> or use our
+              📩 For privacy concerns, contact us at <span className="font-medium">{contactEmail}</span> or use our
               <a href="/#contact" className="text-blue-700 underline ml-1">Contact</a> section.
             </p>
           </div>
