@@ -32,7 +32,7 @@ const faqs: FAQ[] = [
 
 export default function FAQSection() {
   return (
-    <section className="bg-white">
+    <section className="bg-blue-50">
   <div className="site-container py-20">
         {/* Centered heading like the reference */}
   <header className="text-center max-w-3xl mx-auto">

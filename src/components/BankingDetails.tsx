@@ -32,7 +32,7 @@ export default function BankingDetails() {
   ] as const;
 
   return (
-    <section className="w-full bg-gray-50">
+    <section className="w-full bg-blue-50">
   <div className="site-container py-10">
         <div className="mb-6 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-blue-900">
