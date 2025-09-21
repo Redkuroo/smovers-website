@@ -48,10 +48,10 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-white shadow sticky top-0 z-50">
+    <nav className="bg-white shadow sticky top-0 z-50 no-global-radius">
       <div className="site-container flex items-center justify-between py-3">
         <Link href="#home" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="SMOvers Logo" width={40} height={40} className="rounded-full" />
+          <Image src="/logo.png" alt="SMOvers Logo" width={40} height={40} className="rounded-none no-global-radius" />
           <span className="font-bold text-xl text-blue-900">SMOvers</span>
         </Link>
 
@@ -87,7 +87,7 @@ export default function Navbar() {
         <button
           aria-label={open ? "Close navigation" : "Open navigation"}
           onClick={() => setOpen((s) => !s)}
-          className="md:hidden p-2 rounded-md text-blue-900 hover:bg-blue-50"
+          className="md:hidden p-2 text-blue-900 hover:bg-blue-50 rounded-none no-global-radius"
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -112,18 +112,18 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="fixed inset-0 z-50 md:hidden flex flex-col"
+                className="fixed inset-0 z-50 md:hidden flex flex-col no-global-radius"
               >
                 {/* Header with close button */}
                 <div className="flex items-center justify-between px-6 py-4">
                   <Link href="#home" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-                    <Image src="/logo.png" alt="SMOvers Logo" width={36} height={36} className="rounded-full" />
+                    <Image src="/logo.png" alt="SMOvers Logo" width={36} height={36} className="rounded-none no-global-radius" />
                     <span className="font-bold text-lg text-white">SMOvers</span>
                   </Link>
                   <button 
                     aria-label="Close navigation" 
                     onClick={() => setOpen(false)} 
-                    className="p-2 text-white hover:bg-white/10 rounded-full transition-colors"
+                    className="p-2 text-white hover:bg-white/10 rounded-none no-global-radius transition-colors"
                   >
                     <X size={24} />
                   </button>
@@ -153,7 +153,7 @@ export default function Navbar() {
                           {link.name}
                         </a>
                         <MotionDiv
-                          className={`absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full transition-opacity ${
+                          className={`absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-none no-global-radius transition-opacity ${
                             isActive 
                               ? "bg-blue-400 opacity-100" 
                               : "bg-blue-400 opacity-0 group-hover:opacity-100"
@@ -176,7 +176,7 @@ export default function Navbar() {
                     <a 
                       href="#contact" 
                       onClick={() => setOpen(false)} 
-                      className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-colors"
+                      className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-none no-global-radius font-semibold transition-colors"
                     >
                       Get In Touch
                     </a>
@@ -188,7 +188,7 @@ export default function Navbar() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.3 }}
-                  className="px-6 py-6 text-center text-gray-400 text-sm border-t border-gray-800"
+                  className="px-6 py-6 text-center text-gray-400 text-sm border-t border-gray-800 no-global-radius"
                 >
                   <p>SMOvers Logistics Services</p>
                   <p className="mt-1">0917-772-3701</p>
