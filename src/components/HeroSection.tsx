@@ -52,7 +52,7 @@ export default function HeroSection() {
               </a>
               <button
                 onClick={handleBookMeeting}
-                className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 text-sm md:text-base border-2 border-blue-600 hover:border-blue-700 cursor-pointer"
+                className=" text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 text-sm md:text-base border-2 border-blue-600 hover:border-blue-700 cursor-pointer"
               >
                 Book a Meeting
               </button>
