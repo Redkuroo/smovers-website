@@ -76,6 +76,7 @@ export default function HeroSection() {
             alt="Cargo vessel and logistics background"
             fill
             priority
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover rounded-none"
           />
           <div className="absolute inset-0 pointer-events-none bg-black/20 md:bg-black/10 rounded-none no-global-radius" />

@@ -102,11 +102,10 @@ export default function BlogsSection() {
                 <div className="relative md:w-1/2 w-full h-48 md:h-64">
                   <Image
                     src={blog.image || "/blog-placeholder.jpg"}
-                    alt={blog.title}
+                    alt={`SMOvers blog post: ${blog.title}`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
                   />
                   <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-4 py-3 md:px-6 md:py-4">
                     <h3 className="text-sm md:text-lg font-bold text-white drop-shadow leading-tight mb-1">

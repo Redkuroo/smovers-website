@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -11,11 +12,13 @@ export default function Footer() {
           {/* Left: Large illustration (PNG) */}
           <div className="flex items-center justify-center lg:justify-start">
             <div className="w-full max-w-3xl -mt-8 md:-mt-10 lg:-mt-16">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/footer.png"
-                alt="Footer illustration"
+                alt="Illustration of logistics and global shipping"
+                width={1600}
+                height={800}
                 className="w-full h-auto"
+                priority={false}
               />
             </div>
           </div>
