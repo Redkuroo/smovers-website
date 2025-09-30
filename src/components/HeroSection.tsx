@@ -1,24 +1,10 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
+import Script from "next/script";
 
 export default function HeroSection() {
-  useEffect(() => {
-    // Load Cal.com embed script
-    const script = document.createElement('script');
-    script.src = 'https://app.cal.com/embed/embed.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      const existingScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
-    };
-  }, []);
 
   const handleBookMeeting = () => {
     // @ts-expect-error Cal.com embed API is injected at runtime
@@ -39,6 +25,10 @@ export default function HeroSection() {
 
   return (
     <section className="w-full">
+      <Script
+        src="https://app.cal.com/embed/embed.js"
+        strategy="lazyOnload"
+      />
       <div className="flex flex-col md:flex-row min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh]">
         {/* Left: Gradient + Text */}
         <div className="md:w-1/2 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white flex items-center px-6 sm:px-10 py-16 md:py-0">

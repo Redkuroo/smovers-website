@@ -1,7 +1,17 @@
-export const metadata = {
-  title: "Terms of Service | SMOvers",
+import type { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => ({
+  title: "Terms of Service",
   description: "Read the terms governing use of SMOvers' website and services.",
-};
+  alternates: { canonical: "/terms" },
+  openGraph: {
+    title: "Terms of Service | SMOvers",
+    url: "/terms",
+  },
+  twitter: {
+    title: "Terms of Service | SMOvers",
+  },
+});
 
 export default function TermsOfServicePage() {
   const lastUpdated = new Date().toLocaleDateString(undefined, {

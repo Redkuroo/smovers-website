@@ -1,9 +1,18 @@
 import Link from "next/link";
-export const metadata = {
-  title: "Privacy Policy | SMOvers",
-  description:
-    "How SMOvers handles your information: collection, use, sharing, and rights.",
-};
+import type { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => ({
+  title: "Privacy Policy",
+  description: "How SMOvers handles your information: collection, use, sharing, and rights.",
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    title: "Privacy Policy | SMOvers",
+    url: "/privacy",
+  },
+  twitter: {
+    title: "Privacy Policy | SMOvers",
+  },
+});
 
 export default function PrivacyPolicyPage() {
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "smoverslogistics@gmail.com";

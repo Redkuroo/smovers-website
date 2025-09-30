@@ -1,7 +1,17 @@
-export const metadata = {
-  title: "Acceptable Use Policy | SMOvers",
+import type { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => ({
+  title: "Acceptable Use Policy",
   description: "Rules for acceptable use of SMOvers' website and services.",
-};
+  alternates: { canonical: "/acceptable-use" },
+  openGraph: {
+    title: "Acceptable Use Policy | SMOvers",
+    url: "/acceptable-use",
+  },
+  twitter: {
+    title: "Acceptable Use Policy | SMOvers",
+  },
+});
 
 export default function AcceptableUsePage() {
   const lastUpdated = new Date().toLocaleDateString(undefined, {

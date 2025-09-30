@@ -60,9 +60,9 @@ export default function Navbar() {
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
-              <a 
-                key={link.name} 
-                href={link.href} 
+              <Link 
+                key={link.name}
+                href={link.href}
                 className={`font-medium transition relative ${
                   isActive 
                     ? "text-blue-600" 
@@ -78,7 +78,7 @@ export default function Navbar() {
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -141,7 +141,7 @@ export default function Navbar() {
                         transition={{ delay: index * 0.1, duration: 0.3 }}
                         className="relative group"
                       >
-                        <a
+                        <Link
                           href={link.href}
                           onClick={() => setOpen(false)}
                           className={`text-2xl font-medium transition-colors relative z-10 ${
@@ -151,7 +151,7 @@ export default function Navbar() {
                           }`}
                         >
                           {link.name}
-                        </a>
+                        </Link>
                         <MotionDiv
                           className={`absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-none no-global-radius transition-opacity ${
                             isActive 
