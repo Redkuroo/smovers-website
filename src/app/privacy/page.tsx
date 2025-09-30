@@ -16,11 +16,12 @@ export const generateMetadata = (): Metadata => ({
 
 export default function PrivacyPolicyPage() {
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "smoverslogistics@gmail.com";
-  const lastUpdated = new Date().toLocaleDateString(undefined, {
+  const lastUpdated = new Intl.DateTimeFormat("en-PH", {
     year: "numeric",
     month: "long",
     day: "numeric",
-  });
+    timeZone: "UTC",
+  }).format(new Date(Date.UTC(2025, 0, 1)));
 
   return (
     <main className="bg-white">

@@ -82,6 +82,10 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
+  // Prevent automatic translation by Google Translate extensions
+  other: {
+    google: "notranslate",
+  },
 };
 
 export default function RootLayout({
@@ -90,8 +94,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${headingFont.variable} ${bodyFont.variable} antialiased`}>
+    <html lang="en" translate="no">
+  <body className={`notranslate ${geistSans.variable} ${geistMono.variable} ${headingFont.variable} ${bodyFont.variable} antialiased`}>
         {/* JSON-LD: Organization */}
         <script
           type="application/ld+json"
