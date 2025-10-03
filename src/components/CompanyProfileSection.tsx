@@ -73,22 +73,27 @@ export default function CompanyProfileSection() {
           </div>
 
           <div className="relative -mx-4 sm:mx-0">
-            <div className="flex snap-x snap-mandatory items-center justify-center gap-3 overflow-x-auto px-4 pb-2 sm:overflow-visible sm:px-0">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-blue-50 to-transparent sm:hidden" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-blue-50 to-transparent sm:hidden" />
+            <div
+              className="no-scrollbar flex w-full snap-x snap-mandatory items-center justify-start gap-2 overflow-x-auto px-4 pb-4 sm:flex-wrap sm:justify-center sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none"
+              aria-label="Partner carriers"
+            >
               {[
                 "Trans-Asia Shipping Lines",
                 "Meridian Shipping & Container Carrier Inc.",
                 "Lorenzo Shipping Lines",
                 "Iris Paoay Shipping",
-             
+              
               ].map((partner) => (
                 <div
                   key={partner}
-                  className="flex min-w-[180px] snap-start items-center gap-3 rounded-full border border-slate-200 bg-white/90 px-5 py-3 shadow-sm transition hover:border-blue-200 hover:bg-white hover:shadow-md"
+                  className="flex min-w-[150px] snap-start items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-2.5 shadow-sm transition hover:border-blue-200 hover:bg-white hover:shadow-md sm:min-w-[180px] sm:px-5 sm:py-3"
                 >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-700">
-                    <Ship className="h-4 w-4" />
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-blue-700 sm:h-8 sm:w-8">
+                    <Ship className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   </span>
-                  <span className="text-sm font-semibold text-slate-700 whitespace-nowrap">
+                  <span className="text-xs font-semibold text-slate-700 whitespace-nowrap sm:text-sm">
                     {partner}
                   </span>
                 </div>
