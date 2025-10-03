@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 
 interface FormData {
@@ -66,39 +65,18 @@ export default function ContactSection() {
   };
   return (
     <section className="py-16 bg-gray-50">
-  <div className="site-container">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Left: Image */}
-          <div className="relative w-full lg:w-1/2 max-w-md lg:max-w-none">
-            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg">
-              <Image
-                src="/help.png"
-                alt="Contact us"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-              {/* Decorative elements */}
-              <div className="absolute top-6 right-6 w-12 h-12 bg-blue-900/20 rounded-full flex items-center justify-center">
-                <div className="w-6 h-6 bg-blue-900 rounded-sm rotate-45"></div>
-              </div>
-              <div className="absolute bottom-6 left-6 w-8 h-8 bg-blue-900/20 rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 bg-blue-900 rounded-sm rotate-45"></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Contact Form */}
-          <div className="w-full lg:w-1/2">
-            {/* Header with icons */}
-     
-
-            {/* Main heading */}
-            <div className="mb-8">
-              <p className="text-gray-600 mb-2">We’re here to support your logistics needs.</p>
-              <h2 className="text-4xl lg:text-5xl font-bold text-blue-900 leading-tight">
-               Need Assistance or a Quote?
+      <div className="site-container">
+        <div className="mx-auto max-w-3xl">
+          <div className="rounded-3xl border border-blue-900/10 bg-white p-6 shadow-xl sm:p-10">
+            <div className="mb-8 text-center">
+              <p className="mb-2 text-sm font-medium uppercase tracking-[0.32em] text-blue-800/70">
+                Contact Us
+              </p>
+              <p className="text-gray-600">
+                We’re here to support your logistics needs.
+              </p>
+              <h2 className="mt-3 text-3xl font-bold leading-tight text-blue-900 sm:text-4xl lg:text-5xl">
+                Need Assistance or a Quote?
               </h2>
             </div>
 
@@ -160,16 +138,14 @@ export default function ContactSection() {
                 </div>
               )}
             </form>
-
-            {/* Contact info */}
-            <div className="mt-8 text-center text-gray-600 space-y-2">
-              <div className="flex items-center justify-center gap-2">
-                <Phone className="w-4 h-4 text-blue-900" />
-                Call us: <a href="tel:0917-772-3701" className="text-blue-900 font-medium hover:underline">0917-772-3701</a>
+            <div className="mt-8 space-y-3 text-center text-gray-600">
+              <div className="flex items-center justify-center gap-2 text-sm sm:text-base">
+                <Phone className="h-4 w-4 text-blue-900" />
+                Call us: <a href="tel:0917-772-3701" className="font-medium text-blue-900 hover:underline">0917-772-3701</a>
               </div>
-              <div className="flex items-center justify-center gap-2">
-                <Mail className="w-4 h-4 text-blue-900" />
-                Email: <a href="mailto:smoverslogistics@gmail.com" className="text-blue-900 font-medium hover:underline" > smoverslogistics@gmail.com</a>
+              <div className="flex items-center justify-center gap-2 text-sm sm:text-base">
+                <Mail className="h-4 w-4 text-blue-900" />
+                Email: <a href="mailto:smoverslogistics@gmail.com" className="font-medium text-blue-900 hover:underline">smoverslogistics@gmail.com</a>
               </div>
             </div>
           </div>
