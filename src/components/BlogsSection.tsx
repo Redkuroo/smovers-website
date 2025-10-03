@@ -74,21 +74,23 @@ export default function BlogsSection() {
                 className="flex flex-col md:flex-row bg-white rounded-2xl shadow-xl overflow-hidden w-full"
               >
                 {/* Left: Image with overlay */}
-                <div className="relative md:w-1/2 w-full h-48 md:h-64">
-                  <Image
-                    src={blog.image || "/blog-placeholder.jpg"}
-                    alt={`SMOvers blog post: ${blog.title}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-4 py-3 md:px-6 md:py-4">
-                    <h3 className="text-sm md:text-lg font-bold text-white drop-shadow leading-tight mb-1">
-                      {blog.title}
-                    </h3>
-                    <span className="text-xs md:text-sm text-yellow-200 font-medium">
-                      {formatDisplayDate(blog.date)}
-                    </span>
+                <div className="relative w-full overflow-hidden md:w-1/2">
+                  <div className="relative aspect-[16/10] md:aspect-auto md:h-full md:min-h-[16rem]">
+                    <Image
+                      src={blog.image || "/blog-placeholder.jpg"}
+                      alt={`SMOvers blog post: ${blog.title}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-4 py-3 md:px-6 md:py-4">
+                      <h3 className="text-sm md:text-lg font-bold text-white drop-shadow leading-tight mb-1">
+                        {blog.title}
+                      </h3>
+                      <span className="text-xs md:text-sm text-yellow-200 font-medium">
+                        {formatDisplayDate(blog.date)}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 
@@ -104,7 +106,7 @@ export default function BlogsSection() {
                     href={blog.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block w-fit bg-blue-900 text-white round ed-md px-4 py-2 md:px-6 md:py-3 font-semibold text-sm md:text-base hover:bg-blue-800 transition duration-300 shadow-md"
+                    className="inline-block w-fit bg-blue-900 text-white rounded-md px-4 py-2 md:px-6 md:py-3 font-semibold text-sm md:text-base hover:bg-blue-800 transition duration-300 shadow-md"
                   >
                     View Post
                   </a>
