@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, type MotionProps } from "framer-motion";
 
+
 // Safe alias: allow standard div props + MotionProps without using `any`
 type DivMotionProps = React.HTMLAttributes<HTMLDivElement> & MotionProps;
 // Cast through unknown to satisfy types without `any`
@@ -201,3 +202,6 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
+
