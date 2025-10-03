@@ -11,21 +11,23 @@ export default function CompanyProfileSection() {
           <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Company Profile</h2>
           
         </div>
-
+ {/* Company Profile Graphic */}
+        <div className="mb-16">
+          <div className="relative h-72 w-full overflow-hidden rounded-3xl shadow-2xl sm:h-96 lg:h-[620px]">
+            <Image
+              src="/company%20profile.png"
+              alt="Illustration introducing the SMOvers company profile"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
         {/* Hero Section with Company Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <div className="space-y-8">
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-white/50">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-blue-100 rounded-xl">
-                  <Building2 className="h-6 w-6 text-blue-600" />
-                </div>
-                <h3 className="text-lg font-semibold text-blue-800 leading-snug">History</h3>
-              </div>
-              <p className="text-slate-600 leading-relaxed">
-                SMOvers Logistics Services is a sole proprietorship owned by Engr. John Gilbert Olmoguez. The company officially began operations on February 1, 2021, and is currently managed by his wife, Lydie Rocero Olmoguez.
-              </p>
-            </div>
+       
 
             <div className="bg-white rounded-3xl p-8 shadow-lg border border-white/50">
               <div className="flex items-center gap-3 mb-4">
@@ -47,19 +49,16 @@ export default function CompanyProfileSection() {
 
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl bg-white">
-              {/* Image placeholder */}
               <div className="relative h-80 bg-slate-100 flex items-center justify-center">
                 <div className="w-full h-full relative">
                   <Image src="/cargo.jpg" alt="Cargo containers at a Philippine port" fill className="object-cover" />
                 </div>
-
-                {/* overlay removed per request; image only */}
               </div>
-
-              {/* image-only: CTAs removed per request */}
             </div>
           </div>
         </div>
+
+       
 
         {/* Partner Carriers Section */}
         <div className="mb-20">
