@@ -84,7 +84,7 @@ export default function HeroSection() {
             {/* CTA buttons */}
             <div className="flex flex-wrap gap-4">
               <a
-                href="#contact-form"
+                href="#contact"
                 className="bg-white text-blue-900 font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300 text-sm md:text-base"
               >
                 Contact Us

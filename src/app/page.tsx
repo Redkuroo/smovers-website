@@ -2,7 +2,6 @@ import HeroSection from "../components/HeroSection";
 import ServicesSection from "../components/ServicesSection";
 import RoutesSection from "../components/RoutesSection";
 import CompanyProfileSection from "../components/CompanyProfileSection";
-import ContactInfo from "@/components/ContactInfo";
 import dynamic from "next/dynamic";
 const BlogsSection = dynamic(() => import("../components/BlogsSection"), { ssr: true });
 const TeamSection = dynamic(() => import("../components/TeamSection"), { ssr: true });
@@ -22,9 +21,8 @@ export default function Home() {
       <div id="blogs"><BlogsSection /></div>
       <div id="team"><TeamSection /></div>
       <div id="faq"><FAQSection /></div>
-      
-      <div id="contact"><ContactInfo /></div>
-      <div id="contact-form">
+
+      <div id="contact">
         <ContactSection />
       </div>
       <Footer />
