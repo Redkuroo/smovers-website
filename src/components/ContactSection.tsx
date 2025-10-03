@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 interface FormData {
   name: string;
@@ -63,24 +63,86 @@ export default function ContactSection() {
       setIsSubmitting(false);
     }
   };
+  const mapSrc =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.2643496271535!2d125.64249637478846!3d7.210655014797296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f941e760cdcd3d%3A0xab73afe1517a6c07!2sSMovers%20Logistics%20Services!5e0!3m2!1sfil!2sph!4v1755056144799!5m2!1sfil!2sph";
+
+  const companyDetails = [
+    { label: "Company", value: "SMOvers Logistics Services" },
+    { label: "Address", value: "Km 10, Purok 6, Buhisan, Tibungco, Davao City" },
+    { label: "Business Type", value: "Sole Proprietorship" },
+    { label: "Registration No.", value: "2476151" },
+    { label: "TIN", value: "724-936-326-000" },
+  ];
+
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="bg-gray-50 py-16">
       <div className="site-container">
-        <div className="mx-auto max-w-3xl">
-          <div className="rounded-3xl border border-blue-900/10 bg-white p-6 shadow-xl sm:p-10">
-            <div className="mb-8 text-center">
-              <p className="mb-2 text-sm font-medium uppercase tracking-[0.32em] text-blue-800/70">
-                Contact Us
-              </p>
-              <p className="text-gray-600">
-                We’re here to support your logistics needs.
-              </p>
-              <h2 className="mt-3 text-3xl font-bold leading-tight text-blue-900 sm:text-4xl lg:text-5xl">
-                Need Assistance or a Quote?
-              </h2>
+        <div className="mb-10 text-center">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.28em] text-blue-800/70">
+            Contact Us
+          </p>
+          <h2 className="text-3xl font-bold text-blue-900 sm:text-4xl lg:text-5xl">
+            Let’s Plan Your Shipment
+          </h2>
+          <p className="mt-3 text-gray-600">
+            Share your requirements and we’ll coordinate the next steps right away.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] xl:gap-10">
+          {/* Left column: Map + Details */}
+          <div className="space-y-6">
+            <div className="overflow-hidden rounded-3xl border border-blue-900/10 bg-white shadow-lg">
+              <iframe
+                title="SMOvers Logistics Services Location"
+                src={mapSrc}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-72 w-full border-0 sm:h-80 lg:h-[420px]"
+                allowFullScreen
+              />
             </div>
 
-            {/* Contact Form */}
+            <div className="rounded-3xl border border-blue-900/10 bg-white p-6 shadow-lg sm:p-8">
+              <div className="mb-6 flex items-center gap-3 text-left">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-900/10 text-blue-900">
+                  <MapPin className="h-6 w-6" />
+                </span>
+                <div>
+                  <h3 className="text-xl font-semibold text-blue-900">Visit or Contact Us</h3>
+                  <p className="text-sm text-gray-600">All the essentials for booking and coordination.</p>
+                </div>
+              </div>
+
+              <dl className="space-y-4">
+                {companyDetails.map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-blue-900/10 bg-blue-50/30 px-4 py-3">
+                    <dt className="text-xs font-semibold uppercase tracking-[0.26em] text-blue-900/70">
+                      {item.label}
+                    </dt>
+                    <dd className="mt-1 text-sm font-medium text-slate-800 sm:text-base">
+                      {item.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+
+          {/* Right column: Form */}
+          <div className="rounded-3xl border border-blue-900/10 bg-white p-6 shadow-xl sm:p-8 lg:sticky lg:top-24 lg:self-start">
+            <div className="mb-6 text-left">
+              <p className="text-sm font-medium uppercase tracking-[0.28em] text-blue-800/70">
+                Message Us
+              </p>
+              <h3 className="mt-2 text-2xl font-bold text-blue-900 sm:text-3xl">
+                Need Assistance or a Quote?
+              </h3>
+              <p className="mt-3 text-sm text-gray-600">
+                Fill out the form and our team will respond within one business day.
+              </p>
+            </div>
+
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="relative">
                 <input 
@@ -138,14 +200,30 @@ export default function ContactSection() {
                 </div>
               )}
             </form>
-            <div className="mt-8 space-y-3 text-center text-gray-600">
-              <div className="flex items-center justify-center gap-2 text-sm sm:text-base">
-                <Phone className="h-4 w-4 text-blue-900" />
-                Call us: <a href="tel:0917-772-3701" className="font-medium text-blue-900 hover:underline">0917-772-3701</a>
+            <div className="mt-8 space-y-4 text-left text-gray-600">
+              <div className="flex items-center gap-3 text-sm sm:text-base">
+                <Phone className="h-5 w-5 text-blue-900" />
+                <span>
+                  Call us:{" "}
+                  <a
+                    href="tel:0917-772-3701"
+                    className="font-medium text-blue-900 hover:underline"
+                  >
+                    0917-772-3701
+                  </a>
+                </span>
               </div>
-              <div className="flex items-center justify-center gap-2 text-sm sm:text-base">
-                <Mail className="h-4 w-4 text-blue-900" />
-                Email: <a href="mailto:smoverslogistics@gmail.com" className="font-medium text-blue-900 hover:underline">smoverslogistics@gmail.com</a>
+              <div className="flex items-center gap-3 text-sm sm:text-base">
+                <Mail className="h-5 w-5 text-blue-900" />
+                <span>
+                  Email:{" "}
+                  <a
+                    href="mailto:smoverslogistics@gmail.com"
+                    className="font-medium text-blue-900 hover:underline"
+                  >
+                    smoverslogistics@gmail.com
+                  </a>
+                </span>
               </div>
             </div>
           </div>
