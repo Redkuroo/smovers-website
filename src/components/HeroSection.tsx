@@ -1,51 +1,10 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Script from "next/script";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-import { HERO_HIGHLIGHTS } from "@/constants/heroHighlights";
-
-const VISIBLE_CARDS = 4;
-
-const wrapIndex = (index: number, length: number) => {
-  return (index % length + length) % length;
-};
 
 export default function HeroSection() {
-
-  const [startIndex, setStartIndex] = useState(0);
-  const totalHighlights = HERO_HIGHLIGHTS.length;
-
-  const canNavigate = totalHighlights > VISIBLE_CARDS;
-
-  const handlePrev = () => {
-    if (!canNavigate) return;
-    setStartIndex((prev) => wrapIndex(prev - 1, totalHighlights));
-  };
-
-  const handleNext = () => {
-    if (!canNavigate) return;
-    setStartIndex((prev) => wrapIndex(prev + 1, totalHighlights));
-  };
-
-  const visibleHighlights = useMemo(() => {
-    if (totalHighlights <= VISIBLE_CARDS) {
-      return HERO_HIGHLIGHTS;
-    }
-
-    return Array.from({ length: VISIBLE_CARDS }, (_, offset) => {
-      const index = wrapIndex(startIndex + offset, totalHighlights);
-      return HERO_HIGHLIGHTS[index];
-    });
-  }, [startIndex, totalHighlights]);
-
-  const primaryCardIndex = useMemo(() => {
-    if (visibleHighlights.length === 0) return -1;
-    if (visibleHighlights.length === 1) return 0;
-    return Math.min(1, visibleHighlights.length - 1);
-  }, [visibleHighlights.length]);
 
   const handleBookMeeting = () => {
     // @ts-expect-error Cal.com embed API is injected at runtime
@@ -111,57 +70,6 @@ export default function HeroSection() {
             className="object-cover rounded-none"
           />
           <div className="absolute inset-0 pointer-events-none bg-black/20 md:bg-black/10 rounded-none no-global-radius" />
-          <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 lg:p-8 pointer-events-none">
-            <div className="pointer-events-auto flex items-center justify-end gap-2 mb-4">
-              <button
-                type="button"
-                onClick={handlePrev}
-                disabled={!canNavigate}
-                className="rounded-full bg-white/80 p-2 text-blue-900 shadow-md transition hover:bg-white disabled:cursor-not-allowed disabled:text-blue-300 disabled:opacity-70"
-                aria-label="Show previous highlight"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                disabled={!canNavigate}
-                className="rounded-full bg-white/80 p-2 text-blue-900 shadow-md transition hover:bg-white disabled:cursor-not-allowed disabled:text-blue-300 disabled:opacity-70"
-                aria-label="Show next highlight"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-            </div>
-            <div className="pointer-events-auto">
-              <div className="relative w-full overflow-hidden">
-                <div className="flex w-max gap-3 sm:gap-4 justify-end translate-x-8 sm:translate-x-12 lg:translate-x-16">
-                  {visibleHighlights.map((highlight, index) => {
-                    const isPrimary = index === primaryCardIndex;
-                    return (
-                      <article
-                        key={highlight.title}
-                        className={`relative w-32 sm:w-36 lg:w-40 flex-shrink-0 overflow-hidden rounded-2xl shadow-lg transition ${
-                          isPrimary
-                            ? "scale-105 ring-2 ring-white"
-                            : "opacity-80 ring-1 ring-white/40"
-                        }`}
-                      >
-                        <div className="relative h-24 w-full sm:h-28">
-                          <Image
-                            src={highlight.image}
-                            alt={highlight.alt}
-                            fill
-                            className="object-cover"
-                            sizes="160px"
-                          />
-                        </div>
-                      </article>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

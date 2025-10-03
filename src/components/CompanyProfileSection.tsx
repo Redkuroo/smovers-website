@@ -63,8 +63,8 @@ export default function CompanyProfileSection() {
 
         {/* Partner Carriers Section */}
         <div className="mb-20">
-          <div className="flex flex-col items-start gap-4 mb-8">
-            <span className="inline-flex items-center rounded-full bg-slate-900 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-white">
+          <div className="flex flex-col items-center gap-4 mb-8 text-center">
+            <span className="inline-flex items-center rounded-full bg-slate-900 px-3 py-0.5 text-[0.625rem] font-semibold uppercase tracking-[0.28em] text-white sm:px-4 sm:py-1 sm:text-xs">
               Partner Carriers
             </span>
             <p className="text-slate-600 max-w-2xl">
@@ -73,7 +73,7 @@ export default function CompanyProfileSection() {
           </div>
 
           <div className="relative -mx-4 sm:mx-0">
-            <div className="flex snap-x snap-mandatory items-center gap-3 overflow-x-auto px-4 pb-2 sm:overflow-visible sm:px-0">
+            <div className="flex snap-x snap-mandatory items-center justify-center gap-3 overflow-x-auto px-4 pb-2 sm:overflow-visible sm:px-0">
               {[
                 "Trans-Asia Shipping Lines",
                 "Meridian Shipping & Container Carrier Inc.",
