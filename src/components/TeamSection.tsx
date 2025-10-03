@@ -1,11 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { Linkedin, Instagram, Twitter } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 
 const socialIconMap = {
   linkedin: Linkedin,
   instagram: Instagram,
-  twitter: Twitter,
 } as const;
 
 type SocialPlatform = keyof typeof socialIconMap;
@@ -55,17 +54,9 @@ const team: TeamMember[] = [
   },
 ];
 
-const gradients = [
-  "from-blue-900 via-blue-700 to-emerald-700",
-  "from-amber-500 via-rose-500 to-violet-600",
-  "from-slate-900 via-slate-800 to-blue-700",
-  "from-emerald-700 via-teal-600 to-blue-800",
-];
-
 const defaultSocials: SocialLink[] = [
   { platform: "linkedin", href: "#" },
   { platform: "instagram", href: "#" },
-  { platform: "twitter", href: "#" },
 ];
 
 export default function TeamSection() {
@@ -77,13 +68,11 @@ export default function TeamSection() {
         </h2>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-8">
-          {team.map((member, index) => {
-            const gradient = gradients[index % gradients.length];
-
+          {team.map((member) => {
             return (
               <article
                 key={member.name}
-                className="group relative flex h-80 flex-col justify-end overflow-hidden rounded-[26px] border border-white/10 bg-slate-900 text-white shadow-xl transition duration-500 hover:-translate-y-1 hover:shadow-2xl sm:h-96"
+                className="group relative flex h-80 flex-col justify-end overflow-hidden rounded-[26px] border border-slate-900/20 bg-slate-900 text-white shadow-xl transition duration-500 hover:-translate-y-1 hover:shadow-2xl sm:h-96"
               >
                 <div className="absolute inset-0">
                   <Image
@@ -91,13 +80,10 @@ export default function TeamSection() {
                     alt={member.name}
                     fill
                     sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 25vw"
-                    className="object-cover opacity-80 mix-blend-luminosity transition duration-500 group-hover:scale-105"
+                    className="object-cover opacity-90 transition duration-500 group-hover:scale-105"
                   />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-95 transition duration-500 group-hover:opacity-90`}
-                  />
-                  <div className="absolute -inset-6 rounded-[36px] border border-white/10 opacity-40" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.2),_transparent_60%)]" />
+                  <div className="absolute -inset-6 rounded-[36px] border border-white/10 opacity-20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
                 </div>
 
                 <div className="relative flex flex-col gap-4 p-6 sm:p-8">
@@ -105,7 +91,7 @@ export default function TeamSection() {
                     <h3 className="text-xl font-semibold leading-tight sm:text-2xl">
                       {member.name}
                     </h3>
-                    <p className="text-sm font-medium uppercase tracking-[0.32em] text-white/70 sm:text-xs">
+                    <p className="text-sm font-medium uppercase tracking-[0.32em] text-white/80 sm:text-xs">
                       {member.role}
                     </p>
                   </div>
