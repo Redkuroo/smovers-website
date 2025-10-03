@@ -80,21 +80,22 @@ export default function CompanyProfileSection() {
               aria-label="Partner carriers"
             >
               {[
-                "Trans-Asia Shipping Lines",
-                "Meridian Shipping & Container Carrier Inc.",
-                "Lorenzo Shipping Lines",
-                "Iris Paoay Shipping",
-              
+                { label: "Trans-Asia Shipping Lines", shortLabel: "Trans-Asia" },
+                { label: "Meridian Shipping & Container Carrier Inc.", shortLabel: "Meridian Shipping" },
+                { label: "Lorenzo Shipping Lines", shortLabel: "Lorenzo Shipping" },
+                { label: "Iris Paoay Shipping", shortLabel: "Iris Paoay" },
+            
               ].map((partner) => (
                 <div
-                  key={partner}
+                  key={partner.label}
                   className="flex min-w-[150px] snap-start items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-2.5 shadow-sm transition hover:border-blue-200 hover:bg-white hover:shadow-md sm:min-w-[180px] sm:px-5 sm:py-3"
                 >
                   <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-blue-700 sm:h-8 sm:w-8">
                     <Ship className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   </span>
-                  <span className="text-xs font-semibold text-slate-700 whitespace-nowrap sm:text-sm">
-                    {partner}
+                  <span className="text-xs font-semibold text-slate-700 truncate sm:text-sm sm:whitespace-nowrap">
+                    <span className="sm:hidden">{partner.shortLabel}</span>
+                    <span className="hidden sm:inline">{partner.label}</span>
                   </span>
                 </div>
               ))}
