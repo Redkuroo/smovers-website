@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Eye, Rocket, Handshake, Ship, Building2 } from "lucide-react";
+import { Eye, Rocket, Handshake, Ship } from "lucide-react";
 
 export default function CompanyProfileSection() {
   return (
