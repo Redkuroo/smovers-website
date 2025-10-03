@@ -63,30 +63,37 @@ export default function CompanyProfileSection() {
 
         {/* Partner Carriers Section */}
         <div className="mb-20">
-          <div className="text-center mb-12">
-
-            <h3 className="text-2xl font-bold  text-blue-800 mb-4">Our Partner Carriers</h3>
-            <p className="text-slate-600 max-w-2xl mx-auto">We proudly work with the following trusted carrier partners:</p>
+          <div className="flex flex-col items-start gap-4 mb-8">
+            <span className="inline-flex items-center rounded-full bg-slate-900 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-white">
+              Partner Carriers
+            </span>
+            <p className="text-slate-600 max-w-2xl">
+              We partner with trusted domestic carriers to ensure seamless nationwide freight coverage.
+            </p>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              "Trans-Asia Shipping Lines",
-              "Meridian Shipping and Container Carrier Inc.",
-              "Lorenzo Shipping Lines",
-              "Iris Paoay Shipping"
-            ].map((partner, index) => (
-              <div key={index} className="group">
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="p-3 bg-slate-100 rounded-xl group-hover:bg-blue-100 transition-colors">
-                      <Ship className="h-8 w-8 text-slate-600 group-hover:text-blue-600 transition-colors" />
-                    </div>
-                  </div>
-                  <h4 className="text-center font-semibold text-slate-800 text-sm leading-tight">{partner}</h4>
+
+          <div className="relative -mx-4 sm:mx-0">
+            <div className="flex snap-x snap-mandatory items-center gap-3 overflow-x-auto px-4 pb-2 sm:overflow-visible sm:px-0">
+              {[
+                "Trans-Asia Shipping Lines",
+                "Meridian Shipping & Container Carrier Inc.",
+                "Lorenzo Shipping Lines",
+                "Iris Paoay Shipping",
+             
+              ].map((partner) => (
+                <div
+                  key={partner}
+                  className="flex min-w-[180px] snap-start items-center gap-3 rounded-full border border-slate-200 bg-white/90 px-5 py-3 shadow-sm transition hover:border-blue-200 hover:bg-white hover:shadow-md"
+                >
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-700">
+                    <Ship className="h-4 w-4" />
+                  </span>
+                  <span className="text-sm font-semibold text-slate-700 whitespace-nowrap">
+                    {partner}
+                  </span>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
