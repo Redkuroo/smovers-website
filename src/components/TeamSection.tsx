@@ -1,24 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { Linkedin, Instagram } from "lucide-react";
-
-const socialIconMap = {
-  linkedin: Linkedin,
-  instagram: Instagram,
-} as const;
-
-type SocialPlatform = keyof typeof socialIconMap;
-
-type SocialLink = {
-  platform: SocialPlatform;
-  href: string;
-};
 
 type TeamMember = {
   name: string;
   role: string;
   image: string;
-  socials?: SocialLink[];
 };
 
 const team: TeamMember[] = [
@@ -52,11 +38,6 @@ const team: TeamMember[] = [
     role: "Human Resource Relation TL",
     image: "/team3.jpg",
   },
-];
-
-const defaultSocials: SocialLink[] = [
-  { platform: "linkedin", href: "#" },
-  { platform: "instagram", href: "#" },
 ];
 
 export default function TeamSection() {
@@ -94,26 +75,6 @@ export default function TeamSection() {
                     <p className="text-sm font-medium uppercase tracking-[0.32em] text-white/80 sm:text-xs">
                       {member.role}
                     </p>
-                  </div>
-
-                  <div className="mt-2 flex items-center gap-3">
-                    {(member.socials ?? defaultSocials).map(({ platform, href }) => {
-                      const Icon = socialIconMap[platform];
-                      if (!Icon) return null;
-
-                      return (
-                        <a
-                          key={platform}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition duration-300 hover:bg-white hover:text-slate-900"
-                          aria-label={`${member.name}'s ${platform} profile`}
-                        >
-                          <Icon className="h-4 w-4" />
-                        </a>
-                      );
-                    })}
                   </div>
                 </div>
               </article>
