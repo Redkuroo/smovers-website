@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 const BlogsSection = dynamic(() => import("../components/BlogsSection"), { ssr: true });
 const TeamSection = dynamic(() => import("../components/TeamSection"), { ssr: true });
 import ContactSection from "../components/ContactSection";
-import BankingDetails from "@/components/BankingDetails";
 import Footer from "@/components/Footer"; 
 import FAQSection from "@/components/FAQSection";
 
@@ -17,7 +16,7 @@ export default function Home() {
       <div id="services"><ServicesSection /></div>
       <div id="routes"><RoutesSection /></div>
       <div id="company"><CompanyProfileSection /></div>
-      <div id="banking"><BankingDetails /></div>
+
       <div id="blogs"><BlogsSection /></div>
       <div id="team"><TeamSection /></div>
       <div id="faq"><FAQSection /></div>

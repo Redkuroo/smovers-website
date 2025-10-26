@@ -29,7 +29,7 @@ export const SERVICES: Service[] = [
     title: "Breakbulk Cargo",
     description:
       "We cater heavy equipment or any breakbulk cargos that need to be shipped from one place to another.",
-    image: "/service/4.jpg",
+    image: "/service/breakbulk.png",
     alt: "Heavy equipment loaded as breakbulk cargo",
   },
 ];
