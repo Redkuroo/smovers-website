@@ -16,7 +16,7 @@ export const SERVICES: Service[] = [
   {
     title: "Flat Rack Container",
     description: "We cater oversized or heavy cargo from one place to another.",
-    image: "/service/2.jpeg",
+    image: "/service/flat.png",
     alt: "Flat rack container with oversized cargo",
   },
   {

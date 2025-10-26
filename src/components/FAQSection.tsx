@@ -4,38 +4,68 @@ import { ChevronDown } from "lucide-react";
 
 type FAQ = {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
 };
 
 const faqs: FAQ[] = [
   {
     question: "What services does SMOvers provide?",
-    answer:
-      "We offer door-to-door cargo moving, route-optimized deliveries, and tailored logistics solutions for businesses of any size.",
+    answer: (
+      <>
+        <p>
+          We provide comprehensive domestic shipping solutions, ensuring seamless
+          container movement from one port to another.
+        </p>
+        <p className="mt-3">Our range of services includes:</p>
+        <ul className="list-disc pl-6 mt-2 space-y-1">
+          <li>Pier to Pier</li>
+          <li>Yard to Yard</li>
+          <li>Door to Door</li>
+        </ul>
+      </>
+    ),
   },
   {
     question: "How can I request a quote?",
-    answer:
-      "Use our contact form or call us directly. Share your origin, destination, package details, and timeline so we can prepare an accurate quote.",
+    answer: (
+      <>
+        For inquiries, you may contact us at{" "}
+        <a href="tel:0917-772-3701" className="text-blue-600 hover:underline">
+          0917-772-3701
+        </a>{" "}
+        or email us at{" "}
+        <a href="mailto:smoverslogistics@gmail.com" className="text-blue-600 hover:underline">
+          smoverslogistics@gmail.com
+        </a>
+        .
+      </>
+    ),
   },
-  {
-    question: "Do you support same-day or rush deliveries?",
-    answer:
-      "Yes, rush options are available in select routes. Availability depends on time of request and route capacity.",
-  },
+
   {
     question: "Can I track my shipment?",
-    answer:
-      "We provide status updates and tracking options depending on the route and service level chosen.",
+    answer: (
+      <>
+        For shipment status updates, you may contact us at{" "}
+        <a href="tel:0917-772-3701" className="text-blue-600 hover:underline">
+          0917-772-3701
+        </a>{" "}
+        or email us at{" "}
+        <a href="mailto:smoverslogistics@gmail.com" className="text-blue-600 hover:underline">
+          smoverslogistics@gmail.com
+        </a>
+        .
+      </>
+    ),
   },
 ];
 
 export default function FAQSection() {
   return (
     <section className="bg-blue-50">
-  <div className="site-container py-20">
+      <div className="site-container py-20">
         {/* Centered heading like the reference */}
-  <header className="text-center max-w-3xl mx-auto">
+        <header className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-blue-900">
             Frequently asked questions
           </h2>
@@ -45,7 +75,7 @@ export default function FAQSection() {
         </header>
 
         {/* Single-column list aligned to brand styles */}
-  <div className="mt-14 max-w-3xl mx-auto">
+        <div className="mt-14 max-w-3xl mx-auto">
           <div className="border-t border-blue-900/10 no-global-radius">
             {faqs.map((item, idx) => (
               <details key={idx} className="group border-b border-blue-900/10 no-global-radius">
@@ -66,7 +96,7 @@ export default function FAQSection() {
         </div>
 
         <div className="mt-10 text-sm text-slate-600 text-center">
-          Still have questions? {" "}
+          Still have questions?{" "}
           <a href="#contact" className="text-blue-600 underline underline-offset-4 hover:text-blue-700">
             Contact us
           </a>{" "}
