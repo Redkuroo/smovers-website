@@ -63,14 +63,48 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="w-full">
+    <section className="w-full relative">
       <Script
         src="https://app.cal.com/embed/embed.js"
         strategy="lazyOnload"
       />
-      <div className="flex flex-col md:flex-row min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh]">
+      <div className="flex flex-col md:flex-row min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] relative">
+        {/* Decorative Curved Arrow Overlay */}
+        <div className="absolute inset-0 pointer-events-none z-10 hidden md:block overflow-hidden">
+          <svg
+            className="absolute w-full h-full"
+            viewBox="0 0 1200 800"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+          >
+            {/* Main curved arrow path - counterclockwise flow */}
+            <path
+              d="M 200 150 Q 400 100 600 200 T 950 500 Q 1000 600 900 700"
+              stroke="rgba(255, 255, 255, 0.15)"
+              strokeWidth="8"
+              strokeLinecap="round"
+              fill="none"
+              strokeDasharray="20 10"
+            />
+            {/* Arrowhead pointing counterclockwise */}
+            <path
+              d="M 900 700 L 920 680 L 890 670 Z"
+              fill="rgba(255, 255, 255, 0.15)"
+            />
+            {/* Secondary accent curve for depth */}
+            <path
+              d="M 180 180 Q 380 130 580 230 T 930 520"
+              stroke="rgba(255, 255, 255, 0.08)"
+              strokeWidth="4"
+              strokeLinecap="round"
+              fill="none"
+            />
+          </svg>
+        </div>
+
         {/* Left: Gradient + Text */}
-        <div className="md:w-1/2 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white flex items-center px-6 sm:px-10 py-16 md:py-0">
+        <div className="md:w-2/5 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white flex items-center px-6 sm:px-10 py-16 md:py-0 relative z-20">
           <div className="w-full max-w-xl mx-auto text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               SMOvers Logistics Services
@@ -99,7 +133,7 @@ export default function HeroSection() {
           </div>
         </div>
         {/* Right: Image */}
-        <div className="md:w-1/2 relative h-64 md:h-auto no-global-radius">
+        <div className="md:w-3/5 relative h-64 md:h-auto no-global-radius z-20">
           <Image
             src="/hero.jpg"
             alt="Cargo vessel and logistics background"
