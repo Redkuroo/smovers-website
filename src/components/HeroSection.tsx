@@ -141,7 +141,7 @@ export default function HeroSection() {
                 className="inline-flex items-center gap-2 hover:underline"
               >
                 <MapPin className="h-5 w-5" />
-                <span>Km 10, Purok 6, Buhisan, Tibungco, Davao City</span>
+                <span>Km 20, Purok 6, Buhisan, Tibungco, Davao City</span>
               </a>
               <div className="inline-flex items-center gap-2">
                 <User className="h-5 w-5" />

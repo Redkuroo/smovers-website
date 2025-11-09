@@ -68,7 +68,7 @@ export default function ContactSection() {
 
   const companyDetails = [
     { label: "Company", value: "SMOvers Logistics Services" },
-    { label: "Address", value: "Km 10, Purok 6, Buhisan, Tibungco, Davao City" },
+    { label: "Address", value: "Km 20, Purok 6, Buhisan, Tibungco, Davao City" },
     { label: "Business Type", value: "Sole Proprietorship" },
     { label: "Registration No.", value: "2476151" },
     { label: "TIN", value: "724-936-326-000" },
