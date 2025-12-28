@@ -2,7 +2,8 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   date: string; // ISO date
-  image: string;
+  image?: string;
+   video?: string;
   link: string; // external or internal URL
 };
 

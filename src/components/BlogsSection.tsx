@@ -73,16 +73,29 @@ export default function BlogsSection() {
                 key={blog.title}
                 className="flex flex-col md:flex-row bg-white rounded-2xl shadow-xl overflow-hidden w-full"
               >
-                {/* Left: Image with overlay */}
+                {/* Left: Media (video or image) with overlay */}
                 <div className="relative w-full overflow-hidden md:w-1/2">
                   <div className="relative aspect-[16/10] md:aspect-auto md:h-full md:min-h-[16rem]">
-                    <Image
-                      src={blog.image || "/blog-placeholder.jpg"}
-                      alt={`SMOvers blog post: ${blog.title}`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
+                    {blog.video ? (
+                      <video
+                        className="absolute inset-0 w-full h-full object-cover"
+                        controls
+                        playsInline
+                        preload="metadata"
+                        poster={blog.image}
+                      >
+                        <source src={blog.video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <Image
+                        src={blog.image || "/cargo.jpg"}
+                        alt={`SMOvers blog post: ${blog.title}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    )}
                     <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#256D7B]/90 to-transparent px-4 py-3 md:px-6 md:py-4">
                       <h3 className="text-sm md:text-lg font-bold text-white drop-shadow leading-tight mb-1">
                         {blog.title}

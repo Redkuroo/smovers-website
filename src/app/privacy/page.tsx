@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
     month: "long",
     day: "numeric",
     timeZone: "UTC",
-  }).format(new Date(Date.UTC(2025, 0, 1)));
+  }).format(new Date(Date.UTC(2026, 0, 1)));
 
   return (
     <main className="bg-white">

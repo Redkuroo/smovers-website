@@ -1,6 +1,14 @@
 import type { BlogPost } from "@/types/content";
 
 export const BLOGS: BlogPost[] = [
+   {
+    title: "SMOVERS THANKSGIVING 2025",
+    excerpt:
+      "Smovers Logistics Services held its annual Thanksgiving event. The event was a joyous occasion filled with gratitude, camaraderie, and festive cheer as we celebrated the successes and milestones achieved throughout the year. Employees, partners, and stakeholders came together to reflect on our journey, share memorable moments, and look forward to a promising future.",
+    date: "2025-12-23",
+    video: "/outreach.mp4",
+    link: "https://www.facebook.com/share/v/1DbFMpJtYL/",
+  },
   {
     title: "2nd Outreach Program",
     excerpt:
